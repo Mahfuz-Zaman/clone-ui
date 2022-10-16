@@ -269,51 +269,51 @@ export class HomeComponent implements OnInit {
 
   private updateMetaData() {
     // Title
-    this.title.setTitle('Esquire Electronics - Home');
+    this.title.setTitle('GadgetEx - Home');
     // Meta
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
     this.meta.updateTag({
       name: 'description',
       content:
-        'Esquire Electronics is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
+        'GadgetEx is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
     });
     this.meta.updateTag({
       name: 'keywords',
       content:
-        'online shop, esquire, esquireelectronics, esquireelectronicsltd, esquireelectronicsltd.com',
+        'online shop, GadgetEx, softlabit.com',
     });
     // Facebook
     this.meta.updateTag({
       name: 'og:title',
-      content: 'Esquire Electronics - Home',
+      content: 'GadgetEx - Home',
     });
     this.meta.updateTag({ name: 'og:type', content: 'website' });
     this.meta.updateTag({
       name: 'og:url',
-      content: 'https://esquireelectronicsltd.com/',
+      content: 'https://softlabit.com/',
     });
     this.meta.updateTag({
       name: 'og:image',
-      content: 'https://esquireelectronicsltd.com/assets/brand/esquire.png',
+      content: 'https://softlabit.com/assets/brand/esquire.png',
     });
     this.meta.updateTag({
       name: 'og:description',
       content:
-        'Esquire Electronics is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
+        'GadgetEx is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
     });
     // Twitter
     this.meta.updateTag({
       name: 'twitter:title',
-      content: 'Esquire Electronics - Home',
+      content: 'GadgetEx - Home',
     });
     this.meta.updateTag({
       name: 'twitter:image',
-      content: 'https://esquireelectronicsltd.com/assets/brand/esquire.png',
+      content: 'https://softlabit.com/assets/brand/esquire.png',
     });
     this.meta.updateTag({
       name: 'twitter:description',
       content:
-        'Esquire Electronics is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
+        'GadgetEx is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
     });
 
     // Canonical

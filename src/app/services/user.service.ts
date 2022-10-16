@@ -61,7 +61,7 @@ export class UserService {
 
           this.bulkSmsService.sendMessageWithSubscribe(
             '88' + data.phoneNo,
-            `Dear ${data.fullName}, Welcome to Esquire Electronics. Enjoy authentic home appliances at country’s most trusted electronics store www.esquireelectronicsltd.com. Hotline: 8809610001010.`
+            `Dear ${data.fullName}, Welcome to Esquire Electronics. Enjoy authentic home appliances at country’s most trusted electronics store www.softlabit.com. Hotline: 8809610001010.`
           );
         } else {
           this.uiService.wrong(res.message);
