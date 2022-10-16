@@ -1,0 +1,106 @@
+<div style="position: relative">
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Banner</h1>
+    <div class="color-pick">
+      <a href="https://www.hexcolortool.com/" target="_blank">Pick Banner Image</a>
+    </div>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        #templateForm="ngForm"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+
+    <div (click)="onHoldInputData()" class="imag-view" [routerLink]="['/' + adminBaseUrl, 'image-gallery']"
+         [state]="{url: router.url}">
+      <img [src]="pickedImage" alt="">
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Enter name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Banner Type</mat-label>
+      <mat-select formControlName="bannerType">
+        <mat-option *ngFor="let type of bannerTypes" [value]="type.value">
+          {{  type.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>priority</mat-label>
+      <input formControlName="priority" matInput placeholder="Enter priority" required digitOnly>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>shortDesc</mat-label>
+      <input formControlName="shortDesc" matInput placeholder="Enter shortDesc" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Router Link</mat-label>
+      <input formControlName="routerLink" matInput placeholder="Enter info" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>routerLink</mat-label>
+      <input formControlName="routerLink" matInput placeholder="Enter shortDesc" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field> -->
+
+<!--    <div class="select-product">-->
+<!--      <button type="button" mat-raised-button color="accent" (click)="openComponentDialog()">-->
+<!--        <mat-icon>add</mat-icon>-->
+<!--        Choose Product-->
+<!--      </button>-->
+<!--    </div>-->
+    <div class="save-btn">
+      <button mat-raised-button color="primary" type="submit">{{id ? 'Edit Banner' : 'Add Banner'}}</button>
+    </div>
+  </form>
+
+<!--  <div class="product-view" *ngIf="products && products.length > 0">-->
+<!--    <div class="table-container">-->
+<!--      <table>-->
+<!--        <thead>-->
+<!--        <tr class="table-head">-->
+<!--          <th scope="col">{{'Name'}}</th>-->
+<!--          <th scope="col">{{'Image'}}</th>-->
+<!--          <th scope="col">{{'SKU'}}</th>-->
+<!--          <th scope="col">{{'Category'}}</th>-->
+<!--          <th scope="col">{{'Retail Price'}}</th>-->
+<!--          <th scope="col">{{'Sale Price'}}</th>-->
+<!--          <th scope="col">{{'Available'}}</th>-->
+<!--          <th scope="col">{{'Details'}}</th>-->
+<!--        </tr>-->
+<!--        </thead> &lt;!&ndash; End Table Head &ndash;&gt;-->
+<!--        <tr *ngFor="let data of products; let i = index">-->
+<!--          <td [attr.data-label]="'Name'">{{data.productName}}</td>-->
+<!--          <td [attr.data-label]="'Image'">-->
+<!--            <img [src]="data?.images && data?.images.length > 0 ? data.images[0] : '/assets/images/placeholder/test.png'" [alt]="data.productName">-->
+<!--          </td>-->
+<!--          <td [attr.data-label]="'SKU'">{{data.sku}}</td>-->
+<!--          <td [attr.data-label]="'Category'">{{data.categorySlug}}</td>-->
+<!--          <td [attr.data-label]="'Retail Price'">৳ {{data.price}}</td>-->
+<!--          <td [attr.data-label]="'Sale Price'">৳ {{data | price: 'priceWithDiscount'}}</td>-->
+<!--          <td [attr.data-label]="'Available'">{{data.quantity}}</td>-->
+<!--          <td [attr.data-label]="'Details'">-->
+<!--            <a class="link-hover" [href]="'/product-details/' + data.productSlug" target="_blank" mat-icon-button>-->
+<!--              <mat-icon>visibility</mat-icon>-->
+<!--            </a>-->
+<!--          </td>-->
+<!--        </tr>&lt;!&ndash; End Table Body &ndash;&gt;-->
+
+<!--      </table>-->
+
+<!--    </div>-->
+<!--  </div> &lt;!&ndash; Product View Table &ndash;&gt;-->
+</div>

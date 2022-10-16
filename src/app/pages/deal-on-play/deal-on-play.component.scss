@@ -1,0 +1,132 @@
+@import "src/theme/variables";
+
+.container-fluid {
+  width: 98%;
+  max-width: $theme-container-width;
+  margin: 0 auto 50px auto;
+}
+
+@media(min-width:960px) and (max-width:1440px){
+  .container-fluid{
+    width: 88%!important;
+  }
+}
+
+.header {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 28px 0;
+  gap: 0;
+  align-items: center;
+
+  .title {
+    h2 {
+      font-family: $font-en-primary;
+      font-size: 24px;
+      color: #262626
+    }
+  }
+  .desc {
+    p {
+      font-family: $font-en-primary;
+      font-size: 16px;
+      color: #535353;
+    }
+  }
+  .info {
+    margin-top: 12px;
+    p {
+      font-family: $font-en-primary;
+      color: #099647;
+      border: 1px solid;
+      padding: 10px 16px;
+    }
+  }
+}
+
+
+.main-content {
+  width: 100%;
+  min-height: 70vh;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 16px;
+}
+@media(min-width:1410px){
+  .product-container{
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media only screen and (max-device-width: 599px) {
+  .header {
+    gap: 10px;
+    .title {
+      h2 {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// @media only screen and (max-device-width: 760px) {
+//   .product-container {
+//     margin: 25px 12px;
+//     grid-template-columns: repeat(1, 1fr);
+//     grid-gap: 12px;
+//   }
+// }
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+  .product-container {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12px;
+  }
+}
+
+@media only screen and (min-width: 760px) and (max-width: 959px) {
+
+  .product-container {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12px;
+  }
+}
+
+@media(max-width:800px){
+  .product-container{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media(max-width:600px){
+  .product-container{
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px 10px;
+  }
+}
+
+
+@media(max-width:550px){
+  .product-container{
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px 10px;
+  }
+  .container-fluid{
+    width: 96%;
+  }
+}
+
+
+@media(max-width:400px){
+  .container-fluid{
+    width: 99%;
+  }
+}
+
+
+

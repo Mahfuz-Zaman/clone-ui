@@ -1,0 +1,35 @@
+.card-rating {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card-rating ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-rating ul li{
+  display: inline-block;
+  margin: 0 3px 0 0;
+
+}
+.card-rating ul li i{
+  //color: #f2ba22;
+  font-style: normal;
+  //font-family: 'Font Awesome 5 Free';
+  font-size: 14px;
+}
+
+.fill {
+  color: #f2ba22;
+}
+
+.outline {
+  color: #cacaca;
+}
+
+//
+//.card-rating ul li:last-child i{
+//  color: #cacaca;
+//}

@@ -1,0 +1,21 @@
+@import "../../../../../theme/exports/table-one";
+
+
+.table-image {
+  width: 140px;
+  height: 100px;
+  object-fit: scale-down;
+}
+
+
+
+.link-hover {
+  transition: 0.3s all linear;
+  &:hover {
+    ::ng-deep {
+      span {
+        color: #3b5998;
+      }
+    }
+  }
+}

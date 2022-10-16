@@ -1,0 +1,121 @@
+@import "src/theme/variables";
+
+.faq-banner-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 200px;
+  background-color: #e8e8e8;
+  margin-bottom: 20px;
+  margin-top: 130px;
+}
+
+.faq-banner-main {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.faq-banner-main h2 {
+  color: #262626;
+  font-family: $font-en-primary;
+  font-size: 30px;
+  display: block;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 15px !important;
+}
+
+.faq-banner-main a {
+  display: block;
+  color: #777;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.faq-section {
+  display: block;
+  width: 100%;
+}
+
+.section-main {
+  display: block;
+  max-width: 900px;
+  padding: 10px 20px;
+  margin: auto;
+  width: 100%;
+}
+
+.section-title {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.section-title h3 {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: $font-en-primary;
+  color: hsl(213, 7%, 33%);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+::ng-deep.details .mat-expansion-panel {
+  display: block;
+  border-radius: 0;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+  margin-bottom: 10px;
+}
+
+::ng-deep.details .mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 0 2px 12px #eee;
+  transition: box-shadow .2s;
+  background-color: #fff;
+  border-radius: 0;
+}
+
+::ng-deep.details .mat-expansion-panel:not([class*=mat-elevation-z]):hover {
+  background-color: #fff;
+}
+
+.details mat-panel-title h2 {
+  color: #2d2d2d;
+  font-size: 25px;
+  font-family: $font-en-primary;
+  font-weight: 300 !important;
+  font-style: normal;
+  display: block;
+}
+
+::ng-deep.details .mat-expansion-indicator::after {
+  content: "";
+  color: $color-primary;
+}
+
+::ng-deep.details .mat-expansion-panel-header {
+  padding: 35px 25px;
+}
+
+::ng-deep.details mat-expansion-panel p {
+  color: #404040;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 25px;
+  font-family: $font-en-primary;
+}
+
+@media(max-width: 500px) {
+  ::ng-deep.details mat-expansion-panel p {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .details mat-panel-title h2 {
+    font-size: 20px;
+  }
+
+}

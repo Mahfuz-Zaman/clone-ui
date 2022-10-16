@@ -1,0 +1,41 @@
+
+<!---offer-section1-->
+<section class="offer-section-1">
+        <!--offer-title-->
+        <!-- [ngStyle]="{'background': 'url(' + promotionalOffer?.image + ') no-repeat 0 0 / cover'}" -->
+  <!---<div class="offer-title">
+    <h2>{{promotionalOffer?.title}}</h2>
+  </div>-->
+  <div class="section1-container">
+      <div class="description">
+          <p>{{promotionalOffer?.shortDescription}}</p>
+      </div>
+    <div class="description" [innerHTML]="promotionalOffer?.description | safeHtmlCustom"></div>
+  </div>
+</section>
+
+
+<div class="container-fluid">
+  <section class="section-2 section-deal-of-day section-md">
+    <div class="container" *ngFor="let data of offerProducts">
+
+      <div class="deal-title">
+        <h2>{{data?.name}}</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="deal-on-play-view">
+        <ng-container *ngFor="let p of data?.products">
+          <app-product-card-one [product]="p"></app-product-card-one>
+        </ng-container>
+      </div>
+
+    </div>
+  </section><!--Deal On Play end-->
+
+
+</div>
+
+
+
+

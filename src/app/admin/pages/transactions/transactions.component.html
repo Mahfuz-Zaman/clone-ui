@@ -1,0 +1,47 @@
+<div class="header">
+  <h2>Transactions</h2>
+  <div class="download" *ngIf="transactions && transactions.length > 0">
+    <button mat-raised-button color="primary" (click)="exportToExcel()">Export as Excel</button>
+  </div>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table #dataTable>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Order'}}</th>
+      <th scope="col">{{'Date'}}</th>
+      <th scope="col">{{'Payment Type'}}</th>
+      <th scope="col">{{'Total'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of transactions | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+      <td [attr.data-label]="'Order'">{{data.orderId ? '#' + data.orderId : 'N/A'}}</td>
+      <td [attr.data-label]="'Date'">{{data.checkoutDate | date}}</td>
+      <td [attr.data-label]="'Payment Type'" class="italic">{{data.paymentMethod | slugToNormal : '_'}}</td>
+      <td [attr.data-label]="'Total'">৳ {{data.totalAmount}}</td>
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" mat-mini-fab color="accent"
+                [routerLink]="['../../', 'orders', 'order-details', data._id]">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+
+</div>
+
+<div class="pagination-container">
+  <pagination-controls
+    class="product-pagination"
+    [autoHide]="true"
+    [maxSize]="15"
+    (pageChange)="onPageChanged($event)">
+  </pagination-controls>
+</div>     <!-- END PAGINATION -->

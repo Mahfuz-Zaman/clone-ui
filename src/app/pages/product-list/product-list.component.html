@@ -1,0 +1,202 @@
+
+<div class="breadcrumb">
+  <app-breadcrumb [data]="breadcrumbs"></app-breadcrumb>
+</div>
+
+<div class="container-fluid">
+  <div class="side-filter">
+    <div class="price-filter">
+      <div class="header">
+        <h1>Price Range</h1>
+        <div class="line"></div>
+      </div>
+      <div class="price-range">
+        <span>From: <b>৳{{minPrice ? minPrice : 1}}</b></span>
+        <span>To: <b>৳{{maxPrice ? maxPrice : priceRange?.max}}</b></span>
+      </div>
+
+      <div class="input_fields">
+        <div class="first_input_field">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <input matInput [(ngModel)]="minPrice">
+          </mat-form-field>
+        </div>
+        <div class="second_input_field">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <input matInput [(ngModel)]="maxPrice">
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="onPriceRangeInput()">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+
+      <div class="price-range">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
+          <mat-slider matTooltip="{{minView}}" color="primary" max="{{maxPrice ? maxPrice : priceRange?.max}}" min="{{1}}" value="{{1}}" thumb-label="true" (change)="onInputChangeMin($event)" (input)="onInputChangeSlideMin($event)"></mat-slider>
+          <mat-slider matTooltip="{{maxView}}" color="warn" max="{{priceRange?.max}}" min="{{priceRange?.min}}" value="{{priceRange?.max}}" thumb-label="true" (change)="onInputChangeMax($event)" (input)="onInputChangeSlideMax($event)"></mat-slider>
+        </div>
+        <!-- <input type="number" placeholder="Min" [(ngModel)]="minPrice">
+        <input type="number" placeholder="Max" [(ngModel)]="maxPrice">
+        <button mat-raised-button color="primary" (click)="onFilterPriceRange()">
+          <mat-icon>play_arrow</mat-icon>
+        </button> -->
+      </div>
+    </div>
+
+    <div class="clear-filter" *ngIf="query">
+      <button mat-button (click)="onClearFilter()">Clear Filter</button>
+    </div>
+<!--    <mat-card *ngFor="let a of attributes; let i = index">-->
+<!--      <div class="title">-->
+<!--        <h1>{{a.attributeName}}</h1>-->
+<!--        <div class="line"></div>-->
+<!--      </div>-->
+<!--      <div class="body">-->
+<!--        <mat-checkbox-->
+<!--          *ngFor="let v of a.attributeValues; let i = index"-->
+<!--          color="primary"-->
+<!--          (change)="onFilterChange($event, a, v)">-->
+<!--          {{v}}-->
+<!--        </mat-checkbox>-->
+<!--      </div>-->
+<!--    </mat-card> &lt;!&ndash; First Filter &ndash;&gt;-->
+
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let a of attributes; let i = index" class="filter-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="title">
+              <h1>{{a.attributeName}}</h1>
+<!--              <div class="line"></div>-->
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="body">
+          <mat-checkbox
+            *ngFor="let v of a.attributeValues; let i = index"
+            color="primary"
+            (change)="onFilterChange($event, a, v)">
+            <span class="check-span">{{v}}</span>
+          </mat-checkbox>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+
+
+  </div> <!-- END SIDE FILTER AREA -->
+
+  <div class="main-content">
+    <div class="tag-list" *ngIf="tags.length > 0">
+      <ng-container *ngFor="let data of tags">
+        <a [routerLink]="[data.routerLink]">
+          {{data.name}}
+        </a>
+      </ng-container>
+      <div class="line-deep-1"></div>
+    </div>
+    <div
+    style="padding: 10px; font-size: 15px"
+      class="description"
+      [innerHTML]="products[0]?.category?.description">
+        <!-- {{products[0]?.category?.description}} -->
+    </div>
+    <div class="list-controll-var">
+      <button class="mobile-sort-area" mat-raised-button (click)="openTemplateDialog()">
+        <mat-icon>tune</mat-icon>
+      </button>
+      <ul>
+        <li><button [class.active]="viewType === 'grid'" (click)="onChangeViewType('grid')"><mat-icon>view_comfy</mat-icon></button></li>
+        <li><button [class.active]="viewType === 'list'" (click)="onChangeViewType('list')"><mat-icon>view_list</mat-icon></button></li>
+      </ul>
+    </div>
+
+    <div class="product-container" *ngIf="viewType === 'grid'">
+      <!-- {{products | json}} -->
+      <app-product-card-one
+        *ngFor="let product of products | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }"
+        [product]="product"></app-product-card-one>
+    </div> <!-- END Product Container -->
+
+    <!---grid-card-container-->
+    <div class="grid-card-container" *ngIf="viewType === 'list'">
+      <app-grid-card *ngFor="let product of products | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }"
+                     [product]="product"></app-grid-card>
+    </div><!----end-->
+
+
+  </div> <!-- END MAIN CONTAINER AREA -->
+</div>
+
+
+<div *ngIf="totalProducts > productsPerPage" fxLayout="row wrap" style="margin-top: 15px;">
+  <div fxFlex="100" class="p-1">
+    <mat-card class="p-0 text-center">
+
+      <pagination-controls
+        class="product-pagination"
+        autoHide="true" maxSize="20"
+        (pageChange)="onChangePage($event)">
+      </pagination-controls>
+
+    </mat-card>
+  </div>
+</div>
+
+
+<!-- MOBILE FILTER DIALOG Template -->
+<ng-template #dialogFilter>
+  <div class="view-dialog">
+    <div class="header-mobile">
+      <button class="btn-done" mat-raised-button color="primary">
+        <mat-icon>done</mat-icon>
+        Done
+      </button>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="side-filter">
+      <div class="price-filter">
+        <div class="header">
+          <h1>Price Range</h1>
+          <div class="line"></div>
+        </div>
+        <div class="price-range">
+          <span>From: <b>৳{{minPrice ? minPrice : 1}}</b></span>
+          <span>To: <b>৳{{maxPrice ? maxPrice : priceRange?.max}}</b></span>
+        </div>
+        <div class="price-range">
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
+            <mat-slider color="primary" max="{{maxPrice ? maxPrice : priceRange?.max}}" min="{{1}}" value="{{1}}" thumb-label="true" (change)="onInputChangeMin($event)"></mat-slider>
+            <mat-slider color="warn" max="{{priceRange?.max}}" min="{{priceRange?.min}}" value="{{priceRange?.max}}" thumb-label="true" (change)="onInputChangeMax($event)"></mat-slider>
+          </div>
+          <!-- <input type="number" placeholder="Min" [(ngModel)]="minPrice">
+          <input type="number" placeholder="Max" [(ngModel)]="maxPrice">
+          <button mat-raised-button color="primary" (click)="onFilterPriceRange()">
+            <mat-icon>play_arrow</mat-icon>
+          </button> -->
+        </div>
+      </div>
+      <mat-card *ngFor="let a of attributes; let i = index">
+        <div class="title">
+          <h1>{{a.attributeName}}</h1>
+          <div class="line"></div>
+        </div>
+        <div class="body">
+          <mat-checkbox
+            *ngFor="let v of a.attributeValues; let i = index"
+            color="primary"
+            (change)="onFilterChange($event, a, v)">
+            {{v}}
+          </mat-checkbox>
+        </div>
+      </mat-card> <!-- First Filter -->
+    </div> <!-- END SIDE FILTER AREA -->
+  </div>
+</ng-template>
+
+

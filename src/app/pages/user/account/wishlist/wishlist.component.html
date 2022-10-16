@@ -1,0 +1,109 @@
+<div class="header">
+  <h2>Wish List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Image'}}</th>
+      <th scope="col">{{'Product name'}}</th>
+      <th scope="col">{{'Brand'}}</th>
+      <th scope="col">{{'Price'}}</th>
+      <th scope="col">{{'Availability'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of wishlists | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+      <td [attr.data-label]="'Image'"><img class="img" [src]="data.product?.images ? data.product?.images[0] : '/assets/images/png/book-placeholder-sm.jpg'" alt="Cover"></td>
+      <td [attr.data-label]="'Product Name'">{{data.product?.productName}}</td>
+      <td [attr.data-label]="'Brand'">{{data.product?.brandSlug | slugToNormal}}</td>
+      <td [attr.data-label]="'Price'">৳ {{(data.product | price : 'priceWithDiscount') | number : '' : 'bn'}}</td>
+      <td [attr.data-label]="'Availability'">{{data.product?.quantity > 0 ? 'In Stock' : 'Out Stock'}}</td>
+      <td [attr.data-label]="'Actions'">
+
+        <button mat-mini-fab color="primary" matTooltip="View" [routerLink]="['/',data.product?.brandSlug,data.product?.categorySlug, data.product?.productSlug]">
+          <mat-icon>remove_red_eye</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="warn" matTooltip="View" (click)="removeWishlistById(data._id)" style="margin-left: 5px;">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+
+
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<div class="pagination-container">
+  <pagination-controls
+    class="product-pagination"
+    [autoHide]="true"
+    [maxSize]="15"
+    (pageChange)="onPageChanged($event)">
+  </pagination-controls>
+</div>     <!-- END PAGINATION -->
+
+
+
+
+
+
+
+
+<!--<div class="p-1">-->
+<!--    <mat-card class="p-0">-->
+<!--      <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="w-100 p-2">-->
+<!--        <h2>Wishlist</h2>-->
+<!--      </div>-->
+<!--      <mat-divider></mat-divider>-->
+<!--      <div class="mat-table admin-table">-->
+<!--        <div class="mat-header-row">-->
+<!--          <div class="mat-header-cell">Cover</div>-->
+<!--          <div class="mat-header-cell">Title</div>-->
+<!--          <div class="mat-header-cell">Brand</div>-->
+<!--          <div class="mat-header-cell">Price</div>-->
+<!--          <div class="mat-header-cell"></div>-->
+<!--        </div>-->
+<!--        <div *ngFor="let data of userWishlistBooks" class="mat-row">-->
+<!--          <div class="mat-cell"><img class="img" [src]="data?.images ? data?.images[0] : '/assets/images/png/book-placeholder-sm.jpg'" alt="Cover"></div>-->
+<!--          <div class="mat-cell">{{data.productName}}</div>-->
+<!--          <div class="mat-cell">{{data.brand}}</div>-->
+<!--          <div class="mat-cell">{{data.price}}</div>-->
+<!--          <div class="mat-cell">-->
+<!--            <div class="p-1 actions">-->
+<!--              <button mat-mini-fab color="primary" matTooltip="View" [routerLink]="['/product-details', data.productSlug]">-->
+<!--                <mat-icon>remove_red_eye</mat-icon>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--            <div class="p-1 actions">-->
+<!--                <button mat-mini-fab color="warn" matTooltip="View" (click)="removeBookFromWishlist(data._id)">-->
+<!--                  <mat-icon>delete</mat-icon>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </mat-card>-->
+
+  <!--  <div *ngIf="orders.length > 0" fxLayout="row wrap">-->
+  <!--    <div fxFlex="100">-->
+  <!--      <mat-card class="p-0 text-center">-->
+  <!--        <pagination-controls class="product-pagination" autoHide="true" maxSize="5"-->
+  <!--                             (pageChange)="onPageChanged($event)"></pagination-controls>-->
+  <!--      </mat-card>-->
+  <!--    </div>-->
+  <!--  </div>-->
+<!--  </div>-->

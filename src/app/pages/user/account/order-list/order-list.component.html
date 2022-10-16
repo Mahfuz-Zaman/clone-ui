@@ -1,0 +1,56 @@
+<div class="header">
+  <h2>Order List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Order'}}</th>
+      <th scope="col">{{'Date'}}</th>
+      <th scope="col">{{'Payment Type'}}</th>
+      <th scope="col">{{'Payment Status'}}</th>
+      <th scope="col">{{'Delivery Status'}}</th>
+      <th scope="col">{{'Total'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of userOrder | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+      <td [attr.data-label]="'Order'">{{data.orderId ? '#' + data.orderId : 'N/A'}}</td>
+      <td [attr.data-label]="'Date'">{{data.checkoutDate | date: 'short'}}</td>
+      <td [attr.data-label]="'Payment Type'">{{data.paymentMethod | slugToNormal : '_'}}</td>
+      <td [attr.data-label]="'Payment Status'" [ngClass]="[data.paymentStatus === 'paid' ? 'paid' : 'unpaid']">{{data.paymentStatus | slugToNormal}}</td>
+      <td [attr.data-label]="'Delivery Status'" class="italic" [ngClass]="getDeliveryStatusColor(data)">{{data.deliveryStatus | orderStatus}}</td>
+      <td [attr.data-label]="'Total'">৳ {{data.totalAmountWithDiscount}}</td>
+      <td [attr.data-label]="'Actions'">
+<!--        <button style="margin-right: 5px;" mat-mini-fab color="primary"-->
+<!--                [routerLink]="['/shop/purchase-report', 'company._id']">-->
+<!--          <mat-icon>update</mat-icon>-->
+<!--        </button>-->
+        <button style="margin-right: 5px;" mat-mini-fab color="accent"
+                [routerLink]="['../', 'order-details', data._id]">
+          <mat-icon>visibility</mat-icon>
+        </button>
+<!--        <button [routerLink]="['/shop/company-edit-info', 'company._id']" mat-mini-fab-->
+<!--                aria-label="Example icon-button with a heart icon">-->
+<!--          <mat-icon>edit</mat-icon>-->
+<!--        </button>-->
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+
+</div>
+
+<div class="pagination-container">
+  <pagination-controls
+    class="product-pagination"
+    [autoHide]="true"
+    [maxSize]="15"
+    (pageChange)="onPageChanged($event)">
+  </pagination-controls>
+</div>     <!-- END PAGINATION -->

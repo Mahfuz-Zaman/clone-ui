@@ -1,0 +1,17 @@
+<div  id="sub-mega-menu">
+
+  <!--hover-menu-row-->
+  <div class="hover-menu-main">
+    <!--col-1-->
+    <div class="hover-menu-colum" *ngFor="let d of data">
+      <div class="hover-menu-details">
+        <a [routerLink]="['/product-list', parentCategory?.slug, d.slug]">{{d.name}}</a>
+        <ul>
+          <li><a [routerLink]="['/product-list', parentCategory?.slug, d.slug, t.slug]" *ngFor="let t of d.hasChild"> {{t.name}} <span><i class="fa fa-angle-right"></i></span></a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div><!--hover-menu-end-->

@@ -1,0 +1,23 @@
+@import "src/theme/gradients";
+
+.container {
+  width: calc(100% - 350px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
+  margin-top: 16px;
+
+  .card {
+    width: 100%;
+  }
+}
+
+.mat-chip.info-chip{
+  padding: 4px 8px;
+  .mat-icon{
+    margin-right: 4px;
+  }
+}
+.h-100p{
+  height: 100px;
+}

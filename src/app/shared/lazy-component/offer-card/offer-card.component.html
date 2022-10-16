@@ -1,0 +1,16 @@
+<div class="dealOnPlay-details" [style.background-color]="data?.cardBackground" [routerLink]="['/deal-on-play', data?.slug]">
+  <div class="dealOnPlay-text-details">
+    <div class="dealOnPlay-title">
+      <h2>{{data?.name}}</h2>
+      <h4>{{data?.shortDesc}}</h4>
+      <a [style.background-color]="data?.cardBtnColor"
+         [routerLink]="data?.routerLink">{{data?.name}}</a>
+    </div>
+    <div class="dealOnPlay-exchange">
+      <h4>{{data?.info}}</h4>
+    </div>
+  </div>
+  <div class="dealOnPlay-img">
+    <img [src]="data?.image ? data.image : '/assets/images/placeholder/test.png'" [alt]="data?.name">
+  </div>
+</div>

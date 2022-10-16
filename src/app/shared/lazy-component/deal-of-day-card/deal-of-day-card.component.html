@@ -1,0 +1,61 @@
+<div class="deal-product-details">
+
+  <!---deal-product-img **-->
+  <div class="deal-product-img">
+    <span class="sale">Sale</span>
+    <swiper [loop]="true"
+    [autoplay]="{
+      delay: 4000,
+      disableOnInteraction:false
+    }"
+    [pagination]="{
+      clickable: true
+    }"
+    class="mySwiper"
+  >
+    <ng-template swiperSlide *ngFor="let imgData of data?.product.images">
+      <!-- <img [routerLink]="['/product-details', data?.product?.productSlug]" [src]="imgData ? imgData : '/assets/images/placeholder/test.png'" -->
+      <img [routerLink]="['/', data?.product?.brandSlug, data?.product?.categorySlug, data?.product?.productSlug]" [src]="imgData ? imgData : '/assets/images/placeholder/test.png'"
+      [alt]="data?.product?.productName">
+    </ng-template>
+  </swiper>
+  </div>
+  <!-- deal-product-text-details -->
+  <div class="deal-product-text-details">
+    <!-- deal-product-link -->
+    <div class="deal-product-link">
+      <!-- <a [routerLink]="['/product-details', data?.product?.productSlug]">{{data?.product?.productName}}</a> -->
+      <a [routerLink]="['/', data?.product?.brandSlug, data?.product?.categorySlug, data?.product?.productSlug]">{{data?.product?.productName}}</a>
+    </div>
+    <!-- deal-product-rating -->
+    <div class="deal-rating">
+      <ul id="star-menu">
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+      </ul>
+    </div>
+    <!-- deal-product-price -->
+    <div class="deal-product-price">
+      <h3> <span>৳</span> {{data.product | price: 'priceWithDiscount' | number: '': 'bn' }} <del *ngIf="data?.product?.discountAmount && data?.product?.discountAmount > 0"> <small>৳</small> {{data?.product?.price | number: '': 'bn'}}</del></h3>
+    </div>
+    <!-- deal-product-description -->
+    <div class="deal-product-description" [routerLink]="['/', data?.product?.brandSlug, data?.product?.categorySlug, data?.product?.productSlug]">
+      <p [innerHTML]="data?.desc | safeHtmlCustom"></p>
+    </div>
+    <!-- deal-product-clock -->
+    <app-time-counter-one *ngIf="data?.endDate" [endDate]="data?.endDate"></app-time-counter-one>
+
+    <!--icon-menu-->
+    <div class="deal-icon-menu">
+      <ul>
+        <li><a (click)="addToCart($event)"><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a (click)="onNavigate()"><i class="fa fa-eye"></i></a></li>
+<!--        <li><a href="#"><i class="fa fa-clone"></i></a></li>-->
+      </ul>
+    </div>
+
+  </div>
+</div>

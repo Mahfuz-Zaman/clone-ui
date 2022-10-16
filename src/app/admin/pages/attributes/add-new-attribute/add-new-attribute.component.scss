@@ -1,0 +1,64 @@
+.header-dialog {
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+form{
+  width: 450px;
+  margin: 20px auto;
+
+  mat-form-field{
+    width: 100%;
+  }
+
+  button {
+    ::ng-deep {
+      span {
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+/**
+FORM ARRAY
+ */
+
+.form-array-container {
+  width: 100%;
+}
+.add-form-array-action {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.form-array-input {
+  width: 100%;
+
+  .single-field {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+
+    button {
+      margin-top: 10px;
+    }
+  }
+}
+
+.submit-btn {
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  padding: 4px 30px;
+
+  ::ng-deep {
+    span {
+      color: #FFFFFF;
+    }
+  }
+}

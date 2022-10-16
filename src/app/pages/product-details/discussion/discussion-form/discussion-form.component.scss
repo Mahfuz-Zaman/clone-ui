@@ -1,0 +1,138 @@
+@import "../../../../../theme/variables";
+.discussion-form{
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+
+  .submit {
+    text-align: right;
+  }
+}
+.form-top{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.discussion-user-img{
+  max-width:65px;
+  width: 100%;
+  margin-right: 10px;
+}
+.discussion-user-img img{
+  max-width:60px;
+  width: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+  border: 1px solid #eee;
+}
+.discussion-user-comment{
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+/*** form-bottom **/
+.form-bottom{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px 50px;
+  grid-template-rows: auto;
+}
+.form-left{
+  display: block;
+  width: 100%;
+  height: auto;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.form-left label{
+  color: #767676;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: $font-en-primary;
+  font-style: normal;
+
+}
+.form-right{
+  text-align: right;
+}
+.discussion-user-email{
+  margin-bottom: 10px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+
+.submit button{
+  background-color: #EB2A2E;
+  color: #fff;
+  font-style: normal;
+  font-family: $font-en-primary;
+  font-weight: 700;
+  font-size: 25px;
+  max-width: 300px;
+  width: 100%;
+  border:1px solid #EB2A2E;
+  outline: none;
+  text-align: center;
+  margin-left: auto;
+  text-transform: uppercase;
+  padding: 5px 0px;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+
+/** discussion-area **/
+@media(max-width:756px){
+  .discussion-form .form-bottom{
+    grid-template-columns: repeat(1, 1fr)
+  }
+}
+@media(max-width:450px){
+  .discussion-details{
+    padding: 0;
+    border: none;
+  }
+  .discussion-form{
+    border: none;
+    padding: 0;
+  }
+  .form-top{
+    display: block;
+  }
+  .discussion-user-img{
+    margin-bottom: 10px;
+  }
+}
+@media(max-width:500px){
+  .commenter-name{
+    float: none;
+    width: 100%;
+  }
+  .comment-date{
+    float: none;
+    width: 100%;
+    display: none;
+  }
+  .support{
+    width: 100%;
+  }
+}

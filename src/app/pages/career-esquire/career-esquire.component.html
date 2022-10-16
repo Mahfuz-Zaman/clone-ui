@@ -1,0 +1,36 @@
+<!----************ section-2 **************-->
+<section class="section-2 blog-container">
+  <div class="container">
+
+    <!---section2-main-->
+    <div class="section2-main">
+
+      <!--card1-->
+      <div class="card" *ngFor="let data of allCareerEsquire" [routerLink]="['/career-esquire/', data?.slug]">
+        <!--card-img-->
+        <div class="card-img">
+          <img [src]="data.image? data.image : '/assets/images/placeholder/test.png'" alt="bussiness-english.jpg">
+        </div>
+        <!---card-title-->
+        <div class="card-title">
+          <h2>{{data.title}}</h2>
+        </div>
+        <!---card-description-->
+        <div class="card-description">
+          <p>{{data.shortDescription}}</p>
+        </div>
+        <!--card-btn-->
+        <div class="card-btn">
+          <a [routerLink]="['/career-esquire/', data?.slug]">Read Article</a>
+        </div>
+
+      </div><!---card-end-->
+    </div>
+
+
+
+
+
+
+  </div>
+</section> <!----************ section-2 **************-->

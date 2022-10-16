@@ -1,0 +1,61 @@
+<div style="position: relative">
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Carousel</h1>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()" #templateForm="ngForm" fxLayout="column" fxLayoutAlign="space-around center">
+
+    <!-- <div (click)="onHoldInputData()" class="imag-view"
+         [routerLink]="[ id ? '../../../' : '../../', 'image-gallery']"
+         [state]="{url: router.url}">
+      <img [src]="pickedImage" alt="">
+    </div> -->
+    <div class="images">
+      <div>
+        <h4>For Desktop View</h4>
+      </div>
+      <div class="only_image"  style="display: grid; grid-template-columns: 90% 10%">
+        <div (click)="openComponentGallaryDialog('image')" class="imag-view">
+          <img [src]="pickedImage" alt="">
+        </div>
+        <div></div>
+      </div>
+      <div>
+        <h4>For Mobile View </h4>
+      </div>
+      <div class="image_delete" style="display: grid; grid-template-columns: 90% 10%; align-items: center">
+        <div (click)="openComponentGallaryDialog('mobileImage')" class="imag-view" >
+          <img [src]="pickedImage2" alt="">
+        </div>
+
+        <div class="overlay-ac">
+          <button mat-icon-button color="warn" (click)="removeSelectImage()">
+            <mat-icon style="color:orangered">delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput placeholder="Enter url" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>URL</mat-label>
+      <input formControlName="url" matInput placeholder="Enter category url" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      {{id ? 'Edit Carousel' : 'Add Carousel'}}
+    </button>
+  </form>
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+

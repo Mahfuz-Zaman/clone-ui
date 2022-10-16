@@ -1,0 +1,40 @@
+<div class="discussion-form">
+  <form #templateForm="ngForm" [formGroup]="discussionForm" (ngSubmit)="onSubmitDiscussion()" autocomplete="off">
+    <div class="form-top">
+      <div class="discussion-user-img">
+        <img [src]="userProfileImg" alt="">
+      </div>
+      <div class="discussion-user-comment">
+        <mat-form-field appearance="outline">
+          <mat-label>Leave a comment</mat-label>
+          <textarea formControlName="comment" matInput placeholder="Join the discussion" required></textarea>
+        </mat-form-field>
+        <!--                      <textarea name="comment" cols="20" rows="3" placeholder="Join the discussion"></textarea>-->
+      </div>
+    </div>
+
+    <div class="form-bottom" [fxHide]="user">
+
+      <div class="form-left">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Full Name</mat-label>
+          <input formControlName="name" matInput placeholder="Enter full name" type="text" required>
+        </mat-form-field>
+      </div>
+      <div class="form-right">
+        <div class="discussion-user-email">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Enter email" type="email" [required]="!user">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="submit">
+      <button type="submit">post comment</button>
+    </div>
+
+  </form>
+</div>
+

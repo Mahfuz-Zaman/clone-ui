@@ -1,0 +1,169 @@
+<div class="ss">
+  <div id="recaptcha-container"></div>
+</div>
+
+<!-- orajon-singup-area -->
+<section class="singup-area">
+  <div class="container">
+    <div class="singup-title clearfix">
+      <div class="singup-title-left">
+        <h2>Create Your Esquire Account</h2>
+      </div>
+      <div class="singup-title-right">
+        <h3>Already member? <a routerLink="/login"> sign in here.</a></h3>
+      </div>
+    </div>
+
+    <div class="singup-form">
+      <form [formGroup]="dataForm" (ngSubmit)="onSubmitForm()" autocomplete="off">
+
+        <div class="form-details-left">
+
+          <div class="phone-num">
+            <label for="num">Phone Number (11 digit) <sup>*</sup></label>
+            <input type="tel" formControlName="phoneNo" placeholder="01XXXXXXXXX" id="num" [maxLength]="11">
+            <span class="invalid" *ngIf="phoneNo.touched && phoneNo.invalid">This field is required</span>
+          </div>
+
+          <div class="phone-num">
+            <label for="email"> Email <sup>*</sup></label>
+            <input type="text" formControlName="email" placeholder="Please enter your email address" id="email">
+            <span class="invalid" *ngIf="email.touched && email.invalid">Enter a valid email</span>
+          </div>
+
+
+          <div class="pass-details">
+            <label for="pass">Password <sup>*</sup></label>
+            <div class="pass">
+              <input [type]="isHiddenPass ? 'password' : 'text'" formControlName="password"
+                     placeholder="Minimum 6 characters accept"
+                     id="pass">
+              <mat-error class="invalid" *ngIf="password.touched && password.invalid">This field is required</mat-error>
+              <span (click)="isHiddenPass = !isHiddenPass" class="view"><i
+                [ngClass]="isHiddenPass ? 'fa fa-eye' : 'fas fa-eye-slash'"></i></span>
+            </div>
+
+            <label for="cPass" style="margin-top: 12px;">Confirm Password <sup>*</sup></label>
+            <div class="pass">
+              <input [type]="isHiddenConPass ? 'password' : 'text'" formControlName="confirmPassword"
+                     placeholder="Confirm your password here"
+                     id="cPass">
+              <mat-error class="invalid" *ngIf="confirmPassword.touched && confirmPassword.invalid">This field is
+                required
+              </mat-error>
+              <span (click)="isHiddenConPass = !isHiddenConPass" class="view"><i
+                [ngClass]="isHiddenConPass ? 'fa fa-eye' : 'fas fa-eye-slash'"></i></span>
+            </div>
+          </div>
+          <div class="birth-gender">
+            <div class="birthday">
+              <label for="birthMonth">Birthday</label>
+              <div class="birthday-details">
+                <div>
+                  <mat-select
+                    [ngClass]="[getFormField('birthMonth').touched && getFormField('birthMonth').invalid ? 'invalid' : '']"
+                    formControlName="birthMonth"
+                    id="birthMonth"
+                    placeholder="Month">
+                    <mat-option *ngFor="let data of utilsService.birthMonths" [value]="data">
+                      {{data}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+                <div>
+                  <mat-select
+                    [ngClass]="[getFormField('birthDate').touched && getFormField('birthDate').invalid ? 'invalid' : '']"
+                    formControlName="birthDate"
+                    id="birthDate"
+                    placeholder="Day">
+                    <mat-option *ngFor="let data of utilsService.birthDays" [value]="data">
+                      {{data}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+                <div>
+                  <mat-select
+                    [ngClass]="[getFormField('birthYear').touched && getFormField('birthYear').invalid ? 'invalid' : '']"
+                    formControlName="birthYear"
+                    id="birthYear"
+                    placeholder="Year">
+                    <mat-option *ngFor="let data of utilsService.birthYears" [value]="data">
+                      {{data}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+              </div>
+            </div> <!-- END BIRTH DATE VIEW -->
+
+            <div class="gender">
+              <label for="gender">Gender</label>
+              <mat-select
+                [ngClass]="[getFormField('gender').touched && getFormField('gender').invalid ? 'invalid' : '']"
+                formControlName="gender"
+                required id="gender"
+                placeholder="Gender">
+                <mat-option *ngFor="let data of utilsService.genders" [value]="data">
+                  {{data}}
+                </mat-option>
+              </mat-select>
+            </div> <!-- END GENDER SELECT -->
+          </div>
+        </div>
+
+        <div class="form-details-right">
+          <div class="name">
+            <label for="name">Full name<sup>*</sup></label>
+            <input type="text" formControlName="fullName" placeholder="Enter your first and last name" id="name">
+            <span class="invalid" *ngIf="fullName.touched && fullName.invalid">This field is required</span>
+          </div>
+
+          <div class="check-box">
+            <div class="check">
+              <mat-checkbox formControlName="agree" id="check"></mat-checkbox>
+            </div>
+            <div class="check-rules">
+              <label for="check">I want to receive exclusive offers and promotions
+                from Esquire</label>
+            </div>
+          </div>
+          <div class="submit-btn">
+            <button type="submit">SIGN UP</button>
+          </div>
+          <div class="privacy">
+            <p>By clicking "SIGN UP", I agree to Esquire's <a routerLink="/pages/terms-and-conditions" target="_blank">terms
+              of use</a>
+              and <a routerLink="/pages/privacy-policy" target="_blank">Privacy Policy</a>
+            </p>
+          </div>
+          <div class="other-singup">
+            <a>
+              or, You can signup with
+            </a>
+
+            <ul>
+              <li><a (click)="userService.FacebookAuthWithSocialAuth()" class="singup-facebook"><span><i
+                class="fab fa-facebook-f"></i></span>Facebook</a>
+              </li>
+              <li><a (click)="userService.GoogleAuth()" class="singup-google"><span><i class="fab fa-google-plus-g"></i></span>Google</a>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- NGX SPINNER -->
+<ngx-spinner style="width: 100vw; height: 100vh"
+             bdColor="rgba(0,0,0,0.25)"
+             size="medium"
+             color="#fff"
+             type="ball-clip-rotate"
+             [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>

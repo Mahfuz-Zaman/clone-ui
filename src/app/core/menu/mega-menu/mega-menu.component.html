@@ -1,0 +1,480 @@
+<div class="mega-menu" [class.toolbar-small]="scrollPosition > 714">
+  <div class="container">
+    <div
+      class="cat-list-viewer no-select"
+      appOutSideClick
+      (insideClick)="isOpen = !isOpen"
+      cdkOverlayOrigin
+      #trigger="cdkOverlayOrigin"
+      (click)="catSlideActive()"
+    >
+      <div class="icon-bg">
+        <mat-icon class="list">list</mat-icon>
+      </div>
+      <div class="text-v">
+        <p>Shop By</p>
+        <div class="row-center-v">
+          <a>Categories</a>
+          <mat-icon>expand_more</mat-icon>
+        </div>
+      </div>
+    </div>
+    <!-- SHOP BY CATEGORY -->
+
+    <div class="hamburger-menu">
+      <button mat-button (click)="onToggleSidenav()" class="sidenav-toggle">
+        <!--<mat-icon>list</mat-icon>-->
+        Menu
+      </button>
+    </div>
+    <!-- END Toggle Button -->
+    <ul class="menu-ul hide-nav-menu">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/all-product-list">Products</a></li>
+      <!--      <li><a routerLink="/coming-soon" class="hide-list-sm">Installation & Repair</a></li>-->
+
+      <li
+        [matMenuTriggerFor]="menuInstallationRepair"
+        class="dropdown-mat no-select hide-list-md hide-list-sm"
+      >
+        <div fxHide.xs style="display: flex; align-items: center" class="hide">
+          <a>Installation & Repair</a>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </div>
+        <!--        <div fxHide.gt-xs>-->
+        <!--          <img src="/assets/images/png/Hot.png" alt="">-->
+        <!--        </div>-->
+      </li>
+
+      <li [matMenuTriggerFor]="menuOffer" class="dropdown-mat no-select">
+        <div fxHide.xs style="display: flex; align-items: center" class="hide">
+          <a>Offers<img src="/assets/images/png/Hot.png" alt="" /></a>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </div>
+        <!--        <div fxHide.gt-xs>-->
+        <!--          <img src="/assets/images/png/Hot.png" alt="">-->
+        <!--        </div>-->
+      </li>
+
+      <!--      <li class="hide-list-sm">-->
+      <!--        <a routerLink="/offers">Offers-->
+      <!--          <img src="/assets/images/png/Hot.png" alt="">-->
+      <!--        </a>-->
+      <!--      </li>-->
+
+      <li><a routerLink="/blog">Blog</a></li>
+      <li [matMenuTriggerFor]="menuAboutUs" class="dropdown-mat no-select">
+        <div fxHide.xs style="display: flex; align-items: center" class="hide">
+          <a>About Us</a>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </div>
+        <!--        <div fxHide.gt-xs>-->
+        <!--          <img src="/assets/images/png/Hot.png" alt="">-->
+        <!--        </div>-->
+      </li>
+
+      <li class="hide-list-md hide-list-sm">
+        <a routerLink="/contact">Contact Us</a>
+      </li>
+    </ul>
+
+    <ul class="menu-ul trigger-menu">
+      <!-- COLLAPSE MENU -->
+      <li>
+        <button mat-icon-button [matMenuTriggerFor]="menuView">
+          <mat-icon style="color: #ffffff">more_vert</mat-icon>
+        </button>
+      </li>
+    </ul>
+
+    <!--    <button (click)="menuCartTrigger.openMenu()">Test</button>-->
+
+    <ul class="menu-ul">
+      <!-- ACCOUNT -->
+      <li [fxHide]="isUserAuth">
+        <a routerLink="/login" class="color">Sign In</a>
+      </li>
+      <li>
+        <button
+          mat-icon-button
+          class="icon-menu"
+          [matBadge]="compareItemsCount"
+          matBadgeColor="warn"
+          matTooltip="Compare"
+          [routerLink]="['compare']"
+        >
+          <mat-icon>compare_arrows</mat-icon>
+        </button>
+      </li>
+      <li
+        [fxHide]="!isUserAuth"
+        [matMenuTriggerFor]="menuUser"
+        class="dropdown-mat no-select"
+      >
+        <div fxHide.xs style="display: flex; align-items: center">
+          <span>My Account</span>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </div>
+        <div fxHide.gt-xs>
+          <img
+            src="/assets/images/icons/user/user.svg"
+            alt=""
+            style="width: 24px"
+          />
+        </div>
+      </li>
+
+      <li
+        [matMenuTriggerFor]="menuCart"
+        #menuCartTrigger="matMenuTrigger"
+        class="no-select"
+        style="padding-right: 10px; position: relative; cursor: pointer"
+      >
+        <div class="icon-text">
+          <div class="icon hide">
+            <img src="/assets/images/icons/cart/cart-1.svg" alt="" />
+          </div>
+          <div class="wrap" fxHide.xs>
+            <h3>My cart</h3>
+            <div class="inline">
+              <p>৳{{ cartSubTotal | number: "":"bn" }}</p>
+              <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- **********
+     TEMPLATE AREA
+     ********** -->
+
+<mat-menu #menuUser="matMenu">
+  <button mat-menu-item routerLink="/account">
+    <span>My Dashboard</span>
+  </button>
+  <button mat-menu-item routerLink="/account/wishlist">
+    <span>Wishlist</span>
+  </button>
+  <button routerLink="/account/order-list" mat-menu-item>
+    <span>Order List</span>
+  </button>
+  <button routerLink="/account/transactions" mat-menu-item>
+    <span>Transaction</span>
+  </button>
+  <button mat-menu-item (click)="onLogout()">
+    <span>Logout</span>
+  </button>
+</mat-menu>
+<!-- END USER DROP MENU -->
+
+<mat-menu #menuInstallationRepair="matMenu">
+  <div *ngFor="let data of installationRepairTypes">
+    <button
+      mat-menu-item
+      [routerLink]="['/view-installation-repair/', data?.slug]"
+    >
+      <span>{{ data?.title }}</span>
+    </button>
+  </div>
+</mat-menu>
+
+<mat-menu #menuAboutUs="matMenu">
+  <div *ngFor="let data of aboutUses">
+    <button mat-menu-item [routerLink]="['/about-us/', data?.slug]">
+      <span>{{ data?.title }}</span>
+    </button>
+  </div>
+</mat-menu>
+
+<mat-menu #menuOffer="matMenu">
+  <div *ngFor="let data of promotionalOffers">
+    <button mat-menu-item [routerLink]="['/offers/', data?.slug]">
+      <span>{{ data?.title }}</span>
+    </button>
+  </div>
+</mat-menu>
+<!-- END USER DROP MENU -->
+
+<mat-menu
+  #menuCart="matMenu"
+  class="dropdown-cart"
+  xPosition="before"
+  [hasBackdrop]="true"
+>
+  <div class="cart-drop-down">
+    <div class="cart-drop-main">
+      <div class="close">
+        <button mat-button (click)="onClose($event)">
+          <mat-icon inline>close</mat-icon>
+          Close
+        </button>
+      </div>
+
+      <div class="drop-down-top" *ngFor="let c of carts">
+        <div class="cart-drop-img">
+          <img
+            [src]="
+              c?.product.images && c?.product.images.length > 0
+                ? c?.product.images[0]
+                : '/assets/images/placeholder/test.png'
+            "
+            [alt]="c?.product?.productName"
+          />
+        </div>
+        <div class="cart-drop-title">
+          <a routerLink="/">{{ c?.product?.productName }}</a>
+          <span
+            >{{ c?.selectedQty }} × ৳{{
+              c?.product.price | number: "":"bn"
+            }}</span
+          >
+          <a
+            class="cross"
+            (click)="onDeleteCartItem($event, c?._id, c?.product?._id)"
+          >
+            <mat-icon>close</mat-icon>
+          </a>
+        </div>
+      </div>
+      <!-- END CART ITEM -->
+
+      <div class="drop-down-bottom">
+        <div class="subtotal clearfix">
+          <div class="subtotal-left">
+            <h3>Subtotal:</h3>
+          </div>
+          <div class="subtotal-price">
+            <span>৳{{ cartSubTotal | number: "":"bn" }}</span>
+          </div>
+        </div>
+        <div class="cart-drop-btn" [fxShow]="carts && carts.length > 0">
+          <a routerLink="/cart">View cart</a>
+          <a routerLink="/checkout">checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-menu>
+<!-- END CART DROP MENU -->
+
+<mat-menu #menuView="matMenu">
+  <button mat-menu-item>
+    <span>Installation & Repair</span>
+  </button>
+  <button mat-menu-item>
+    <span>Offers</span>
+  </button>
+  <button mat-menu-item>
+    <span>About Us</span>
+  </button>
+  <button mat-menu-item>
+    <span>Contact Us</span>
+  </button>
+</mat-menu>
+<!-- END MENU ITEMS -->
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <nav
+    *ngIf="!(isHandset$ | async)"
+    class="hover-menu"
+
+  >
+    <ul class="main-menu">
+      <li
+        *ngFor="let menu of categoryMenus | sort: 'priority'"
+        [routerLink]="'/product-list/' + menu.slug"
+        [skipLocationChange]="false"
+      >
+        <a
+          class="d-flex"
+          [routerLink]="'/product-list/' + menu.slug"
+          [skipLocationChange]="false"
+        >
+          <mat-icon
+            inline
+            *ngIf="menu.iconType && menu.iconType === iconType.MATERIAL"
+          >
+            {{ menu.iconName ? menu.iconName : "done" }}
+          </mat-icon>
+          <i
+            *ngIf="menu.iconType && menu.iconType === iconType.FONT_AWESOME"
+            [class]="menu.iconName"
+          ></i>
+          <mat-icon inline *ngIf="!menu.iconType">lens_blur</mat-icon>
+          <span>{{ menu.name }}</span>
+        </a>
+        <mat-icon *ngIf="menu.hasChild.length > 0">arrow_right</mat-icon>
+
+        <!-- <ul class="sub-menu" *ngIf="menu.hasChild.length > 0">
+          <li *ngFor="let subMenu of menu.hasChild" [routerLink]="'/product-list/' + menu.slug + '/' + subMenu.slug">
+            <a [routerLink]="'/product-list/' + menu.slug + '/' + subMenu.slug">{{subMenu.name}}</a>
+            <mat-icon *ngIf="subMenu.hasChild.length > 0">arrow_right</mat-icon>
+            <ul class="super-sub-menu" *ngIf="subMenu.hasChild.length > 0">
+              <li *ngFor="let superSubMenu of subMenu.hasChild" [routerLink]="'/product-list/'  + menu.slug + '/' + subMenu.slug + '/' + superSubMenu.slug ">
+                <a [routerLink]="'/product-list/'  + menu.slug + '/' + subMenu.slug + '/' + superSubMenu.slug ">{{superSubMenu.name}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul> -->
+
+        <!---hover-menu-->
+        <div class="sub-mega-menu" *ngIf="menu.hasChild.length > 0">
+          <app-menu-hover-content
+            [data]="menu.hasChild"
+            [parentCategory]="menu"
+          ></app-menu-hover-content>
+        </div>
+        <!--hover-menu-end-->
+      </li>
+    </ul>
+  </nav>
+  <!-- END CATEGORY HOVER MENU PC -->
+
+  <!-- <nav *ngIf="(isHandset$ | async)" class="mobile-cat-menu" appOutSideClick (outsideClick)="isOpen = false"
+       (insideClick)="onCatNavClickMobile($event)">
+    <app-menu-level-cat [menuItems]="mobileCatMenu | sort: 'priority'" [menuParentId]="null"></app-menu-level-cat>
+  </nav> END CATEGORY HOVER MENU MOBILE-->
+</ng-template>
+<!-- END OVERLAY CAT MENU -->
+
+<!--&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;responsive-categori-slide-menu &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--<div class="cat-overlap" *ngIf="catSlide == true" (click)="catSlideInactive()"></div>-->
+<!--<div class="res-category-menu" [class]="catSlide?'active-cat-slide':'inactive-cat-slide'">-->
+<!--  &lt;!&ndash;res-cat-menu-top&ndash;&gt;-->
+<!--  <div class="res-cat-menu-top">-->
+<!--    &lt;!&ndash;-res-cat-top-left&ndash;&gt;-->
+<!--    <div class="res-cat-top-left">-->
+<!--      <h4>Navigation</h4>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;-res-cat-cross&ndash;&gt;-->
+<!--    <div class="res-cat-cross">-->
+<!--      <span (click)="catSlideInactive()"><i class="fa fa-times"></i></span>-->
+<!--    </div>-->
+<!--  </div> &lt;!&ndash;res-cat-menu-top-end&ndash;&gt;-->
+
+<!--  &lt;!&ndash;-res-cat-menu&ndash;&gt;-->
+
+<!--  <div class="res-cat-menu">-->
+<!--    <ul>-->
+<!--      <li *ngFor="let menu of categoryMenus | sort: 'priority' ; let i = index" [routerLink]="['/product-list', menu?.slug]">-->
+<!--        <a (click)="catSubToggle()">-->
+<!--          &lt;!&ndash;menu-title&ndash;&gt;-->
+<!--          <div class="cat-menu-title">-->
+<!--            <img src="./assets/images/menu/1604826824Food.svg" alt="">-->
+<!--            <span>{{menu.name ? menu.name : 'done'}}</span>-->
+<!--          </div>-->
+<!--          &lt;!&ndash;-toggle-icon&ndash;&gt;-->
+<!--          <div class="toggle-icon">-->
+<!--            <span [class]="catSubMenu?'plus-hide':'plus-show'"><i class="fa fa-plus"></i></span>-->
+<!--            <span [class]="catSubMenu?'mines-show':'mines-hide'"><i class="fa fa-minus"></i></span>-->
+<!--          </div>-->
+<!--        </a>-->
+<!--        &lt;!&ndash;res-cat-sub-menu&ndash;&gt;-->
+<!--        <div class="res-cat-sub-menu" *ngFor="let subCat of menu.hasChild" >-->
+<!--          <ul>-->
+<!--            <li><a [routerLink]="['/product-list', menu?.slug, subCat.slug]">{{subCat.name}}</a></li>-->
+<!--          </ul>-->
+<!--          <div *ngFor="let subCat2 of subCat.hasChild">-->
+<!--            <ul>-->
+<!--              <li><a [routerLink]="['/product-list', menu?.slug, subCat.slug, subCat2.slug]">{{subCat2.name}}</a></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <nav
+    *ngIf="!(isHandset$ | async)"
+    class="hover-menu"
+    appOutSideClick
+    (outsideClick)="isOpen = false"
+    (insideClick)="onCatNavClick($event)"
+  >
+    <ul class="main-menu">
+      <li
+        *ngFor="let menu of categoryMenus | sort: 'priority'"
+        [routerLink]="'/product-list/' + menu.slug"
+        [skipLocationChange]="false"
+      >
+        <a
+          class="d-flex"
+          [routerLink]="'/product-list/' + menu.slug"
+          [skipLocationChange]="false"
+        >
+          <mat-icon
+            inline
+            *ngIf="menu.iconType && menu.iconType === iconType.MATERIAL"
+          >
+            {{ menu.iconName ? menu.iconName : "done" }}
+          </mat-icon>
+          <i
+            *ngIf="menu.iconType && menu.iconType === iconType.FONT_AWESOME"
+            [class]="menu.iconName"
+          ></i>
+          <mat-icon inline *ngIf="!menu.iconType">lens_blur</mat-icon>
+          <span>{{menu.name}}</span>
+        </a>
+        <mat-icon *ngIf="menu.hasChild.length > 0">arrow_right</mat-icon>
+
+        <!-- <ul class="sub-menu" *ngIf="menu.hasChild.length > 0">
+          <li *ngFor="let subMenu of menu.hasChild" [routerLink]="'/product-list/' + menu.slug + '/' + subMenu.slug">
+            <a [routerLink]="'/product-list/' + menu.slug + '/' + subMenu.slug">{{subMenu.name}}</a>
+            <mat-icon *ngIf="subMenu.hasChild.length > 0">arrow_right</mat-icon>
+            <ul class="super-sub-menu" *ngIf="subMenu.hasChild.length > 0">
+              <li *ngFor="let superSubMenu of subMenu.hasChild" [routerLink]="'/product-list/'  + menu.slug + '/' + subMenu.slug + '/' + superSubMenu.slug ">
+                <a [routerLink]="'/product-list/'  + menu.slug + '/' + subMenu.slug + '/' + superSubMenu.slug ">{{superSubMenu.name}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul> -->
+
+        <!---hover-menu-->
+        <div class="sub-mega-menu" *ngIf="menu.hasChild.length > 0">
+          <app-menu-hover-content
+            [data]="menu.hasChild"
+            [parentCategory]="menu"
+          ></app-menu-hover-content>
+        </div>
+        <!--hover-menu-end-->
+      </li>
+    </ul>
+  </nav>
+  <!-- END CATEGORY HOVER MENU PC -->
+
+  <nav
+    *ngIf="isHandset$ | async"
+    class="mobile-cat-menu"
+    appOutSideClick
+    (outsideClick)="isOpen = false"
+    (insideClick)="onCatNavClickMobile($event)"
+  >
+    <div class="res-cat-menu-top">
+      <div class="res-cat-top-left">
+        <h4>Shop by Category</h4>
+      </div>
+      <div class="res-cat-cross" style="cursor: pointer" (click)="isOpen = false">
+        <span ><i class="fa fa-times"></i></span>
+      </div>
+    </div>
+    <app-menu-level-cat
+      [menuItems]="mobileCatMenu | sort: 'priority'"
+      [menuParentId]="null"
+    ></app-menu-level-cat>
+  </nav>
+  <!-- END CATEGORY HOVER MENU MOBILE-->
+</ng-template>
+<!-- END OVERLAY CAT MENU -->

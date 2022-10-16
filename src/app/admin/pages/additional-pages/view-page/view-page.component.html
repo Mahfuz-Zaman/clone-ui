@@ -1,0 +1,58 @@
+<!--<div class="container">-->
+<!--  <form class="px-2" [formGroup]="dataForm" (ngSubmit)="onSubmit()" autocomplete="off">-->
+<!--    <div fxLayout="row wrap">-->
+<!--      <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">-->
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Page Name</mat-label>-->
+<!--          <input matInput formControlName="name" required>-->
+<!--          <mat-error>Name is required</mat-error>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+
+<!--      <div fxFlex="100" class="px-1 editor">-->
+<!--        <ngx-editor-menu [editor]="editor"></ngx-editor-menu>-->
+<!--        <ngx-editor [editor]="editor" formControlName="description" outputFormat="html"></ngx-editor>-->
+<!--      </div>-->
+
+
+<!--      <div fxFlex="100" class="mt-2 text-center w-100 submit-action">-->
+<!--        <button mat-raised-button color="primary" type="submit">-->
+<!--          <mat-icon>check</mat-icon>-->
+<!--          {{'Save Page' | uppercase}}-->
+<!--        </button>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--  </form>-->
+<!--</div>-->
+
+
+<div class="container">
+  <form class="px-2" [formGroup]="dataForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div fxLayout="row wrap">
+
+      <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Page Name</mat-label>
+          <input matInput formControlName="name" required>
+          <mat-error>Name is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="100" class="px-1">
+        <angular-editor id="description" formControlName="description"
+                        [config]="editorConfigDesc" ></angular-editor>
+      </div>
+
+      <div fxFlex="100" class="mt-2 text-center w-100 submit-action">
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>check</mat-icon>
+          {{'Save Page' | uppercase}}
+        </button>
+      </div>
+
+    </div>
+
+  </form>
+</div>

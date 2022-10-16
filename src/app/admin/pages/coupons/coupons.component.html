@@ -1,0 +1,83 @@
+<div class="top-action">
+  <button mat-raised-button color="primary" [routerLink]="['add-coupon']">
+    <mat-icon>add</mat-icon>
+    Add Coupon
+  </button>
+</div>
+
+
+<div class="header">
+  <h2>Coupon List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Title'}}</th>
+      <th scope="col">{{'Code'}}</th>
+      <th scope="col">{{'Amount'}}</th>
+      <th scope="col">{{'Min. Purchase'}}</th>
+      <th scope="col">{{'Expiry Date'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let coupon of coupons | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage } ">
+      <td [attr.data-label]="'Title'">{{coupon.couponName}}</td>
+      <td [attr.data-label]="'Code'">{{coupon.couponCode}}</td>
+      <td [attr.data-label]="'Amount'">{{coupon.couponAmount}}</td>
+      <td [attr.data-label]="'Min. Purchase'">{{coupon.couponMinPurchase}}</td>
+      <td [attr.data-label]="'Expiry Date'">{{coupon.couponEndDate | date }}</td>
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" [routerLink]="['edit-coupon', coupon._id]" mat-mini-fab
+                aria-label="Example icon-button with a heart icon">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button  mat-mini-fab color="warn" (click)="openConfirmDialog(coupon._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+</div>
+
+<div class="pagination-container">
+  <pagination-controls
+    class="product-pagination"
+    [autoHide]="false"
+    [maxSize]="15"
+    (pageChange)="onPageChanged($event)">
+  </pagination-controls>
+</div>     <!-- END PAGINATION -->
+
+
+
+<!--<div class="pagination-container" *ngIf="coupons && coupons.length > 0">-->
+<!--  <mat-card class="p-0 text-center">-->
+<!--    <pagination-controls-->
+<!--      class="product-pagination"-->
+<!--      autoHide="true"-->
+<!--      maxSize="10"-->
+<!--      (pageChange)="onPageChanged($event)">-->
+<!--    </pagination-controls>-->
+<!--  </mat-card>-->
+<!--</div>-->
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+
+<!-- NO DATA TEMPLATE -->
+<ng-template #noData>
+  <div style="margin-top: 50px; text-align: center">
+    <h2>No Product Found</h2>
+  </div>
+</ng-template>
+
+

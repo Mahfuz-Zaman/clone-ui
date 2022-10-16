@@ -1,0 +1,87 @@
+
+<div class="dialog-container">
+
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <h2>Calculation Info</h2>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmitCalculation()" class="form" autocomplete="off">
+
+    <div class="form-input-area" fxLayout="row wrap">
+
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Room Width(feet):</mat-label>
+<!--
+        <mat-select formControlName="Width" required>
+          <mat-option *ngFor="let c of room" [value]="c">{{c}}</mat-option>
+        </mat-select> -->
+        <input formControlName="width" required matInput placeholder="Enter Width">
+        <!-- <mat-icon matSuffix>account_circle</mat-icon> -->
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Room Length(feet):</mat-label>
+        <input formControlName="length" matInput placeholder="Email Address" type="email" required>
+        <!-- <mat-select formControlName="Length" required>
+
+          <mat-option *ngFor="let c of cities" [value]="c">{{c}}</mat-option>
+        </mat-select> -->
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Room Height(feet):</mat-label>
+        <input formControlName="height" matInput placeholder="Email Address" type="email" required>
+        <!-- <mat-select formControlName="Height" required>
+          <mat-option *ngFor="let c of cities" [value]="c">{{c}}</mat-option>
+        </mat-select> -->
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Number of Window:</mat-label>
+        <mat-select formControlName="window" required>
+          <mat-option *ngFor="let c of window" [value]="c.value">{{c.viewValue}}</mat-option>
+        </mat-select>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Number of Door:</mat-label>
+        <mat-select formControlName="door" required>
+          <mat-option *ngFor="let c of door" [value]="c.value">{{c.viewValue}}</mat-option>
+        </mat-select>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>No of People:</mat-label>
+        <mat-select formControlName="people" required>
+          <mat-option *ngFor="let c of people" [value]="c.value">{{c.viewValue}}</mat-option>
+        </mat-select>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-radio-group
+      class=" form-radio px-1"
+      aria-label="Received Form"
+      fxFlex="100"
+      formControlName="floorType" required>
+      <mat-label>Please select if You are in Top Floor:</mat-label>
+      <mat-radio-button *ngFor="let d of floorType" [value]="d.value">{{d.viewValue}}</mat-radio-button>
+    </mat-radio-group>
+
+    </div>
+    <div class="action-area">
+      <button mat-raised-button color="primary" type="submit" [disabled]="dataForm.invalid">
+        Save
+      </button>
+    </div>
+
+  </form>
+</div>

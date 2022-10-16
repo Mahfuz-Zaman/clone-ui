@@ -1,0 +1,70 @@
+<div class="p-1">
+  <mat-card class="p-0">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="w-100 p-2">
+      <h2 class="pl-1">Contact Us List</h2>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr class="table-head">
+          <th scope="col">{{'Name'}}</th>
+          <th scope="col">{{'Email'}}</th>
+          <th scope="col">{{'Phone No'}}</th>
+          <th scope="col">{{'Address'}}</th>
+          <th scope="col">{{'Query'}}</th>
+          <th scope="col">{{'Message'}}</th>
+          <th scope="col">{{'Created At'}}</th>
+          <th scope="col">{{'Action'}}</th>
+        </tr>
+        </thead> <!-- End Table Head -->
+        <tr *ngFor="let data of contactUsData | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+          <td [attr.data-label]="'Name'">{{data.name}}</td>
+          <td [attr.data-label]="'Email'">{{data.email}}</td>
+          <td [attr.data-label]="'Phone No'">{{data.phoneNo}}</td>
+          <td [attr.data-label]="'Address'">{{data.address}}</td>
+          <td [attr.data-label]="'Query'">{{data.queryType}}</td>
+          <td [attr.data-label]="'Message'">{{data.message}}</td>
+          <td [attr.data-label]="'Created At'">{{data.createdAt | date}}</td>
+          <td [attr.data-label]="'Actions'">
+            <!--            <button mat-mini-fab color="primary" matTooltip="Details">-->
+            <!--              <mat-icon>remove_red_eye</mat-icon>-->
+            <!--            </button>-->
+            <!--            <button (click)="openUpdateOrderDialog(customer)" mat-mini-fab color="accent" aria-label="Example icon-button with a heart icon">-->
+            <!--              <mat-icon>edit</mat-icon>-->
+            <!--            </button>-->
+            <button style="margin-right: 5px;" mat-mini-fab color="warn" (click)="remove(data._id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr><!-- End Table Body -->
+      </table>
+    </div>
+  </mat-card>
+</div>
+
+
+<div class="pagination-container" *ngIf="contactUsData.length > 0">
+  <mat-card class="p-0 text-center">
+    <pagination-controls
+      class="product-pagination"
+      autoHide="true"
+      maxSize="10"
+      (pageChange)="onPageChanged($event)">
+    </pagination-controls>
+  </mat-card>
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+
+<!-- NO DATA TEMPLATE -->
+<ng-template #noData>
+  <div style="margin-top: 50px; text-align: center">
+    <h2>No Product Found</h2>
+  </div>
+</ng-template>
+
+

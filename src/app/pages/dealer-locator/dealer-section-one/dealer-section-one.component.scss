@@ -1,0 +1,117 @@
+/** section1 ***/
+.section-1 {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 5vh;
+  margin-top: 6vh;
+}
+
+.section1-main {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.section1-menu {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.section1-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section1-menu ul li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.section1-menu ul li a {
+  color: #4a4a4a;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  display: block;
+  font-size: 14px;
+  transition: all 0.3s linear;
+}
+
+.section1-menu ul li a span {
+  margin-left: 5px;
+  font-weight: 300;
+  font-size: 12px;
+  color: #4a4a4a;
+}
+
+.section1-menu ul li a:hover {
+  color: #FF0000;
+}
+
+.section1-details {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 9vh;
+}
+
+.section1-details h2 {
+  color: #454545;
+  font-style: normal;
+  font-family: 'Poppins', sans-serif;
+  font-size: 19px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 25px;
+}
+
+.section1-details p {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-size: 12pt;
+  color: #6a6a6a;
+  display: block;
+  margin-bottom: 15px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+.section1-details p span {
+  color: #FF0000;
+  font-weight: 700;
+  display: inline-block;
+  font-size: 12pt;
+}
+
+.section1-btn {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.section1-btn a {
+  background-color: #eb2a2e;
+  background-repeat: repeat-x;
+  background: -webkit-linear-gradient(top, #ff080d, #a00306);
+  display: block;
+  max-width: 250px;
+  width: 100%;
+  text-align: center;
+  padding: 14px 0px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  border-color: #F4524D;
+  font-size: 16px;
+  text-transform: capitalize;
+  border-radius: 5px;
+  margin-left: auto;
+}

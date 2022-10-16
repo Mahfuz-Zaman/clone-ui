@@ -1,0 +1,41 @@
+
+<div *ngIf="certificate else other_content" class="single-certificate-verification">
+  <div class="card p-4">
+     <img src="https://ftp.esquireelectronicsltd.com/uploads/gallery/719-7191034_esquire-electronics-ltd1227-3550.png" /><br />
+     <div class="certificate-desc">
+        <img style="width:150px;height:150px;border-radius:50%;margin:0px auto;" src="https://ftp.esquireelectronicsltd.com/uploads/gallery/mobile-banner3405-0318.png" />
+        <span class="name mt-3">{{certificate.storeName}}</span>
+        <span class="idd">{{certificate.certificateNumber}}</span>
+        <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+          <span class="idd1">{{certificate.phoneNo}}</span>
+        </div>
+
+        <div class="text mt-3" style="text-align:center;">
+          <span>This is to certify, <b>{{certificate.storeName}}</b> having their store at {{certificate.address}} is an
+            <span style="color:#1bad00;"><b>AUTHORIZED DEALER</b></span>
+          of Esquire Electronics Limited.</span>
+        </div>
+        <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+          <span><a href="https://www.facebook.com/groups/esquireelectronics"><i class="fab fa-facebook"></i></a></span>
+        </div>
+        <div class=" px-2 rounded mt-4 date">
+          <span class="join">{{ isAfterToday(certificateValidity) ? 'AUTHORIZATION VALID TILL: '+certificateValidity : 'AUTHORIZATION EXPIRED'}}</span>
+        </div>
+        <div class="text mt-3"> <span>Esquire Electronics Helpline: 8809610001010</span> </div>
+      </div>
+  </div>
+</div>
+<ng-template #other_content>
+  <div class="single-certificate-verification">
+    <div class="card p-4">
+      <img src="https://ftp.esquireelectronicsltd.com/uploads/gallery/719-7191034_esquire-electronics-ltd1227-3550.png">
+      <div class="text mt-3" style="text-align:center;"> <span><h5>NOT RECOGNIZED</h5></span> </div>
+      <div class="text mt-3">
+        <center><span>Esquire Electronics Helpline: 8809610001010</span></center>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+

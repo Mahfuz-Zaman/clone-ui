@@ -1,0 +1,123 @@
+<!---contact-menu-->
+<section class="contact-menu-area">
+    <div class="container">
+      <!---menu-->
+      <div class="menu">
+        <ul>
+          <li><a routerLink="/">Home <i class="fa fa-angle-right"></i></a></li>
+          <li><a href="javascript:">Submit Complaint</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!--section-1-->
+  <section class="section-1">
+    <div class="container">
+      <div class="section1-details">
+
+        <!---section1-title-->
+        <div class="section1-title">
+          <h2>SUBMIT COMPLAINT</h2>
+        </div>
+
+        <!---section1-description-->
+        <div class="section1-description">
+          <p>We understand that electronic items are not everlasting. Even though we try our very best to ensure only the best quality electronics are available to you, still you might face issues with your product. Also, as a large company operating in different parts of the country, sometimes it is difficult to maintain the same level of customer service due to humane errors. But we are always proactively engaging in activities that can improve our service further. That’s why we highly appreciate customer feedback. If you have a complaint you’d like to submit then feel free to fill up the form below and we will take prompt action to address the situation.</p>
+          <p>You can also contact us easily by calling our HOTLINE: <a href="tel:+8809610001010">+8809610001010</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!---contact-form-area-->
+  <section class="contact-form-area">
+    <div class="container">
+      <!--contact-form-main-->
+      <div class="contact-form-main">
+
+        <!--form-->
+        <form #formTemplate="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+
+          <!---name-->
+          <div class="name mb">
+            <mat-form-field appearance="outline" >
+              <mat-label>Name</mat-label>
+              <input matInput type="text" formControlName="name" placeholder="write your name please"  required>
+              <mat-error >This Field Is Required</mat-error>
+            </mat-form-field>
+          </div>
+           <!---email-->
+           <div class="email mb">
+            <mat-form-field appearance="outline" >
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email" placeholder="write your E-mail address please" required >
+              <mat-error >This Field Is Required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <!---Contact Number-->
+           <div class="number">
+            <mat-form-field appearance="outline" >
+              <mat-label>Contact Number</mat-label>
+              <input matInput type="tel" formControlName="phoneNo"  placeholder="write your contact number here" required>
+              <mat-error >This Field Is Required</mat-error>
+            </mat-form-field>
+          </div>
+        <!---address-->
+           <div class="email">
+            <mat-form-field appearance="outline" >
+              <mat-label>Address</mat-label>
+              <input matInput type="text" formControlName="address"  placeholder="write your address here" required>
+              <mat-error >This Field Is Required</mat-error>
+            </mat-form-field>
+          </div>
+
+
+           <!---Subject-->
+           <div class="Subject">
+            <mat-form-field appearance="outline" >
+              <mat-label>Subject</mat-label>
+              <input matInput type="text" formControlName="subject" placeholder="Write the subject of your query" required>
+              <mat-error >This Field Is Required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--comment-->
+          <div class="comment-area">
+            <mat-form-field appearance="outline">
+              <mat-label>Your Message</mat-label>
+              <textarea matInput formControlName="message" placeholder="Write your message here" rows="10" cols="40" required></textarea>
+              <mat-error >This Field Is Required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--submit-btn-->
+          <div class="submit-btn">
+          <button type="submit" mat-button>submit</button>
+          </div>
+        </form><!--form-->
+
+        <!---contact-form-bottom-->
+        <div class="contact-form-bottom">
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!---map-area-->
+  <section class="map-area">
+    <div class="container">
+      <!---map-main-->
+      <div class="map-main">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14607.283782634751!2d90.4002062!3d23.7537637!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8ecd854c75d08107!2sEsquire+Electronics+Ltd.!5e0!3m2!1sen!2sbd!4v1554640287649!5m2!1sen!2sbd" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>

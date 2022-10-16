@@ -1,0 +1,174 @@
+<!--<button (click)="test()">Test</button>-->
+
+<!-- <app-order-timeline [orderTimeline]="order?.orderTimeline"></app-order-timeline> -->
+
+<div class="container-cart" >
+  <div class="cart-item-view" >
+    <div class="card">
+      <div class="card-title">
+        <h2>My Order ({{order?.orderedItems.length}} Items)</h2>
+      </div> <!-- END CARD HEADER AREA -->
+
+      <div class="line"></div>
+
+      <div class="card-content" *ngIf="order?.orderedItems.length > 0 else cartEmpty">
+        <div *ngFor="let item of order?.orderedItems; let i = index" class="cart-item">
+          <!-- item -->
+          <div *ngIf="item.product">
+            <div class="info">
+              <div class="img-thumb">
+                <img [src]="item.product.images && item.product.images.length > 0 ? item.product.images[0] : '/assets/images/placeholder/test.png'" [alt]="item.product.productName">
+              </div>
+              <div class="product">
+                <div class="desc">
+                  <h4>{{item.product.productName}}</h4>
+                  <p>Category: <a [routerLink]="['/product-list/' + item.product.categorySlug]">{{item.product.categorySlug | slugToNormal}}</a></p>
+                  <p>Sub Category: <a [routerLink]="['/product-list/' + item.product.categorySlug + '/' + item.product.subCategorySlug]">{{item.product.subCategorySlug | slugToNormal}}</a></p>
+                  <p>Brand: <a [routerLink]="['/product-list/' + item.product.categorySlug + '/' + item.product.subCategorySlug + '/' + item.product.brandSlug]">{{item.product.brandSlug | slugToNormal}}</a></p>
+                </div>
+
+                <div class="amount">
+                  <!--                <span class="old-p"><del>Tk. {{0}}</del></span>-->
+                  <p>Unit Price:  {{item.price | number : '': 'bn'}} X {{item.quantity}}</p>
+                  <p class="color">Total: {{(item.quantity * item.price) | number : '': 'bn'}}</p>
+                </div>
+              </div>
+            </div>
+<!--            <div class="action">-->
+<!--              <button mat-mini-fab color="primary" matTooltip="Product Details" [routerLink]="['/product-details/', item.product.productSlug]">-->
+<!--                <mat-icon>visibility</mat-icon>-->
+<!--              </button>-->
+<!--            </div>-->
+          </div>
+          <!-- deleted item -->
+          <div *ngIf="!item.product && item.deleteDeliveryStatus === 'not-shipped-or-delivered'">
+            <div class="desc">
+              <h4>This product no longer exists and price has been re-adjusted with your order. <br><br> ** Check details in checkout summary </h4>
+            </div>
+            <br>
+            <div class="info">
+              <div class="img-thumb">
+                <img [src]="item.deletedProduct.images && item.deletedProduct.images.length > 0 ? item.deletedProduct.images[0] : '/assets/images/placeholder/test.png'" [alt]="item.deletedProduct.productName">
+              </div>
+              <div class="product">
+                <div class="desc">
+                  <h4>{{item.deletedProduct.productName}}</h4>
+                  <p>Category: <a [routerLink]="['/product-list/' + item.deletedProduct.categorySlug]">{{item.deletedProduct.categorySlug | slugToNormal}}</a></p>
+                  <p>Sub Category: <a [routerLink]="['/product-list/' + item.deletedProduct.categorySlug + '/' + item.deletedProduct.subCategorySlug]">{{item.deletedProduct.subCategorySlug | slugToNormal}}</a></p>
+                  <p>Brand: <a [routerLink]="['/product-list/' + item.deletedProduct.categorySlug + '/' + item.deletedProduct.subCategorySlug + '/' + item.deletedProduct.brandSlug]">{{item.deletedProduct.brandSlug | slugToNormal}}</a></p>
+                </div>
+
+                <div class="amount">
+                  <!--                <span class="old-p"><del>Tk. {{0}}</del></span>-->
+                  <p>Unit Price:  <del>{{item.price | number : '': 'bn'}} X {{item.quantity}}</del></p>
+                  <p class="color">Total: <del>{{(item.quantity * item.price) | number : '': 'bn'}}</del></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- deleted but shipped or delivered -->
+          <div *ngIf="!item.product && item.deleteDeliveryStatus === 'shipped-or-delivered'">
+            <div class="desc">
+              <h4>This product no longer exists on our shop but your's has been shipped or delivered. <br><br> ** This particular product's page or details no longer exists as well </h4>
+            </div>
+            <br>
+            <div class="info">
+              <div class="img-thumb">
+                <img [src]="item.deletedProduct.images && item.deletedProduct.images.length > 0 ? item.deletedProduct.images[0] : '/assets/images/placeholder/test.png'" [alt]="item.deletedProduct.productName">
+              </div>
+              <div class="product">
+                <div class="desc">
+                  <h4>{{item.deletedProduct.productName}}</h4>
+                  <p>Category: <a [routerLink]="['/product-list/' + item.deletedProduct.categorySlug]">{{item.deletedProduct.categorySlug | slugToNormal}}</a></p>
+                  <p>Sub Category: <a [routerLink]="['/product-list/' + item.deletedProduct.categorySlug + '/' + item.deletedProduct.subCategorySlug]">{{item.deletedProduct.subCategorySlug | slugToNormal}}</a></p>
+                  <p>Brand: <a [routerLink]="['/product-list/' + item.deletedProduct.categorySlug + '/' + item.deletedProduct.subCategorySlug + '/' + item.deletedProduct.brandSlug]">{{item.deletedProduct.brandSlug | slugToNormal}}</a></p>
+                </div>
+
+                <div class="amount">
+                  <!--                <span class="old-p"><del>Tk. {{0}}</del></span>-->
+                  <p>Unit Price:  {{item.price | number : '': 'bn'}} X {{item.quantity}}</p>
+                  <p class="color">Total: {{(item.quantity * item.price) | number : '': 'bn'}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  <!-- END CARD CONTENT AREA -->
+
+    </div>  <!-- END MAIN CARD -->
+
+    <div class="action-cancel">
+      <button *ngIf="order?.deliveryStatus === orderStatusEnum && order?.paymentStatus === 'unpaid'"
+              mat-raised-button color="warn" (click)="cancelOrderByUser()">
+        <mat-icon>remove_circle_outline</mat-icon>
+        Cancel Order
+      </button>
+    </div>
+
+  </div> <!-- END LEFT CART ITEM VIEW -->
+
+
+
+  <div class="checkout-summary card checkout-summary1">
+
+    <div class="title">
+      <h3>Checkout Summary</h3>
+    </div>
+
+    <ul class="payable-total">
+      <li>
+        <span>Subtotal</span>
+        <span>{{order?.subTotal | number : '': 'bn'}} TK.</span>
+      </li>
+      <li>
+        <span>Shipping</span>
+        <span>{{order?.shippingFee | number : '': 'bn'}} TK.</span>
+      </li>
+      <li>
+        <span>Total</span>
+        <span>{{(order?.subTotal + order?.shippingFee) | number : '': 'bn'}} TK.</span>
+      <li *ngIf="!order?.couponId">
+        <span *ngIf="!order?.deletedProduct">Payable Total</span>
+        <span *ngIf="order?.deletedProduct">** Payable Total <br> (After Refund)</span>
+        <span>{{(order?.totalAmount - order?.refundAmount) | number : '': 'bn'}} TK.</span>
+      </li>
+      <li *ngIf="order?.couponId">
+        <span *ngIf="!order?.deletedProduct">Payable Total</span>
+        <span *ngIf="order?.deletedProduct">** Payable Total <br> (After Refund)</span>
+        <span>{{(order?.totalAmountWithDiscount - order?.refundAmount) | number : '': 'bn'}} TK.</span>
+      </li>
+      <li>
+        <span class="note" *ngIf="order?.deletedProduct">** Payable total after refund is only in the case where there is an issue with the product.<br><br>N. B. This is not due to product unavailability and other more severe and unavoidable issue(s)</span>
+      </li>
+    </ul>
+
+    <div class="info">
+      <h3>Shipping Info</h3>
+      <p>Name: <span>{{order?.name}}</span></p>
+      <p>Phone No: <span>{{order?.phoneNo}}</span></p>
+      <p>Email: <span>{{order?.email ? order.email : 'N/A'}}</span></p>
+      <p>Other Phone: <span>{{order?.alternativePhoneNo ? order?.alternativePhoneNo : 'N/A'}}</span></p>
+      <p>Address: <span>{{order?.shippingAddress}}</span></p>
+    </div>
+
+  </div> <!-- END RIGHT CHECKOUT VIEW -->
+
+  <div class="checkout-summary card" >
+    <div class="title" style="text-align: center;">
+      <h3>Order History</h3>
+    </div>
+    <app-order-timeline [orderTimeline]="order?.orderTimeline"></app-order-timeline>
+  </div>
+
+</div>
+
+
+<ng-template #cartEmpty>
+  <div class="empty">
+    <h2>No Cart Items</h2>
+    <div class="action">
+      <button routerLink="/" mat-raised-button color="accent" class="btn-shopping">Continue Shopping</button>
+    </div>
+  </div>
+</ng-template>
+

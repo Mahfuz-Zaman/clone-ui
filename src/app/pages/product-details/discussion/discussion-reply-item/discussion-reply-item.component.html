@@ -1,0 +1,71 @@
+<div class="support">
+  <div class="commenter-details">
+    <!--commenter-img-->
+    <div class="commenter-img">
+      <img *ngIf="!discussionReply.isAdmin" [src]="discussionReply.profileImage ? discussionReply.profileImage : '/assets/images/avatar/user-cmnt.png'" alt="">
+      <img *ngIf="discussionReply.isAdmin" [src]="'/assets/images/logo/esquire-logo-1.png'" alt="">
+      <span *ngIf="!discussionReply.isAdmin">{{discussionReply?.user ? 'Member' : 'Guest'}}</span>
+      <span *ngIf="discussionReply.isAdmin">{{'Admin'}}</span>
+    </div>
+
+    <!--commenter-comment-details-->
+    <div class="commenter-comment clearfix">
+
+      <div class="commenter-name-date clearfix">
+        <div class="commenter-name">
+          <h3 *ngIf="!discussionReply.isAdmin">{{discussionReply?.name}}</h3>
+          <h3 *ngIf="discussionReply.isAdmin">{{'Esquire Electronics Ltd.'}}</h3>
+          <p>{{discussionReply?.comment}}</p>
+        </div>
+        <div class="comment-date">
+          <span>{{discussionReply?.replyDate | date}}</span>
+        </div>
+      </div>
+      <div class="replay-share">
+        <ul>
+          <!--            <li><span>0</span></li>-->
+          <!--            <li>∧</li>-->
+          <!--            <li>|</li>-->
+          <!--            <li>∨</li>-->
+<!--          <li (click)="isVisibleReply2Form = !isVisibleReply2Form" style="cursor: pointer">Replay</li>-->
+          <!--            <li>-</li>-->
+          <!--            <li>Share</li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!--Replay-form-->
+  <app-discussion-form *ngIf="isVisibleReply2Form" (onSubmitForm)="onSubmitReply2($event)" [user]="user"></app-discussion-form>
+
+</div><!---******* support-end **********-->
+
+
+<div class="support" style="padding-left: 50px;">
+  <div class="commenter-details" *ngFor="let reply2 of discussionReply.reply">
+    <!--commenter-img-->
+    <div class="commenter-img">
+      <img *ngIf="!reply2.isAdmin" [src]="reply2.profileImage ? reply2.profileImage : '/assets/images/avatar/user-cmnt.png'" alt="">
+      <img *ngIf="reply2.isAdmin" [src]="'/assets/images/logo/esquire-logo-1.png'" alt="">
+      <span *ngIf="!reply2.isAdmin">{{reply2?.user ? 'Member' : 'Guest'}}</span>
+      <span *ngIf="reply2.isAdmin">{{'Admin'}}</span>
+    </div>
+
+    <!--commenter-comment-details-->
+    <div class="commenter-comment clearfix">
+
+      <div class="commenter-name-date clearfix">
+        <div class="commenter-name">
+          <h3 *ngIf="!reply2.isAdmin">{{reply2?.name}}</h3>
+          <h3 *ngIf="reply2.isAdmin">{{'Esquire Electronics Ltd.'}}</h3>
+          <p>{{reply2?.comment}}</p>
+        </div>
+        <div class="comment-date">
+          <span>{{reply2?.replyDate | date}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div><!---******* support-end **********-->

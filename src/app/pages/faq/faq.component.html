@@ -1,0 +1,33 @@
+<!--banner--->
+<section class="faq-banner-area">
+    <div class="faq-banner-main">
+        <h2>FAQ</h2>
+        <a>You can find here the frequently asked question and answer.</a>
+    </div>
+</section>
+
+<!---faq-section-->
+<section class="faq-section">
+
+    <div class="section-main">
+
+        <!--section-info-->
+        <div class="section-info-area">
+          <mat-accordion class="details">
+            <mat-expansion-panel *ngFor="let data of allFaqs">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h2>{{data.title}}</h2>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>{{data.description}}</p>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+        </div>
+    </div>
+
+
+
+</section>
+

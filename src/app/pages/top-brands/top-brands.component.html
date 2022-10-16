@@ -1,0 +1,49 @@
+<section class="section-view">
+  <div class="container">
+    <div class="section-title">
+      <div class="title">
+        <h1>Top Brands</h1>
+      </div>
+    </div>
+
+    <div class="content-view">
+      <ng-container *ngFor="let d of promotionalBrands">
+        <app-brand-card-one [data]="d"></app-brand-card-one>
+      </ng-container>
+    </div>
+
+  </div>
+
+</section> <!-- END TOP BRAND VIEW -->
+
+<div class="gap"></div>
+
+<section class="section-view">
+  <div class="container">
+    <div class="section-title">
+      <div class="title">
+        <h1>Others Popular Brands</h1>
+      </div>
+    </div>
+
+    <div class="content-view">
+      <ng-container *ngFor="let d of otherBrands| paginate:
+        { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }">
+        <app-brand-card-one [data]="d"></app-brand-card-one>
+      </ng-container>
+
+    </div>
+
+  </div>
+
+</section> <!-- END OTHERS BRAND VIEW -->
+
+
+<div *ngIf="otherBrands.length > 0" fxLayout="row wrap" style="margin-top: 15px;">
+  <div fxFlex="100" class="p-1">
+    <mat-card class="p-0 text-center">
+      <pagination-controls class="product-pagination" autoHide="true" maxSize="20"
+                           (pageChange)="onChangePage($event)"></pagination-controls>
+    </mat-card>
+  </div>
+</div>

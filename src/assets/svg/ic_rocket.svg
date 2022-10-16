@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="29.99" viewBox="0 0 30 29.99">
+  <g id="ic_rocket" transform="translate(0 -0.089)">
+    <path id="Path_5" data-name="Path 5" d="M284.683,154.982a2.251,2.251,0,1,0,0,3.186A2.255,2.255,0,0,0,284.683,154.982Z" transform="translate(-264.385 -145.198)" fill="#fff"/>
+    <path id="Path_6" data-name="Path 6" d="M85.818.089h-.879a23.716,23.716,0,0,0-16.91,7.265l-8.736,8.736L69.811,26.609l8.736-8.736a24.14,24.14,0,0,0,5.268-7.555,23.483,23.483,0,0,0,2-10.229ZM71.693,14.209a4.006,4.006,0,1,1,5.662,0A4.006,4.006,0,0,1,71.693,14.209Z" transform="translate(-55.818)" fill="#fff"/>
+    <path id="Path_7" data-name="Path 7" d="M0,0H6.46V1.755H0Z" transform="translate(0.037 28.799) rotate(-45)" fill="#fff"/>
+    <path id="Path_8" data-name="Path 8" d="M0,0H2.314V1.755H0Z" transform="translate(5.493 28.374) rotate(-45)" fill="#fff"/>
+    <path id="Path_9" data-name="Path 9" d="M0,0H2.3V1.755H0Z" transform="translate(0.462 23.344) rotate(-45)" fill="#fff"/>
+    <path id="Path_10" data-name="Path 10" d="M267.555,352.253l-.449-.449-7.15,7.15,2.229,2.229,3.962-3.962Z" transform="translate(-244.723 -331.105)" fill="#fff"/>
+    <path id="Path_11" data-name="Path 11" d="M3.962,123.7,0,127.664,2.234,129.9l7.15-7.15-.449-.449Z" transform="translate(0 -115.048)" fill="#fff"/>
+    <path id="Path_12" data-name="Path 12" d="M34.858,306.442l8.382,8.382,1.718-.8-9.3-9.3Z" transform="translate(-32.815 -286.783)" fill="#fff"/>
+  </g>
+</svg>

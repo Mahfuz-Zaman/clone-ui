@@ -1,0 +1,85 @@
+<div class="content-area">
+  <div class="view-list">
+    <div class="header">
+      <div class="icon">
+        <mat-icon>format_list_bulleted</mat-icon>
+      </div>
+      <div class="main">
+        <h1 class="title">
+          PERSONAL INFORMATION
+        </h1>
+        <button mat-button (click)="openNewDialog()">Edit</button>
+      </div>
+    </div>
+    <div class="data-view">
+      <table class="data-info-table">
+        <tbody>
+        <tr class="info-group">
+          <td class="label">Full Name</td>
+          <td class="value">{{user?.fullName}}</td>
+        </tr>
+        <tr class="info-group">
+          <td class="label">Phone No</td>
+          <td class="value">{{user?.phoneNo ? user?.phoneNo : 'N/A'}}</td>
+        </tr>
+        <tr class="info-group">
+          <td class="label">Email</td>
+          <td class="value">{{user?.email ? user?.email : 'N/A'}}</td>
+        </tr>
+        <tr class="info-group">
+          <td class="label">Gender</td>
+          <td class="value">{{user?.gender ? (user?.gender | titlecase) : 'N/A'}}</td>
+        </tr>
+        <tr class="info-group">
+          <td class="label">Date of Birth</td>
+          <td class="value">{{user?.birthdate ? (user?.birthdate| date : 'fullDate'): 'N/A'}}</td>
+        </tr>
+        <tr class="info-group">
+          <td class="label">Member Since</td>
+          <td class="value">{{user?.createdAt | date: 'fullDate'}}</td>
+        </tr>
+        <tr class="info-group">
+          <td class="label">Occupation</td>
+          <td class="value">{{user?.occupation ? user?.occupation : 'N/A'}}</td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<!--  <div class="gap-sm"></div>-->
+
+<!--  <div class="view-list">-->
+<!--    <div class="header">-->
+<!--      <div class="icon">-->
+<!--        <mat-icon>cases</mat-icon>-->
+<!--      </div>-->
+<!--      <div class="main">-->
+<!--        <h1 class="title">-->
+<!--          Additional Info-->
+<!--        </h1>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="data-view">-->
+<!--      <table class="data-info-table">-->
+<!--        <tbody>-->
+<!--        <tr class="info-group">-->
+<!--          <td class="label">Email Address</td>-->
+<!--          <td class="value">ikbal.sazib@gmail.com</td>-->
+<!--        </tr>-->
+<!--        <tr class="info-group">-->
+<!--          <td class="label">Secondary Phone No</td>-->
+<!--          <td class="value">01773253900</td>-->
+<!--        </tr>-->
+<!--        <tr class="info-group">-->
+<!--          <td class="label">Gender</td>-->
+<!--          <td class="value">Male</td>-->
+<!--        </tr>-->
+
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+<!--  </div>-->
+</div>

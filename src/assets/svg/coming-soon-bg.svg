@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#283350"/>
+      <stop offset="1" stop-color="#3a72c7"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.312" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#283350"/>
+      <stop offset="1" stop-color="#283350" stop-opacity="0.702"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="0" y1="0.361" x2="1" xlink:href="#linear-gradient-2"/>
+  </defs>
+  <g id="coming-soon-bg" transform="translate(-355 -131)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="1920" height="1080" transform="translate(355 131)" fill="url(#linear-gradient)"/>
+    <path id="Path_1" data-name="Path 1" d="M912.6,131l197.73,199.038-185.9,399.821L978.509,1211H336.31V131Z" transform="translate(19)" fill="url(#linear-gradient-2)"/>
+    <path id="Path_2" data-name="Path 2" d="M2275,283.4,1678.3,607.1l139.1,605.8H2275Z" transform="translate(0 -2)" fill="url(#linear-gradient-3)"/>
+  </g>
+</svg>

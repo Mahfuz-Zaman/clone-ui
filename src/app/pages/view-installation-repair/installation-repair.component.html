@@ -1,0 +1,51 @@
+<!---offer-section1-->
+<!--<section class="offer-section-1">-->
+<!--  &lt;!&ndash;offer-title&ndash;&gt;-->
+<!--  <div class="offer-title">-->
+<!--    <h2>Installation and Repair</h2>-->
+<!--  </div>-->
+<!--  <div class="section1-container">-->
+<!--    <div class="description">-->
+<!--      <p>Esquire Electronics Ltd. brings to you an exclusive offer – KURBANI EID Promotion 2021. Enjoy incredible discounts on SHARP Refrigerator, Freezer, Washing Machine, Microwave Oven and DANAAZ Freezer.</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+<section class="offer-section-1">
+  <!--offer-title-->
+  <div class="offer-title" [ngStyle]="{'background': 'url(' + installationRepairType?.image + ') no-repeat 0 0 / cover'}">
+    <h2>{{installationRepairType?.title}}</h2>
+  </div>
+  <div class="section1-container">
+    <div class="description">
+      <p>{{installationRepairType?.shortDescription}}</p>
+    </div>
+    <div class="description" [innerHTML]="installationRepairType?.description | safeHtmlCustom"></div>
+  </div>
+</section>
+
+
+<div class="container-fluid">
+  <section class="section-2 section-deal-of-day section-md">
+    <div class="container" *ngFor="let data of installationRepairs">
+
+      <div class="deal-title">
+        <h2>{{data?.name}}</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="deal-on-play-view">
+        <ng-container *ngFor="let p of data?.products">
+          <app-product-card-one [product]="p"></app-product-card-one>
+        </ng-container>
+      </div>
+
+    </div>
+  </section><!--Deal On Play end-->
+
+
+</div>
+
+
+
+

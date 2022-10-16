@@ -1,0 +1,47 @@
+<div class="header">
+  <div class="img-thumb">
+    <img src="/assets/images/warning/01.png" alt="">
+  </div>
+  <div class="desc">
+    <p>Warning! This backup is very sensitive because you lost your data. Please do it your ow n risk. </p>
+  </div>
+</div>
+
+<hr class="center-square">
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'SL'}}</th>
+      <th scope="col">{{'Collection Name'}}</th>
+      <th scope="col">{{'Size'}}</th>
+      <th scope="col">{{'Last Backup'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of collections; let i = index">
+      <td [attr.data-label]="'Name'">{{i + 1}}</td>
+      <td [attr.data-label]="'Collection Name'">{{data.name}}</td>
+      <td [attr.data-label]="'Size'">{{data.size | formatBytes}}</td>
+      <td [attr.data-label]="'Last Backup'">{{data.lastModified ? (data.lastModified | date: 'medium') : 'N/A'}}</td>
+      <td [attr.data-label]="'Actions'">
+        <button mat-raised-button color="primary" matTooltip="Backup data"
+                (click)="confirmDialog('backup', data.name)">
+          <mat-icon>settings_backup_restore</mat-icon> {{'Backup'}}
+        </button>
+        <button mat-raised-button color="warn" matTooltip="Restore Data" style="margin-left: 6px;"
+                (click)="confirmDialog('restore', data.name, false)">
+          <mat-icon>cached</mat-icon> {{'Restore'}}
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+  </table>
+
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+

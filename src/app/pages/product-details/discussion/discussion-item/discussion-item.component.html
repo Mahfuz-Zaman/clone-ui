@@ -1,0 +1,50 @@
+<!--** Guest and support-area ***-->
+<div class="guest-and-support-area">
+
+  <!--******** guest *******-->
+  <div class="guest">
+    <div class="commenter-details">
+      <!--commenter-img-->
+      <div class="commenter-img">
+        <img [src]="discussion?.profileImage ? discussion.profileImage : '/assets/images/avatar/user-cmnt.png'" alt="">
+        <span>{{discussion?.user ? 'Member' : 'Guest'}}</span>
+      </div>
+
+      <!--commenter-comment-details-->
+      <div class="commenter-comment clearfix">
+
+        <div class="commenter-name-date clearfix">
+          <div class="commenter-name">
+            <h3>{{discussion?.name}}</h3>
+            <p>{{discussion?.comment}}</p>
+          </div>
+          <div class="comment-date">
+            <span>{{discussion?.discussionDate | date}}</span>
+          </div>
+        </div>
+        <div class="replay-share">
+          <ul>
+<!--            <li><span>0</span></li>-->
+<!--            <li>∧</li>-->
+<!--            <li>|</li>-->
+<!--            <li>∨</li>-->
+            <li (click)="isVisibleReply1Form = !isVisibleReply1Form" style="cursor: pointer">Replay</li>
+<!--            <li>-</li>-->
+<!--            <li>Share</li>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <app-discussion-form *ngIf="isVisibleReply1Form" (onSubmitForm)="onSubmitReply1($event)" [user]="user"></app-discussion-form>
+
+
+
+  </div><!---******* guest-end **********-->
+
+
+  <!--******** support *******-->
+  <ng-container  *ngFor="let replyData1 of discussion?.reply">
+    <app-discussion-reply-item [discussionId]="discussion?._id" [discussionReply]="replyData1" [user]="user"></app-discussion-reply-item>
+  </ng-container><!---******* support-end **********-->
+</div>

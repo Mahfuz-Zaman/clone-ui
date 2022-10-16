@@ -1,0 +1,78 @@
+<div style="position: relative">
+  <h2 class="header">Coupon</h2>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        #templateForm="ngForm"
+        fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-form-field appearance="outline">
+      <mat-label>Coupon Name</mat-label>
+      <input formControlName="couponName" matInput placeholder="Enter Coupon Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Coupon Code</mat-label>
+      <input formControlName="couponCode" matInput placeholder="Coupon Code" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Coupon Amount</mat-label>
+      <input digitOnly formControlName="couponAmount" matInput placeholder="Enter Coupon Amount" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Coupon Type</mat-label>
+      <mat-select formControlName="couponType">
+        <mat-option *ngFor="let type of couponType" [value]="type.value">
+          {{  type.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Discount Type</mat-label>
+      <mat-select formControlName="couponDiscountType">
+        <mat-option *ngFor="let discountType of couponDiscountType" [value]="discountType.value">
+          {{  discountType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Coupon Min Purchase</mat-label>
+      <input digitOnly formControlName="couponMinPurchase" matInput placeholder="Enter Coupon Minimum Purchase amount" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Coupon Limit</mat-label>
+      <input digitOnly formControlName="couponLimit" matInput placeholder="Enter Coupon Limit" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" (click)="startDate.open()">
+      <mat-label>Coupon Start Date</mat-label>
+      <input readonly [matDatepicker]="startDate" formControlName="couponStartDate" matInput placeholder="Enter Coupon Start Date" required>
+      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" (click)="expiryDate.open()">
+      <mat-label>Coupon End Date</mat-label>
+      <input readonly [matDatepicker]="expiryDate" formControlName="couponEndDate" matInput placeholder="Enter Coupon End Date" required>
+      <mat-datepicker-toggle matSuffix [for]="expiryDate"></mat-datepicker-toggle>
+      <mat-datepicker #expiryDate></mat-datepicker>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit">{{ coupon ? 'Edit Coupon' : 'Add Coupon' }}</button>
+  </form>
+</div>
+
+

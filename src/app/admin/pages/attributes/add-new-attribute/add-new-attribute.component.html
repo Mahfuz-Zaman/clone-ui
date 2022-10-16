@@ -1,0 +1,66 @@
+
+<!--<div class="nav">-->
+<!--  <app-breadcrumb-soft></app-breadcrumb-soft>-->
+<!--</div>-->
+
+<div style="position: relative">
+  <mat-spinner *ngIf="isLoading"
+               style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto"
+  ></mat-spinner>
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Attribute</h1>
+    <mat-checkbox [(ngModel)]="autoSlug" (change)="autoGenerateSlug()" color="primary">Auto Slug</mat-checkbox>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        #templateForm="ngForm"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Attribute Name</mat-label>
+      <input formControlName="attributeName" matInput placeholder="Enter attribute name" required>
+      <mat-error>This field is required</mat-error>
+<!--      <mat-error *ngIf="dataForm.get('attributeName')?.getError('exists')">This field name must be unique</mat-error>-->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Attribute Slug</mat-label>
+      <input formControlName="attributeSlug" matInput placeholder="Enter atribute slug" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <div class="form-array-container">
+      <div class="add-form-array-action">
+        <button type="button" mat-raised-button color="primary" (click)="onAddNewFormControl()">
+          <mat-icon>add</mat-icon>
+          Add New Attribute Value
+        </button>
+      </div>
+
+      <div formArrayName="attributeValues" class="form-array-input">
+        <div class="single-field"
+             *ngFor="let f of attributeDataArray?.controls;let i=index">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter Attributes Value {{i + 1}}</mat-label>
+            <input [formControlName]="i" matInput [placeholder]="'Enter Attributes Value ' + i + 1">
+          </mat-form-field>
+          <button type="button" mat-mini-fab color="warn" (click)="removeFormArrayField(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div> <!-- END FORM ARRAY FIELD-->
+
+
+    <button class="submit-btn" mat-raised-button color="accent" type="submit">{{ attribute ? 'Edit Attribute Data' : 'Add Attribute Data' }}</button>
+  </form>
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+

@@ -1,0 +1,68 @@
+<!--- Login-area -->
+<section class="login-area">
+  <div class="container">
+    <div class="login-details-start">
+      <!--- login-title -->
+      <div class="login-title clearfix">
+        <div class="login-title-left">
+          <h2>Welcome to Esquire! Please login</h2>
+        </div>
+        <div class="login-title-right">
+          <h3>New member? <a routerLink="/registration">Register now</a></h3>
+        </div>
+      </div>
+      <div class="login-details">
+        <div class="login-form">
+          <form [formGroup]="formData" (ngSubmit)="onSubmitForm()">
+            <div class="login-email">
+              <label>Phone Number <sup>*</sup></label>
+              <input formControlName="username" type="tel" name="Phone No"
+                     placeholder="Please enter your phone number">
+              <span class="invalid" *ngIf="username.touched && username.invalid">This field is required</span>
+            </div>
+            <div class="login-pass">
+              <label>Password <sup>*</sup></label>
+              <input [type]="isHiddenPass ? 'password' : 'text'" formControlName="password"
+                     placeholder="Enter your password">
+              <span class="view" (click)="isHiddenPass = !isHiddenPass"><i [ngClass]="isHiddenPass ? 'fa fa-eye' : 'fas fa-eye-slash'"></i></span>
+              <span class="invalid" *ngIf="password.touched && password.invalid">This field is required</span>
+            </div>
+            <div class="forget">
+              <a routerLink="/password-recovery">Forget password?</a>
+            </div>
+            <div class="login-btn">
+              <button type="submit">login</button>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="other-login">
+          <div class="other-login-details">
+            <h3>Or, login with</h3>
+            <ul>
+              <li><a (click)="userService.FacebookAuthWithSocialAuth()" class="login-facebook"><span><i class="fab fa-facebook-f"></i></span>Facebook</a>
+              </li>
+              <li><a (click)="userService.GoogleAuth()" class="login-google"><span><i class="fab fa-google-plus-g"></i></span>Google</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+<!-- NGX SPINNER -->
+<ngx-spinner style="width: 100vw; height: 100vh"
+             bdColor = "rgba(0,0,0,0.25)"
+             size = "medium"
+             color = "#fff"
+             type = "ball-clip-rotate"
+             [fullScreen] = "true">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>

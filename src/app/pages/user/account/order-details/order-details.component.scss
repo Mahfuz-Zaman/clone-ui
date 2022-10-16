@@ -1,0 +1,256 @@
+@import "src/theme/variables";
+
+
+.container-cart {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px 10px;
+}
+
+@media(max-width:1125px){
+  .container-cart{
+    grid-template-columns: 1fr 1fr;
+  }
+  // .cart-item-view{
+
+  // }
+  .checkout-summary1{
+    grid-column-start:1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+  }
+}
+@media(max-width:900px){
+  .container-cart{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .checkout-summary1{
+    grid-column-start:1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+  }
+}
+
+.cart-item-view {
+  .action-cancel {
+    text-align: end;
+    button {
+      padding: 4px 24px;
+    }
+  }
+}
+
+.card {
+  margin-bottom: 30px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+  padding: 5px 20px;
+}
+
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+    font-family: $font-en-primary;
+    font-size: 18px;
+    color: #484848;
+    font-weight: 600;
+  }
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #d5d5d5;
+}
+
+.card-content {
+  margin-top: 15px;
+}
+
+.cart-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c4c4c4;
+  margin-top: 16px;
+  padding-bottom: 8px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .info {
+    flex: 1;
+    padding-right: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+    .img-thumb {
+      display: flex;
+      align-items: center;
+      img {
+        width: 85px;
+        height: 85px;
+        object-fit: scale-down;
+      }
+    }
+
+    .product {
+      margin-left: 25px;
+
+      .desc {
+        h4 {
+          font-size: 18px;
+          font-family: $font-en-primary;
+          color: #313131;
+          padding-bottom: 5px;
+          text-transform: capitalize;
+        }
+
+        p {
+          font-family: $font-en-primary;
+          font-size: 14px;
+          color: #4f4f4f;
+          font-weight: 500;
+
+          a {
+            color: #4f4f4f;
+            text-decoration: none;
+            font-weight: 400;
+            &:hover {
+              color: $color-secondary;
+            }
+          }
+        }
+      }
+
+      .amount {
+        margin-top: 10px;
+
+        p {
+          font-family: $font-en-primary;
+          font-size: 14px;
+          color: #4f4f4f;
+          font-weight: 600;
+
+          &.color {
+            font-size: 16px;
+            color: #00ac6c;
+          }
+        }
+
+        .old-p {
+          color: #f63636;
+        }
+      }
+
+    }
+  }
+
+  .action {
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+  }
+}
+
+// RIGHT AREA
+.checkout-summary {
+  .title {
+    padding: 15px 0;
+
+    h3 {
+      font-size: 18px;
+      font-family: $font-en-primary;
+      font-weight: 600;
+      color: #555;
+    }
+  }
+
+  .payable-total {
+    list-style: none;
+
+    li {
+      font-weight: 400;
+      font-family: $font-en-primary;
+      border-bottom: 1px solid #d8d8d8;
+      padding: 17px 0;
+      color: #333333;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .note {
+      font-weight: 400;
+      font-size: 10px;
+    }
+
+  }
+
+  .info {
+    padding: 16px 0;
+
+    h3 {
+      font-size: 18px;
+      font-family: $font-en-primary;
+      font-weight: 600;
+      color: #555;
+      padding-bottom: 12px;
+    }
+
+    p {
+      font-size: 14px;
+      font-family: $font-en-primary;
+      font-weight: 500;
+      line-height: 2;
+      color: #464646;
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+
+
+}
+
+/**
+EMPTY CART DESIGN
+ */
+.empty {
+  padding: 100px 0;
+
+  h2 {
+    text-align: center;
+  }
+
+  .action {
+    margin-top: 25px;
+    text-align: center;
+
+    button {
+      padding: 6px;
+      min-width: 150px;
+    }
+  }
+}
+
+
+.no-summary {
+  h5 {
+    text-align: center;
+    padding: 100px 10px;
+  }
+}
+
+

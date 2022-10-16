@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Shipping Address</h2>
+    <button mat-button color="primary" (click)="openAddNewAddressDialog()">
+      <mat-icon>add</mat-icon>
+      Add New Address
+    </button>
+  </div> <!-- END CARD HEADER AREA -->
+
+  <hr class="center-diamond">
+
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr class="table-head">
+        <th scope="col">{{'Address Type'}}</th>
+        <th scope="col">{{'city'}}</th>
+        <th scope="col">{{'Post Code'}}</th>
+        <th scope="col">{{'Phone No'}}</th>
+        <th scope="col">{{'shipping address'}}</th>
+        <th scope="col">{{'Actions'}}</th>
+      </tr>
+      </thead> <!-- End Table Head -->
+      <tr *ngFor="let data of userAddress | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+        <td [attr.data-label]="'Address Type'">{{data.addressType | address}}</td>
+        <td [attr.data-label]="'city'">{{data.city}}</td>
+        <td [attr.data-label]="'area'">{{data.postCode ?  data.postCode : 'N/A'}}</td>
+        <td [attr.data-label]="'zone'">{{data.phoneNo ?  data.phoneNo : 'N/A'}}</td>
+        <td [attr.data-label]="'shipping address'">{{data.shippingAddress}}</td>
+        <td [attr.data-label]="'Actions'">
+          <button style="margin-right: 5px;" mat-mini-fab color="primary"
+                  (click)="openAddNewAddressDialog(data)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab (click)="openConfirmDialog('_id')" color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr><!-- End Table Body -->
+
+    </table>
+
+  </div>
+
+  <div class="pagination-container">
+    <pagination-controls
+      class="product-pagination"
+      [autoHide]="true"
+      [maxSize]="15"
+      (pageChange)="onPageChanged($event)">
+    </pagination-controls>
+  </div>     <!-- END PAGINATION -->
+
+
+
+
+</div>

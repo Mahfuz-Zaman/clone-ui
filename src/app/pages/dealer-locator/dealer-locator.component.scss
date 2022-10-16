@@ -1,0 +1,14 @@
+@import "src/theme/variables";
+
+
+.container-fluid {
+  width: 100%;
+  max-width: $theme-container-width;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+@media(min-width:960px) and (max-width:1440px){
+  .container-fluid{
+    width: 88%!important;
+  }
+}

@@ -1,0 +1,78 @@
+<div style="position: relative">
+  <div class="header-dialog">
+    <h1>Products Promo Banner page</h1>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+
+    <div (click)="openComponentGallaryDialog('image')" class="imag-view">
+      <img [src]="pickedImage" alt="">
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select placeholder="Select category" required
+                  formControlName="category">
+        <mat-option *ngFor="let cat of categories" [value]="cat._id">
+          {{cat.categoryName}}
+        </mat-option>
+      </mat-select>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Router Link</mat-label>
+      <input formControlName="routerLink" matInput placeholder="Enter router link" required>
+    </mat-form-field>
+
+
+    <div class="action">
+
+      <button [fxHide]="promoBanner" class="submit-btn" mat-raised-button color="accent" type="submit">
+        <mat-icon>done</mat-icon>
+        Save Data
+      </button>
+<!--
+      <button class="submit-btn" mat-raised-button color="accent" type="submit">
+        <mat-icon>done</mat-icon>
+        Save Data
+      </button> -->
+
+<!--      <button [fxHide]="!promoPage" *ngIf="!update" class="submit-btn" mat-raised-button color="warn" type="button" (click)="showupdate()">-->
+<!--        <mat-icon>edit</mat-icon>-->
+<!--        Edit-->
+<!--      </button>      -->
+
+      <button *ngIf="promoBanner" class="submit-btn" mat-raised-button color="warn" type="submit">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+
+<!--      <button  [routerLink]="['edit-promo-page/', promoPage._id]" mat-mini-fab-->
+<!--              aria-label="Example icon-button with a heart icon">-->
+<!--        <mat-icon>edit</mat-icon>-->
+<!--      </button>-->
+
+      <!-- <button [fxShow]="update" class="submit-btn" mat-raised-button color="warn" type="submit" (click)="showupdate()">
+        <mat-icon>edit</mat-icon>
+        Update
+      </button> -->
+
+      <button  *ngIf="promoBanner" class="submit-btn" mat-raised-button color="warn" type="button" (click)="openConfirmDialog()">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+
+    </div>
+
+  </form>
+</div>
+
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+
+
+

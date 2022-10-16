@@ -1,0 +1,27 @@
+@import "src/theme/variables";
+@import "src/theme/exports/table-one";
+
+.header {
+  width: 100%;
+  margin: 16px 0;
+  padding: 8px 16px;
+
+  .img-thumb {
+    width: 160px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .desc {
+    width: 90%;
+    max-width: 450px;
+    margin: 10px auto 0;
+    p {
+      font-family: $font-en-primary;
+      font-size: 20px;
+      font-weight: 500;
+      color: #ce0000;
+      text-align: center;
+    }
+  }
+}

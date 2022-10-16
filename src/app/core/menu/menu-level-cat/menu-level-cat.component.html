@@ -1,0 +1,107 @@
+<!--<ul>-->
+<!--  <li (click)="clickParent($event)" [ngClass]="isOpen ? 'opened' : ''">-->
+<!--    <a href="javascript:" class="d-flex">-->
+<!--      <mat-icon inline *ngIf="menu.iconType && menu.iconType === iconType.MATERIAL">-->
+<!--        {{menu.iconName ? menu.iconName : 'done'}}-->
+<!--      </mat-icon>-->
+<!--      <i *ngIf="menu.iconType && menu.iconType === iconType.FONT_AWESOME" [class]="menu.iconName"></i>-->
+<!--&lt;!&ndash;      <mat-icon inline *ngIf="!menu.iconType">lens_blur</mat-icon>&ndash;&gt;-->
+<!--      <span>{{menu.name}}</span>-->
+<!--    </a>-->
+<!--    <mat-icon [fxHide]="!menu?.hasChild.length">{{isOpen ? 'arrow_drop_down' : 'arrow_right'}}</mat-icon>-->
+<!--  </li>-->
+<!--  <ng-container  *ngIf="menu?.hasChild.length > 0" >-->
+<!--    <app-menu-level-cat [fxHide]="!isOpen" *ngFor="let m of menu.hasChild" [menu]="m"></app-menu-level-cat>-->
+<!--  </ng-container>-->
+<!--</ul>-->
+
+<mat-nav-list class="list-item-cat-sidenav">
+  <div *ngFor="let menu of parentMenu" class="menu-item-category">
+    <!-- {{menu |json}} -->
+    <a
+      *ngIf="menu.routerLink && !menu.hasSubMenu"
+      mat-button
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      [routerLink]="[menu.routerLink]"
+      routerLinkActive="active-link-cat-menu"
+      [routerLinkActiveOptions]="
+        menu.parentId != 0 ? { exact: false } : { exact: true }
+      "
+      (click)="onClick(menu.id)"
+      [id]="'menu-item-category-' + menu.id"
+    >
+      <mat-icon class="menu-icon">{{ menu.iconName }}</mat-icon>
+      <span class="menu-title">{{ menu.name }}</span>
+    </a>
+    <!-- MENU WITH NO SUB MENU WITH ROUTER LINK -->
+
+    <a
+      *ngIf="menu.hasSubMenu"
+      mat-button
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      (click)="onClick(menu.id)"
+      [id]="'menu-item-category-' + menu.id"
+      [ngClass]="expanded ? 'opened' : ''"
+      [matRippleDisabled]="false"
+    >
+      <mat-icon class="menu-icon">{{ menu.icon }}</mat-icon>
+      <span class="menu-title">{{ menu.name | textWrap: 32 }}</span>
+      <mat-icon class="material-icons menu-expand-icon transition-2 icon-show">add</mat-icon>
+      <mat-icon class="material-icons menu-expand-icon transition-2 icon-remove">
+        remove
+        </mat-icon>
+    </a>
+    <!-- MENU WITH SUB MENU WITH ROUTER LINK -->
+
+    <div
+      *ngIf="menu.hasSubMenu"
+      class="sub-menu-category"
+      [id]="'sub-menu-category-' + menu.id"
+    >
+      <app-menu-level-cat
+        [menuItems]="menuItems"
+        [menuParentId]="menu.id"
+      ></app-menu-level-cat>
+    </div>
+  </div>
+</mat-nav-list>
+
+
+<!-- <mat-nav-list class="res-cat-menu">
+  <ul>
+    <li *ngFor="let menu of parentMenu">
+      <a
+      *ngIf="menu.routerLink && !menu.hasSubMenu"
+      mat-button
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      [routerLink]="[menu.routerLink]"
+      routerLinkActive="active-link-cat-menu"
+      [routerLinkActiveOptions]="
+        menu.parentId != 0 ? { exact: false } : { exact: true }
+      "
+      (click)="onClick(menu.id)"
+      [id]="'menu-item-category-' + menu.id"
+    >
+        <div class="cat-menu-title">
+          <img src="./assets/images/menu/1604826824Food.svg" alt="">
+            <span>Air Conditioner</span>
+        </div>
+        <div class="toggle-icon">
+          <span class="plus-show">
+            <i class="fa fa-plus"></i>
+          </span>
+          <span class="mines-hide">
+            <i class="fa fa-minus"></i>
+          </span>
+        </div>
+      </a>
+    </li>
+
+    <li>
+
+    </li>
+  </ul>
+</mat-nav-list> -->

@@ -1,0 +1,85 @@
+<section class="product-authentication-area">
+    <div class="authentication-main-area">
+        <div class="authentication-main">
+            <!---title-->
+            <div class="authentication-title">
+                <h3>Verify your phone purchase</h3>
+            </div>
+            <!---authentication-card-->
+            <div class="authentication-card">
+                <div *ngIf="!showMessageContainer" class="authentication-left-side">
+                    <div class="left-side-title">
+                        <h3>Please enter IMEI or S/N</h3>
+                    </div>
+                       <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+                             autocomplete="off"
+                             #templateForm="ngForm">
+                        <div class="form">
+                            <div class="input-1">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>IMEI or S/N</mat-label>
+                                    <input [minLength]="5" [maxLength]="20" matInput placeholder="IMEI or S/N" value="" formControlName="imei" required>
+                                    <mat-error>This field is required</mat-error>
+                                  </mat-form-field>
+                            </div>
+
+                            <div class="input-2">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Please enter verification code</mat-label>
+                                    <input matInput placeholder="Please enter verification code" formControlName="verifyCode" required [minLength]="5" [maxLength]="5">
+                                    <mat-error>This field is required</mat-error>
+                                  </mat-form-field>
+                              <div class="captcha-view">
+                                <app-image-captcha></app-image-captcha>
+                              </div>
+                            </div>
+                            <div class="sub-btn">
+                                <button mat-button type="submit">Verify</button>
+                            </div>
+                        </div>
+                       </form>
+                </div> <!-- END LEFT VIEW -->
+
+              <div *ngIf="showMessageContainer" class="authentication-left-side">
+                <div class="left-side-title">
+                  <h3>This is a</h3>
+                </div>
+                <div class="message-view">
+                  <div class="mgs-card" [ngClass]="isAuthenticate ? 'success' : 'wrong'">
+                    <div class="left-icon">
+                      <i *ngIf="isAuthenticate" class="fas fa-check-circle"></i>
+                      <i *ngIf="!isAuthenticate" class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="right-txt">
+                      <p *ngIf="isAuthenticate">Congratulation! you can be assured the product you have purchased is the official product</p>
+                      <p *ngIf="!isAuthenticate">Sorry! you can be assured the product you have purchased is not the official product</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="sub-btn" style="margin-top: 12px;">
+                  <button mat-button type="button" (click)="onBack()">Back</button>
+                </div>
+              </div> <!-- END LEFT VIEW -->
+
+                <div class="authentication-right-side">
+                    <div class="right-side-title">
+                        <h3>Where is my IMEI and S/N?</h3>
+                    </div>
+                    <div class="right-side-details">
+                        <div class="method-1">
+                            <p>Method 1</p>
+                            <p>Find the code sticker on the back of device, or packaging box</p>
+                        </div>
+                        <div class="imei-img">
+                            <img src="/assets/images/imei/imei-label.png" alt="">
+                        </div>
+<!--                        <div class="method-1">-->
+<!--                            <p>Method 2</p>-->
+<!--                            <p>Enter *#06# on the dialpad to find your IMEI</p>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

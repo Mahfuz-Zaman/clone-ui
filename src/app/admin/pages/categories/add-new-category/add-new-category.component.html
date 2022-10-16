@@ -1,0 +1,62 @@
+<div style="position: relative">
+  <mat-spinner *ngIf="isLoading"
+               style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto"
+  ></mat-spinner>
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Category</h1>
+    <mat-checkbox [(ngModel)]="autoSlug" (change)="autoGenerateSlug()" color="primary">Auto Slug</mat-checkbox>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        #templateForm="ngForm"
+        fxLayout="column" fxLayoutAlign="space-around center">
+
+    <div (click)="onHoldInputData()" class="imag-view"
+         [routerLink]="[id ? '../../../' : '../../', 'image-gallery']" [state]="{url: router.url}">
+      <img [src]="pickedImage" alt="">
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category Name</mat-label>
+      <input formControlName="categoryName" matInput placeholder="Enter category name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category Slug</mat-label>
+      <input formControlName="categorySlug" matInput placeholder="Enter category slug" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Priority</mat-label>
+      <input formControlName="priority" matInput placeholder="Enter category priority" required digitOnly type="number">
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Select Attributes</mat-label>
+      <mat-select formControlName="attributes" multiple>
+        <mat-option *ngFor="let data of attributes" [value]="data._id">
+          {{  data.attributeName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+<!--    <div class="editor">-->
+<!--      <ngx-editor-menu [editor]="editor"></ngx-editor-menu>-->
+<!--      <ngx-editor [editor]="editor" placeholder="Enter product full specification" formControlName="description"-->
+<!--                  outputFormat="html"></ngx-editor>-->
+<!--    </div>-->
+
+    <div fxFlex="100" class="px-1">
+      <angular-editor id="description" formControlName="description"
+                      [config]="editorConfigDesc" ></angular-editor>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" style="margin-top: 20px">{{ category ? 'Edit Category' : 'Add Category' }}</button>
+  </form>
+</div>
+
+

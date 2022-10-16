@@ -1,0 +1,48 @@
+<div class="top-action">
+  <button mat-raised-button color="primary" [routerLink]="['add-new-featured-product']">
+    <mat-icon>add</mat-icon>
+    Add Feature Product
+  </button>
+</div>
+
+
+<div class="header">
+  <h2>Featured Product List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Type'}}</th>
+      <th scope="col">{{'Priority'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of allFeaturedProduct; let i = index">
+      <td [attr.data-label]="'Type'">{{data.type}}</td>
+      <td [attr.data-label]="'Priority'">{{data.priority}}</td>
+<!--      <td [attr.data-label]="'Start Date'">{{data.startDate | date}}</td>-->
+<!--      <td [attr.data-label]="'Expiry Date'">{{data.endDate | date}}</td>-->
+
+      <!--      <td [attr.data-label]="'createdAt'">{{data.createdAt | date}}</td>-->
+      <!--      <td [attr.data-label]="'Attributes'">{{data.attributes}}</td>-->
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" mat-mini-fab color="warn" (click)="openConfirmDialog(data._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button style="margin-right: 5px;"  [routerLink]="['edit-featured-product', data._id]" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" (click)="openComponentDialog(data.product)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+  </table>
+</div>
+
+

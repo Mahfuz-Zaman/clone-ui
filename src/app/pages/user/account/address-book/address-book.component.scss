@@ -1,0 +1,26 @@
+@import "src/theme/exports/table-one";
+
+.card {
+  .card-header {
+    padding: 0 12px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-family: $font-en-primary;
+    }
+  }
+}
+
+.table-container {
+  padding: 16px 0;
+}
+
+.pagination-container {
+  text-align: center;
+}
+
+
+

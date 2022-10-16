@@ -1,0 +1,49 @@
+<div class="top-action">
+  <button mat-raised-button color="primary" [routerLink]="['add-new-banner']">
+    <mat-icon>add</mat-icon>
+    Add Banner
+  </button>
+</div>
+
+
+<div class="header">
+  <h2>Banner List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Name'}}</th>
+      <th scope="col">{{'Image'}}</th>
+      <th scope="col">{{'createdAt'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of allBanner; let i = index">
+      <td [attr.data-label]="'Name'">{{data.name}}</td>
+      <td [attr.data-label]="'Image'">
+        <img class="table-image" [src]="data.image" [alt]="data.image">
+      </td>
+      <td [attr.data-label]="'createdAt'">{{data.createdAt | date}}</td>
+      <!--      <td [attr.data-label]="'Attributes'">{{data.attributes}}</td>-->
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" mat-mini-fab color="warn" (click)="openConfirmDialog(data._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button style="margin-right: 5px;"  [routerLink]="['edit-banner', data._id]" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" (click)="openComponentDialog(data.products)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+</div>
+

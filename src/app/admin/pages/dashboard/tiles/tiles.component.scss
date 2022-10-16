@@ -1,0 +1,48 @@
+@import "src/theme/gradients";
+
+.main-overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin: 20px;
+}
+
+.tile {
+  text-align: right;
+
+  .mat-icon {
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    line-height: 0;
+    font-size: 54px;
+    opacity: 0.3;
+  }
+
+  h2 {
+    font-weight: 500;
+  }
+
+  p {
+    text-transform: uppercase;
+  }
+}
+
+
+
+@media only screen and (max-device-width: 599px) {
+  .main-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .main-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+}
+

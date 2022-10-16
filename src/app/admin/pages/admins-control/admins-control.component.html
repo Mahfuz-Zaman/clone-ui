@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="header">
+    <button mat-raised-button [routerLink]="['add-new-admin']" color="primary">Add New Admin</button>
+  </div>
+
+  <div class="content-view" *ngIf="emptyDataList === false; else noData">
+    <div class="card" *ngFor="let data of adminsList">
+      <div class="img-icon">
+        <img class="img-circle" [src]="data?.profileImg" alt="">
+      </div>
+      <div class="info">
+        <h2>{{data?.name}}</h2>
+        <p>{{data?.username}}</p>
+      </div>
+      <div class="hr"></div>
+      <div class="actions">
+        <button mat-button color="primary">Details</button>
+        <button mat-button color="accent" [routerLink]="['edit-admin', data._id]">Edit</button>
+        <button mat-button color="warn" (click)="openConfirmDialog(data)" [disabled]="currentAdmin?._id === data._id">Delete</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!--TEMPLATE-->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+
+
+<ng-template #noData>
+  <div style="margin-top: 50px; text-align: center">
+    <h2>No Data Found</h2>
+  </div>
+</ng-template>

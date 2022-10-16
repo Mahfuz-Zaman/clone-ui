@@ -1,0 +1,260 @@
+@import "../../../../theme/variables";
+
+// ## RESET SOME MATERIAL DEFAULT CSS
+:host ::ng-deep .list-item-cat-sidenav .mat-list-item-content {
+  padding: 0 10px !important;
+}
+
+:host ::ng-deep .list-item-cat-sidenav .mat-list-item {
+  height: 40px !important;
+}
+
+// ## Active List Link
+.active-link-cat-menu {
+  background-color: #e88700;
+  ::ng-deep {
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+.menu-expand-icon {
+  position: absolute;
+  right: 10px;
+  top: 13px;
+}
+
+.menu-item-category {
+  .mat-button {
+    padding: 6px 0;
+    width: 100%;
+    border-radius: 0;
+    font-weight: 400;
+    font-size: $list-text-size;
+
+    ::ng-deep {
+      span {
+        font-family: $font-en-primary;
+        color: #ffffff;
+        font-size: 15px;
+      }
+    }
+
+    .menu-icon {
+      margin-right: 12px;
+      padding: 7px;
+      border-radius: 50%;
+      display: none;
+    }
+
+    &.expanded {
+      .menu-expand-icon {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .mat-button-wrapper {
+    padding-left: 16px;
+  }
+}
+
+.sub-menu-category {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.25s ease-out;
+  -moz-transition: max-height 0.25s ease-out;
+  transition: max-height 0.25s ease-out;
+
+  .mat-button {
+    padding-left: 10px;
+  }
+
+  &.show {
+    max-height: 900px;
+    -webkit-transition: max-height 0.25s ease-in;
+    -moz-transition: max-height 0.25s ease-in;
+    transition: max-height 0.25s ease-in;
+  }
+}
+
+//@import "src/theme/variables";
+//
+//ul {
+//  list-style: none;
+//  margin: 0;
+//  white-space: nowrap;
+//  border-bottom: 1px solid #ffffff54;
+//}
+//
+//li {
+//  height: 55px;
+//  display: flex;
+//  align-items: center;
+//  justify-content: space-between;
+//  padding: 0 20px;
+//  margin: 0 0 0 8px;
+//  cursor: pointer;
+//
+//  mat-icon {
+//    color: #FFFFFF;
+//  }
+//
+//  .d-flex {
+//    display: flex;
+//    align-items: center;
+//    gap: 8px;
+//
+//    span {
+//      color: #FFFFFF;
+//    }
+//
+//    mat-icon, i {
+//      font-size: 20px;
+//    }
+//  }
+//
+//
+//}
+//
+//
+//a {
+//  text-decoration: none;
+//  color: #FFFFFF;
+//  font-size: 15px;
+//  font-weight: 400;
+//  cursor: pointer;
+//  font-family: $font-en-primary;
+//}
+//
+//.opened app-menu-level-cat {
+//  ::ng-deep {
+//    a {
+//      margin-left: 10px !important;
+//    }
+//  }
+//}
+@media (max-width: 930px) {
+  .menu-title {
+    color: #191919 !important;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: block;
+  }
+  .menu-expand-icon {
+    color: #191919 !important;
+  }
+  .icon-show{
+    display: block;
+  }
+  .icon-remove{
+    display: none;
+  }
+  .expanded{
+    .icon-remove{
+      display: block;
+    }
+    .icon-show{
+      display: none;
+    }
+  }
+  .menu-item-category .mat-button{
+    padding: 0px 15px;
+  }
+}
+@media (max-width: 599px) {
+  .menu-title {
+    color: #191919 !important;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: block;
+  }
+  .menu-expand-icon {
+    color: #191919 !important;
+  }
+  .icon-show{
+    display: block;
+  }
+  .icon-remove{
+    display: none;
+  }
+  .expanded{
+    .icon-remove{
+      display: block;
+    }
+    .icon-show{
+      display: none;
+    }
+  }
+  .menu-item-category .mat-button{
+    padding: 0px 15px;
+  }
+}
+@media (max-width: 959px) {
+  .menu-title {
+    color: #191919 !important;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: block;
+  }
+  .menu-expand-icon {
+    color: #191919 !important;
+  }
+  .icon-show{
+    display: block;
+  }
+  .icon-remove{
+    display: none;
+  }
+  .expanded{
+    .icon-remove{
+      display: block;
+    }
+    .icon-show{
+      display: none;
+    }
+  }
+  .menu-item-category .mat-button{
+    padding: 0px 15px;
+  }
+}
+
+@media (max-width: 460px) {
+  .menu-title {
+    color: #191919 !important;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: block;
+  }
+  .menu-expand-icon {
+    color: #191919 !important;
+  }
+  .icon-show{
+    display: block;
+  }
+  .icon-remove{
+    display: none;
+  }
+  .expanded{
+    .icon-remove{
+      display: block;
+    }
+    .icon-show{
+      display: none;
+    }
+  }
+  .menu-item-category .mat-button{
+    padding: 0px 15px;
+  }
+}

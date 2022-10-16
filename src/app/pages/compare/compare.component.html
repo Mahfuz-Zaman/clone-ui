@@ -1,0 +1,120 @@
+<div class="container">
+  <!---page-heding-->
+  <div class="page-heading">
+    <h2>Compare List</h2>
+  </div>
+  <div class="container-compare" *ngIf="!isEmpty else noData">
+    <div class="specification item" >
+      <table class="data-table"  border="1px">
+        <tbody>
+        <!--remove-->
+        <tr >
+          <th></th>
+          <td *ngFor="let c of compareListFromDB" class="remove"> <button (click)="removeItem(c._id)">Remove <span>x</span></button></td>
+        </tr>
+        <!----img-->
+        <tr>
+          <th></th>
+          <td   class="img" *ngFor="let c of compareListFromDB">
+            <img style="width: 90px" [src]="c?.images[0]" alt="">
+          </td>
+        </tr>
+        <!---title-->
+        <tr>
+          <th>Title</th>
+          <td class="name" *ngFor="let c of compareListFromDB">{{c?.productName}}</td>
+        </tr>
+        <!--price-->
+        <tr>
+          <th>Price</th>
+          <td class="price" *ngFor="let c of compareListFromDB">৳{{(c | price : 'priceWithDiscount') | number:'':'bn'}}</td>
+        </tr>
+        <!---add-to-card-->
+        <tr>
+          <th>Add To Cart</th>
+          <td *ngFor="let c of compareListFromDB" class="buy">
+            <button [fxHide]= "c?.quantity <= 0" (click)="addToCart(c._id)" >Add to Cart</button>
+            <span *ngIf="c?.quantity <= 0">-</span>
+          </td>
+        </tr>
+        <!---description-->
+        <tr>
+          <th>Description</th>
+          <td *ngFor="let c of compareListFromDB">
+            <div class="description" [innerHTML]="c?.shortDescription | safeHtmlCustom"></div>
+          </td>
+        </tr>
+        <!---Attribute-->
+        <tr>
+          <th>Attribute</th>
+          <td *ngFor="let c of compareListFromDB">
+<!--            <span>{{c.category.attributes ? c.category.attributes : 'N/A'}}</span>-->
+            <span *ngFor="let data of c.attributes">
+              {{data.attributeName}}
+            </span>
+          </td>
+        </tr>
+
+        <!---stock-->
+        <tr>
+          <th>AVAILABILITY</th>
+          <!-- {{compareListFromDB | json}} -->
+          <td class="" *ngFor="let c of compareListFromDB">
+            <span [ngStyle]="c.quantity > 0 ? {'color': 'green'} : {'color': 'red'}">{{c.quantity > 0 ? 'In Stock' : 'Out of Stock'}}</span>
+          </td>
+        </tr>
+        <!--weight-->
+        <tr>
+          <th>WEIGHT</th>
+          <td *ngFor="let c of compareListFromDB">-</td>
+
+        </tr>
+        <!--price-->
+        <tr>
+          <th>Price</th>
+          <td class="price" *ngFor="let c of compareListFromDB">৳{{c?.price | number:'':'bn'}}</td>
+        </tr>
+      </table>
+
+
+
+      <!--    <table class="data-table" cellpadding="0" cellspacing="0" *ngFor="let s of c.extraData.specification">-->
+      <!--      <colgroup>-->
+      <!--        <col class="name">-->
+      <!--        <col class="value">-->
+      <!--      </colgroup>-->
+      <!--      <thead>-->
+      <!--      <tr>-->
+      <!--        <td class="heading-row" colspan="3">{{s?.heading}}</td>-->
+      <!--      </tr>-->
+      <!--      </thead>-->
+
+      <!--      <tbody>-->
+      <!--      <tr *ngFor="let t of s.tableData">-->
+      <!--        <td class="name">{{t?.name}}</td>-->
+      <!--        <td class="value">{{t?.value}}</td>-->
+      <!--      </tr>-->
+
+      <!--    </table>-->
+
+
+    </div>
+    <br>
+  </div>
+  <br>
+</div>
+
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+
+
+<ng-template #noData>
+  <div style="text-align: center; margin-top: 50px;">
+    <h2>No Items in Compare List</h2>
+  </div>
+</ng-template>
+
+

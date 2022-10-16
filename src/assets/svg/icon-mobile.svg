@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55">
+  <g id="icon-mobile" transform="translate(815 -95)">
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="27.5" cy="27.5" r="27.5" transform="translate(-815 95)" fill="#4191ff"/>
+    <path id="Path_1" data-name="Path 1" d="M25.3,0H9.7A2.371,2.371,0,0,0,7.334,2.364V32.635A2.371,2.371,0,0,0,9.7,35H25.3a2.37,2.37,0,0,0,2.364-2.364V2.364A2.371,2.371,0,0,0,25.3,0ZM15,1.7H20a.287.287,0,0,1,0,.573H15A.287.287,0,0,1,15,1.7Zm2.5,32.114a1.182,1.182,0,1,1,1.182-1.183A1.182,1.182,0,0,1,17.5,33.818Zm8.521-3.193H8.979V3.749H26.021Z" transform="translate(-805.334 105)" fill="#fff"/>
+  </g>
+</svg>

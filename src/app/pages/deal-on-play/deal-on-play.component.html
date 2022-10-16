@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="main-content">
+
+    <div class="header">
+      <div class="title">
+        <h2>{{dealOnPlay?.name}}</h2>
+      </div>
+      <div class="desc">
+        <p>{{dealOnPlay?.shortDesc}}</p>
+      </div>
+      <div class="info">
+        <p>{{dealOnPlay?.info}}</p>
+      </div>
+    </div>
+
+    <div class="product-container">
+      <app-product-card-one
+        *ngFor="let data of products"
+        [product]="data"></app-product-card-one>
+    </div> <!-- END Product Container -->
+  </div> <!-- END MAIN CONTAINER AREA -->
+</div>
+
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>

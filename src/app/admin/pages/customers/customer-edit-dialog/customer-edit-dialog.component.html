@@ -1,0 +1,30 @@
+<div class="dialog-container">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <h3>Update User Info</h3>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        #templateForm="ngForm"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+
+    <mat-form-field class="form-field w-100" appearance="outline">
+      <mat-label>Update User Status</mat-label>
+      <mat-select formControlName="hasAccess" required>
+        <mat-option *ngFor="let data of userStatus" [value]="data.value">
+          {{  data.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <div class="action-area">
+      <button mat-raised-button color="primary" type="submit" [disabled]="dataForm.invalid">
+        Update
+      </button>
+    </div>
+  </form>
+</div>
+

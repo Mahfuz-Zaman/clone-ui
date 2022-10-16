@@ -1,0 +1,155 @@
+@import "src/theme/product-details";
+@import "src/theme/product-details-bottom";
+@import "src/theme/deal-of-the-day";
+@import'../../../theme/swipper.scss';
+
+.breadcrumb {
+  width: 100%;
+  max-width: $theme-container-width;
+  margin: 0 auto;
+  padding-left: 36px;
+}
+
+.emi-status {
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  h4 {
+    font-size: 14px;
+    color: #00a25d;
+    font-weight: 500;
+    border: 2px solid #00a25d;
+    padding: 13px 10px;
+    box-sizing: border-box;
+    position: relative;
+    top: 5px;
+    border-radius: 5px;
+    max-width: 200px;
+    width: 100%;
+  }
+}
+.youtubeVideo{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  iframe{
+    margin: 0 auto;
+  }
+}
+@media(max-width:430px){
+  .emi-status{
+    grid-template-columns: repeat(1, 1fr);
+    h4{
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+}
+
+
+@media(min-width:960px) and (max-width:1440px){
+  .breadcrumb{
+    width: 86%;
+    padding: 0px!important;
+  }
+  .container{
+    width: 88%!important;
+  }
+}
+
+.product-details{
+  width: 100%;
+  max-width: $theme-container-width;
+  padding: 0 16px;
+  margin: 0 auto;
+
+
+  .share-area {
+    margin-top: 10px;
+
+    .icons {
+      margin-top: 10px;
+
+      a {
+        img {
+          width: 35px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #d5d5d5;
+}
+
+.add-review-area {
+  padding-bottom: 24px;
+}
+
+
+
+//.img-carousel {
+//  width: 100%;
+//  height: 100%;
+//  border: 1px solid #dbdbdb;
+//  padding: 8px;
+//  img {
+//    width: 100%;
+//    height: 100%;
+//    object-fit: contain;
+//  }
+//}
+
+.zoom-viewer {
+  width: 100%;
+  background: #FFFFFF;
+
+  img {
+    width: 100%;
+    max-width: 610px;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.section-recommended {
+  padding: 0 16px;
+  .wrap-content {
+    display: block;
+    padding-top: 20px;
+  }
+}
+
+
+
+
+/****** SECTION RECOMMENDED ******/
+
+
+@media(max-width: 600px) {
+  .container{
+    width: 98%!important;
+  }
+}
+@media(max-width: 400px) {
+
+  .container{
+    width: 99%!important;
+  }
+}
+.popupimg{
+  width: 90%;
+  height: auto;
+  display: block;
+  // border: 1px solid;
+}
+@media(max-width:500px){
+  .popupimg{
+    width: 100%;
+  }
+}

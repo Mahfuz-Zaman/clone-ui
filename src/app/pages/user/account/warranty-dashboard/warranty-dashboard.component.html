@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="header">
+    <h2>Warranty Dashboard</h2>
+    <p>Find your warranty details by phone number that provide by Esquire Electronics Ltd.</p>
+  </div>
+
+  <hr class="center-square">
+
+  <div class="main">
+    <form #formElement="ngForm" class="search-form" [formGroup]="dataForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input digitOnly formControlName="customerPhoneNo" matInput placeholder="Enter your phone number." type="text" required [readonly]="sendVerificationCode" [minlength]="11" [maxLength]="11">
+        <mat-icon matSuffix>call</mat-icon>
+        <mat-error>Invalid Phone number!</mat-error>
+      </mat-form-field>
+
+      <div class="action" [fxHide]="sendVerificationCode">
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>search</mat-icon>
+          Find
+        </button>
+      </div>
+    </form>
+
+    <div class="waiting-mgs" *ngIf="sendVerificationCode">
+      <p>A verification code has been sent to {{customerPhoneNo}}. Please verify your phone number for download warranty information.</p>
+    </div>
+
+    <div class="verify-form-container" *ngIf="sendVerificationCode">
+
+      <form #formDirective="ngForm" (ngSubmit)="onRecoverFormSubmit(formDirective)" autocomplete="off">
+        <mat-form-field appearance="outline" class="otp-field">
+          <mat-label>OTP</mat-label>
+          <input name="otp" ngModel required matInput placeholder="OTP" [maxLength]="6">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+        <div class="bottom-view">
+          <div class="count-area" [hidden]="countDown === 0">
+            <span class="count-down">{{'0:' + countDown}}</span>
+          </div>
+
+          <div class="otp-action" >
+            <button fxHide [fxShow]="countDown <= 0" mat-button color="primary" class="button on-float-left"
+                    (click)="resendLoginCode()">
+              Resend Code
+            </button>
+
+            <button mat-raised-button color="warn" class="btn-submit" type="submit">
+              Verify Code
+            </button>
+          </div>
+        </div>
+      </form>
+
+    </div> <!-- END OTP AREA -->
+
+    <div class="download-table-view" *ngIf="warranties && warranties.length">
+      <hr class="center-square">
+
+
+      <div class="table-container">
+        <table>
+          <thead>
+          <tr class="table-head">
+            <th scope="col">{{'Invoice No'}}</th>
+            <th scope="col">{{'Activation Date'}}</th>
+            <th scope="col">{{'Product Name'}}</th>
+            <th scope="col">{{'SKU'}}</th>
+<!--            <th scope="col">{{'Warranty Period'}}</th>-->
+            <th scope="col">{{'Customer Name'}}</th>
+            <th scope="col">{{'Customer Phone'}}</th>
+            <th scope="col">{{'Download'}}</th>
+          </tr>
+          </thead> <!-- End Table Head -->
+          <tr *ngFor="let data of warranties | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+            <td [attr.data-label]="'Invoice No'">{{data.invoiceNumber}}</td>
+            <td [attr.data-label]="'Activation Date'">{{data.activationDate}}</td>
+            <td [attr.data-label]="'Product Name'">{{data.productName}}</td>
+            <td [attr.data-label]="'SKU'">{{data.sku}}</td>
+<!--            <td [attr.data-label]="'Warranty Period'">{{data.warrantyPeriod}}</td>-->
+            <td [attr.data-label]="'Customer Name'">{{data.customerName}}</td>
+            <td [attr.data-label]="'Customer Phone'">{{data.customerPhoneNo}}</td>
+            <td [attr.data-label]="'Download'">
+              <button (click)="downloadPdfInvoice(data)" mat-mini-fab color="primary">
+                <mat-icon>cloud_download</mat-icon>
+              </button>
+            </td>
+          </tr><!-- End Table Body -->
+
+        </table>
+
+      </div>
+
+      <div class="pagination-container">
+        <pagination-controls
+          class="product-pagination"
+          [autoHide]="true"
+          [maxSize]="15"
+          (pageChange)="onPageChanged($event)">
+        </pagination-controls>
+      </div>     <!-- END PAGINATION -->
+    </div>
+
+  </div>
+
+  <!-- NGX SPINNER -->
+  <ngx-spinner style="width: 100vw; height: 100vh"
+               bdColor="rgba(0,0,0,0.25)"
+               size="medium"
+               color="#fff"
+               type="ball-clip-rotate"
+               [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+
+
+
+</div>

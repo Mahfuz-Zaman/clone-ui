@@ -1,0 +1,59 @@
+<div class="container-grid">
+
+  <!-- <div class="filter-area">
+    <mat-form-field appearance="outline">
+      <mat-label>Select Filter</mat-label>
+      <mat-select (selectionChange)="onFilterData($event)">
+        <mat-option [value]="null">None</mat-option>
+        <mat-option *ngFor="let data of reportsFilters" [value]="data.value">
+          {{data.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->
+
+  <div class="main-overview">
+  <div>
+    <mat-card class="gradient-green tile p-1">
+      <mat-icon>monetization_on</mat-icon>
+      <h2>{{products ? products : '33500'}}</h2>
+      <p>Products</p>
+    </mat-card>
+  </div>
+  <!-- <div>
+    <mat-card class="gradient-red tile p-1">
+      <mat-icon>thumb_up_alt</mat-icon>
+      <h2>5300</h2>
+      <p>likes</p>
+    </mat-card>
+  </div> -->
+  <div>
+    <mat-card class="gradient-orange tile p-1">
+      <mat-icon>group</mat-icon>
+      <h2>{{users ? users : '14280'}}</h2>
+      <p>users</p>
+    </mat-card>
+  </div>
+  <div>
+    <mat-card class="gradient-pink tile p-1">
+      <mat-icon>shopping_cart</mat-icon>
+      <h2>{{orders ? orders : '7520'}}</h2>
+      <p>orders</p>
+    </mat-card>
+  </div>
+  <!-- <div>
+    <mat-card class="gradient-gray tile p-1">
+      <mat-icon>pie_chart</mat-icon>
+      <h2>$2700</h2>
+      <p>tax</p>
+    </mat-card>
+  </div>
+  <div>
+    <mat-card class="gradient-brown tile p-1">
+      <mat-icon>save_alt</mat-icon>
+      <h2>12700</h2>
+      <p>downloads</p>
+    </mat-card>
+  </div> -->
+</div>
+</div>

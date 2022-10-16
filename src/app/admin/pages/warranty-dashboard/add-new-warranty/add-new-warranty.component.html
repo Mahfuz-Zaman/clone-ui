@@ -1,0 +1,73 @@
+<!--<div class="nav">-->
+<!--  <app-breadcrumb-soft></app-breadcrumb-soft>-->
+<!--</div>-->
+
+<div>
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Warranty</h1>
+  </div>
+
+  <form [formGroup]="dataForm"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        #templateForm="ngForm"
+        fxLayout="column" fxLayoutAlign="space-around center">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Invoice Number</mat-label>
+      <input formControlName="invoiceNumber" matInput placeholder="Enter invoice number" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" (click)="activationDate.open()">
+      <mat-label>Activation Date</mat-label>
+      <input readonly [matDatepicker]="activationDate" formControlName="activationDate" matInput
+             placeholder="Select activation date">
+      <mat-datepicker-toggle matSuffix [for]="activationDate"></mat-datepicker-toggle>
+      <mat-datepicker #activationDate></mat-datepicker>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product Name</mat-label>
+      <input formControlName="productName" matInput placeholder="Enter product name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>SKU</mat-label>
+      <input formControlName="sku" matInput placeholder="Enter product sku" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Customer Name</mat-label>
+      <input formControlName="customerName" matInput placeholder="Enter customer name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Customer Phone No</mat-label>
+      <input formControlName="customerPhoneNo" matInput placeholder="Enter customer phone no" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Warranty Period</mat-label>
+      <textarea matInput placeholder="Enter warranty period" type="text"
+                formControlName="warrantyPeriod" [rows]="4">
+      </textarea>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit">{{ warranty ? 'Edit Warranty' : 'Add Warranty' }}</button>
+  </form>
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+

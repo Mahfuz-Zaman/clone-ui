@@ -1,0 +1,230 @@
+@import "src/theme/variables";
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/*** start main coding ****/
+
+.section1-menu {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 5px;
+  padding: 20px 0;
+}
+
+.section1-menu ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+.section1-menu ul li {
+  display: block;
+}
+
+.section1-menu ul li a {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-style: normal;
+  font-family: $font-en-primary;
+  display: block;
+  font-size: 18px;
+  color: #07E6CA;
+  line-height: 24px;
+}
+
+.section-1 {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #fff;
+  background-image: url(../../../assets/images/coming-soon/bg-bubules.webp);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right top;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 10vh;
+
+}
+
+.section1-main {
+  display: block;
+  width: 100%;
+}
+
+.cooming-soon {
+  display: block;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+}
+
+.cooming-soon img {
+  display: block;
+  width: 69px;
+  height: 69px;
+  margin: 25px 0px;
+}
+
+.rotate-img-top {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.rotate-img-top img {
+  margin-left: auto;
+  position: relative;
+  right: 30px;
+}
+
+.cooming-soon-details {
+  display: block;
+  text-align: center;
+  width: 100%;
+
+  desc {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0;
+  }
+}
+
+.cooming-soon-details h1 {
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-size: 100px;
+  display: block;
+  margin: 0px;
+  text-transform: uppercase;
+  color: #212121;
+  line-height: 110px;
+  letter-spacing: 15px;
+  margin-bottom: 30px;
+}
+
+.cooming-soon-details h4 {
+  font-weight: 400;
+  font-size: 20px;
+  display: block;
+  letter-spacing: 3px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: rgb(33, 33, 33);
+  line-height: 35px;
+  margin-bottom: 30px;
+}
+
+.link {
+  margin: 20px 0;
+}
+
+.cooming-soon-details a {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin: auto auto 20px;
+  color: #fff;
+  background-color: #07E6CA;
+  max-width: 170px;
+  padding: 16px 8px;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: $font-en-primary;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: all 0.3s linear;
+}
+
+.plus-img {
+  display: block;
+  width: 100%;
+}
+
+.plus-img img {
+  position: absolute;
+  left: 15%;
+  top: 40%;
+  z-index: -1;
+}
+
+.rotate-img-bottom {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 30px;
+}
+
+.right-img img {
+  margin-left: auto;
+}
+
+@media(max-width: 600px) {
+  .cooming-soon-details h1 {
+    font-size: 80px;
+    line-height: 80px;
+  }
+}
+
+@media(max-width: 500px) {
+  .cooming-soon-details h1 {
+    font-size: 60px;
+    line-height: 70px;
+    margin-bottom: 20px;
+  }
+  .cooming-soon-details h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+}
+
+@media(max-width: 400px) {
+  .cooming-soon-details h1 {
+    font-size: 45px;
+    line-height: 55px;
+  }
+  .cooming-soon-details h4 {
+    font-size: 17px;
+
+  }
+  .section-1 img {
+    width: 60px;
+    height: 60px;
+  }
+}

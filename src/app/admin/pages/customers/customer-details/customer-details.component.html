@@ -1,0 +1,145 @@
+<!--***** admin-pannel-area ******-->
+<section class="admin-panel">
+  <div class="container">
+    <!--**** admin-pannel-main-area *****-->
+    <div class="admin-main">
+
+      <!--***** admin-profile ******-->
+      <div class="admin-profile">
+
+        <!--***** admin-profile-mdile ******-->
+        <div class="admin-profile-top">
+          <div class="profile-img">
+            <img [src]="imgPlaceHolder" [alt]="'Picked Image'">
+          </div>
+        </div>
+
+      </div> <!--***** admin-profile-end ******-->
+
+
+      <!--****** admin-form-area **********-->
+      <div class="admin-form-area">
+        <!--****** admin-form **********-->
+        <form>
+
+          <!--****** admin-personal-information **********-->
+          <div class="form-info">
+            <!--****** admin-field-title **********-->
+            <div class="field-title">
+              <h3>Customer Information:</h3>
+            </div>
+            <!--name-->
+            <div class="name">
+
+                <p>Name           : {{customer.fullName}}</p>
+                <p>BirthDate      : {{customer.birthdate}}</p>
+                <p>Gender         : {{customer.gender}}</p>
+                <p>Address        : {{customer.address}}</p>
+                <p>Phone Verified : {{customer.isPhoneVerified}}</p>
+                <p>Email Verified : {{customer.isEmailVerified}}</p>
+                <p>Has Access     : {{customer.hasAccess}}</p>
+                <p>Created At    : {{customer.createdAt}}</p>
+
+            </div>
+          </div>
+
+          <!--****** Contact Information **********-->
+          <div class="form-info">
+            <!--****** admin-field-title **********-->
+            <div class="field-title">
+              <br>
+              <h3>Contact Information:</h3>
+            </div>
+            <!--name-->
+            <div class="num">
+
+                <p>Phone No     : {{customer.phoneNo}}</p>
+                <p>email        : {{customer.birthdate}}</p>
+
+            </div>
+
+          </div>
+
+        </form>
+      </div><!--*** end *****-->
+    </div>
+  </div>
+</section>
+
+
+<div class="header">
+  <h2>Cart List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Name'}}</th>
+      <th scope="col">{{'Image'}}</th>
+      <th scope="col">{{'SKU'}}</th>
+      <th scope="col">{{'Category'}}</th>
+      <th scope="col">{{'Retail Price'}}</th>
+      <th scope="col">{{'Sale Price'}}</th>
+      <th scope="col">{{'Available'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of customer.carts | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+      <td [attr.data-label]="'Name'">{{data.product.productName}}</td>
+      <td [attr.data-label]="'Image'" style="text-align: center">
+        <img [src]="data?.product.images && data?.product.images.length > 0 ? data.product.images[0] : '/assets/images/placeholder/test.png'"
+             [alt]="data.product.productName">
+      </td>
+      <td [attr.data-label]="'SKU'">{{data.product.sku}}</td>
+      <td [attr.data-label]="'Category'">{{data.product.categorySlug}}</td>
+      <td [attr.data-label]="'Retail Price'">৳ {{data.product.price | number: '': 'bn'}}</td>
+      <td [attr.data-label]="'Sale Price'">৳ {{data | price: 'priceWithDiscount' | number: '': 'bn'}}</td>
+      <td [attr.data-label]="'Available'">{{data.product.quantity ? data.product.quantity : 'N/A'}}</td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+</div>
+
+
+
+<div class="header">
+  <h2>Wish List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Name'}}</th>
+      <th scope="col">{{'Image'}}</th>
+      <th scope="col">{{'SKU'}}</th>
+      <th scope="col">{{'Category'}}</th>
+      <th scope="col">{{'Retail Price'}}</th>
+      <th scope="col">{{'Sale Price'}}</th>
+      <th scope="col">{{'Available'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of customer.wishlists | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+      <td [attr.data-label]="'Name'">{{data.product.productName}}</td>
+      <td [attr.data-label]="'Image'" style="text-align: center">
+        <img [src]="data?.product.images && data?.product.images.length > 0 ? data.product.images[0] : '/assets/images/placeholder/test.png'"
+             [alt]="data.product.productName">
+      </td>
+      <td [attr.data-label]="'SKU'">{{data.product.sku}}</td>
+      <td [attr.data-label]="'Category'">{{data.product.categorySlug}}</td>
+      <td [attr.data-label]="'Retail Price'">৳ {{data.product.price | number: '': 'bn'}}</td>
+      <td [attr.data-label]="'Sale Price'">৳ {{data | price: 'priceWithDiscount' | number: '': 'bn'}}</td>
+      <td [attr.data-label]="'Available'">{{data.product.quantity ? data.product.quantity : 'N/A'}}</td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+</div>
+

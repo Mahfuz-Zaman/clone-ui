@@ -1,0 +1,22 @@
+<div class="card" (click)="onNavigate(product?.productSlug)">
+<!--  <div class="img-thumb">-->
+<!--    <img [src]="product?.primaryImages ? product.primaryImages[0].big : '/assets/images/product/mango-yellow.jpeg'" alt="This is a mango">-->
+<!--  </div>-->
+
+  <div class="desc">
+    <h2 class="title">{{product?.productName}}</h2>
+    <div class="rating">
+      <mat-icon>grade</mat-icon>
+      <mat-icon>grade</mat-icon>
+      <mat-icon>grade</mat-icon>
+      <mat-icon>grade</mat-icon>
+      <mat-icon>grade</mat-icon>
+    </div>
+    <h2 class="price">৳ {{product.price - product.discountAmount}}</h2>
+  </div>
+
+  <div class="action" (click)="onAddToCart($event)">
+    <button mat-raised-button color="primary">Add to Cart</button>
+  </div>
+
+</div>

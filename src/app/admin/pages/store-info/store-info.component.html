@@ -1,0 +1,47 @@
+<div class="top-action">
+  <button mat-raised-button color="primary" [routerLink]="['add-store-info']">
+    <mat-icon>add</mat-icon>
+    Add New Store
+  </button>
+</div>
+
+
+<div class="header">
+  <h2>Store List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Store Name'}}</th>
+      <th scope="col">{{'Store Address'}}</th>
+      <th scope="col">{{'Phone Number'}}</th>
+      <th scope="col">{{'District'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of stores; let i = index">
+      <td [attr.data-label]="'Store Name'">{{data.storeName}}</td>
+      <td [attr.data-label]="'Store Address'">{{data.address}}</td>
+      <td [attr.data-label]="'Phone Number'">{{data.phoneNumber}}</td>
+      <td [attr.data-label]="'District'">{{data.district}}</td>
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" mat-mini-fab color="warn" (click)="openConfirmDialog(data._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button [routerLink]="['edit-store-info/', data._id]" mat-mini-fab
+                aria-label="Example icon-button with a heart icon">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+</div>
+
+

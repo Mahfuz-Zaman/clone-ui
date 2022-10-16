@@ -1,0 +1,58 @@
+<div style="position: relative">
+  <mat-spinner *ngIf="isLoading"
+               style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto"
+  ></mat-spinner>
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Sub-Category</h1>
+    <mat-checkbox [(ngModel)]="autoSlug" (change)="autoGenerateSlug()" color="primary">Auto Slug</mat-checkbox>
+  </div>
+
+  <form [formGroup]="dataForm"
+        #templateForm="ngForm"
+        (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-form-field appearance="outline">
+      <mat-label>Sub Category Name</mat-label>
+      <input formControlName="subCategoryName" matInput placeholder="Enter sub-category name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sub Category Slug</mat-label>
+      <input formControlName="subCategorySlug" matInput placeholder="Enter sub-category slug" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Brand Name</mat-label>-->
+<!--      <mat-select formControlName="brand">-->
+<!--        <mat-option *ngFor="let data of brands" [value]="data._id">-->
+<!--          {{  data.brandName }}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category Name</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let data of categories" [value]="data._id">
+          {{  data.categoryName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline">
+      <mat-label>Attribute</mat-label>
+      <mat-select multiple formControlName="attributes">
+        <mat-option *ngFor="let data of attributes" [value]="data._id">
+          {{  data.attributeName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">{{ subCategory ? 'Edit Category' : 'Add Category' }}</button>
+  </form>
+</div>
+
+
+

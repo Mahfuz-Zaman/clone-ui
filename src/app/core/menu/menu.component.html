@@ -1,0 +1,75 @@
+
+<mat-sidenav-container>
+
+  <!--[mode]="(isHandset$ | async) ? 'over' : 'side'"-->
+  <mat-sidenav #sidenav [mode]="'over'" [opened]="false" class="sidenav mat-elevation-z6">
+
+    <div class="top-view">
+      <div class="logo-thumb">
+        <img src="/assets/brand/logo-white.png" alt="">
+      </div>
+      <div class="action">
+        <button mat-button class="icon-btn-big">
+          <mat-icon>help</mat-icon>
+          Help
+        </button>
+
+        <button mat-button class="icon-btn-big" routerLink="/login">
+          <mat-icon>account_circle</mat-icon>
+          Login
+        </button>
+      </div>
+    </div> <!-- END HEADER PART -->
+
+    <app-sidenav-list *ngIf="count > 2" [menuItems]="menus" [menuParentId]="null"></app-sidenav-list> <!-- END SIDENAV LIST -->
+
+    <div class="footer">
+<!--      <div class="button-group">-->
+<!--        <div [class.active]="activeLang === 'en'" class="btn" (click)="selectLang('en')"><img-->
+<!--          src="/assets/images/flag/united-states-flag.png" alt="">EN-->
+<!--        </div>-->
+<!--        <div [class.active]="activeLang === 'bn'" class="btn bn-default" (click)="selectLang('bn')"><img-->
+<!--          src="/assets/images/flag/bangladesh-flag.png" alt="">বাং-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="company-link">
+        <a  href="https://softlabit.com/" target="_blank">Copyright &copy; esquire.com - 2021</a>
+      </div>
+
+    </div>
+
+  </mat-sidenav> <!-- END SIDENAV -->
+
+  <mat-sidenav-content>
+    <app-header [scrollPosition]="scrollPosition" [shopInfo]="shopInfo"></app-header><!-- END HEADER MAIN -->
+    <app-mega-menu
+      (sidenavNavToggle)="sidenav.open()"
+      [mobileCatMenu]="mCategoryMenus"
+      [categoryMenus]="categoryMenus"
+      [promotionalOffers]="allPromotionalOffers"
+      [installationRepairTypes]="allInstallationRepairTypes"
+      [aboutUses]="allAboutUsPages"
+      [scrollPosition]="scrollPosition">
+    </app-mega-menu>
+
+    <main class="main-content" [class.toolbar-small]="scrollPosition > 714">
+      <ng-content></ng-content>
+    </main>
+
+<!--    <div class="message">-->
+<!--      <h2>WARNING! This website is under testing, Please don't Order anything for now. Thanks for connecting with us.</h2>-->
+<!--    </div>-->
+
+
+
+    <app-footer [shopInfo]="shopInfo"></app-footer>
+
+    <div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top transition no-select" (click)="scrollToTop()">
+      <mat-icon>arrow_upward</mat-icon>
+    </div>
+
+    <app-cookie-consent></app-cookie-consent>
+
+  </mat-sidenav-content> <!-- END MAIN CONTENT -->
+
+</mat-sidenav-container>

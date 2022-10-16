@@ -1,0 +1,29 @@
+<div class="container">
+
+  <div class="input-area" [fxShow]="userService.getUserStatus()">
+    <div class="rating">
+      <p>Your Rating *</p>
+      <app-star-rating [rating]="rating" (ratingUpdated)="onRatingChanged($event)"
+                       [showSnackbar]="false"></app-star-rating>
+    </div>
+    <form class="form" #formElement="ngForm" (ngSubmit)="onSubmitReview(formElement)">
+      <p>Your Reviews *</p>
+      <mat-form-field class="rating-form-field" appearance="outline">
+        <mat-label>Please write your honest opinion and give a rating</mat-label>
+        <textarea ngModel name="text" matInput rows="5" required></textarea>
+      </mat-form-field>
+      <div class="action">
+        <button mat-raised-button type="submit" color="primary">Submit</button>
+      </div>
+    </form>
+  </div> <!-- END REVIEW CARD-->
+
+  <div class="login-card" [fxHide]="userService.getUserStatus()">
+    <button type="button" [routerLink]="['/login']" [queryParams]="{redirectFrom: pageUrl }" mat-raised-button color="accent">
+      Login
+    </button>
+    <p>For submit your review, you need to login first.</p>
+  </div> <!-- END LOGIN CARD for Un Authorized User-->
+
+
+</div>

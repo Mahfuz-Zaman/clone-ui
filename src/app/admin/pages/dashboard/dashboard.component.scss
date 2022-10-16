@@ -1,0 +1,165 @@
+@import "src/theme/variables";
+
+.container {
+  font-family: $font-en-primary;
+  //margin-top: 12px;
+}
+
+
+
+
+.card-one {
+  background: rgb(34,108,227);
+  background: linear-gradient(90deg, rgba(34,108,227,1) 0%, rgba(18,73,138,1) 100%);
+}
+
+.card-two {
+  background: #7F00FF;
+  background: -webkit-linear-gradient(to bottom, #E100FF, #7F00FF);
+  background: linear-gradient(to bottom, #E100FF, #7F00FF);
+
+}
+
+.card-three {
+  background: #bc4e9c;
+  background: -webkit-linear-gradient(to bottom, #f80759, #bc4e9c);
+  background: linear-gradient(to bottom, #f80759, #bc4e9c);
+
+}
+
+.card-four {
+  background: #2b5876;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
+
+// ## Custom BreakPoints
+@media only screen and (max-device-width: $max-tablet-width) {
+  .main-overview {
+    padding: 0 10px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (min-device-width: 1080px) and (max-device-width: 1440px) {
+}
+
+
+@import "src/theme/exports/table-one";
+@import "src/theme/exports/search";
+
+
+
+/*----------------
+TOP ACTION
+------------------*/
+.top-action {
+  margin-top: 16px;
+  padding-right: 16px;
+
+  display: flex;
+  justify-content: space-between;
+
+  .select-area {
+    padding-left: 16px;
+    .mat-radio-button ~ .mat-radio-button {
+      margin-left: 16px;
+    }
+  }
+
+
+  button {
+    ::ng-deep {
+      span {
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+/*----------------
+Filter Section
+------------------*/
+.filter-area {
+  width: 100%;
+
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  mat-card {
+    .filter-form-field, .mat-date-input-field {
+      width: 350px;
+    }
+  }
+}
+
+.search-area {
+  margin-top: 6px;
+  margin-left: auto;
+}
+
+
+
+/*----------------
+HEADER TITLE
+------------------*/
+.header {
+  h2 {
+    text-align: center;
+    font-family: $font-en-primary;
+  }
+}
+
+.table-container{
+  button{
+    margin-right: 5px;
+  }
+}
+
+
+.pagination-container {
+  text-align: center;
+}
+
+.unpaid {
+  background: #ff6e7b;
+  text-transform: uppercase;
+  color: #57030a;
+}
+.italic {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.paid {
+  background: #01ca75;
+  text-transform: uppercase;
+  color: #00351c;
+}
+
+.cancel {
+  color: #ad0228;
+}
+
+.processing {
+  color: #000000;
+}
+.confirm {
+  color: #00c14c;
+}
+.delivered, .refund, .shipping {
+  color: #00c14c;
+}
+
+
+.clear-filter {
+  text-align: right;
+  padding: 8px 12px;
+}
+
+
+

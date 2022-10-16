@@ -1,0 +1,30 @@
+<!---************ section-1 ***********---->
+<section class="section-1 blog-container">
+  <div class="container">
+
+    <div class="blog-img">
+      <img [src]="blog?.image" alt="">
+    </div>
+    <!---section1-main-->
+    <div class="section1-main">
+      <!--section1-title-->
+      <div class="section1-title">
+        <h2>{{blog.title}}</h2>
+      </div>
+      <!--section1-description-->
+      <div class="section1-description" [innerHTML]="blog?.body | safeHtmlCustom">
+<!--        <p>{{blog.body}}</p>-->
+      </div>
+      <!--section1-btn-->
+      <!-- <div class="section1-btn">
+        <a href="#">Read Articles</a>
+      </div> -->
+
+    </div><!--section1-main-end-->
+
+  </div>
+</section> <!---************ section-1-end ***********---->
+
+<div class="body">
+
+</div> <!-- END BODY -->

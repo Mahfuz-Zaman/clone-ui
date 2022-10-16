@@ -1,0 +1,48 @@
+<div style="position: relative">
+  <h2 class="header">Dealer</h2>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        #templateForm="ngForm"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+    <mat-form-field appearance="outline">
+      <mat-label>Dealer Name</mat-label>
+      <input formControlName="dealerName" matInput placeholder="Enter Dealer Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input formControlName="address" matInput placeholder="Enter Dealer Store Address" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input formControlName="phoneNumber" matInput placeholder="Enter Dealer Phone Number" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>District</mat-label>
+      <input formControlName="district" matInput placeholder="Enter District Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Country</mat-label>
+      <input formControlName="country" matInput placeholder="Enter Country Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Map</mat-label>
+      <input formControlName="map" matInput placeholder="Enter Dealer Map Iframe" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">{{ dealer ? 'Edit Dealer' : 'Add Dealer' }}</button>
+  </form>
+</div>
+
+

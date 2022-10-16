@@ -1,0 +1,93 @@
+<div style="position: relative">
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Offer Products</h1>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        #templateForm="ngForm"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Enter Offer Products Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Promotional Offer</mat-label>
+      <mat-select formControlName="promotionalOffer" (selectionChange)="onProOfferSelect($event)">
+        <mat-option *ngFor="let data of promotionalOffers" [value]="data._id">
+          {{  data.title }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <div fxFlex="100" class="px-1">
+      <angular-editor id="description" formControlName="description"
+                      [config]="editorConfigDesc" ></angular-editor>
+    </div>
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Category Name</mat-label>-->
+<!--      <mat-select formControlName="category" (selectionChange)="onCatSelect($event)">-->
+<!--        <mat-option *ngFor="let data of categories" [value]="data._id">-->
+<!--          {{  data.categoryName }}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
+
+    <div class="select-product">
+      <button type="button" mat-raised-button color="accent" (click)="openComponentDialog()">
+        <mat-icon>add</mat-icon>
+        Choose Product
+      </button>
+    </div>
+    <div class="save-btn">
+      <button mat-raised-button color="primary" type="submit">{{id ? 'Edit Offer Product' : 'Add Offer Product'}}</button>
+    </div>
+  </form>
+
+  <div class="product-view" *ngIf="products && products.length > 0">
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr class="table-head">
+          <th scope="col">{{'Name'}}</th>
+          <th scope="col">{{'Image'}}</th>
+          <th scope="col">{{'SKU'}}</th>
+          <th scope="col">{{'Category'}}</th>
+          <th scope="col">{{'Retail Price'}}</th>
+          <th scope="col">{{'Sale Price'}}</th>
+          <th scope="col">{{'Available'}}</th>
+          <th scope="col">{{'Action'}}</th>
+        </tr>
+        </thead> <!-- End Table Head -->
+        <tr *ngFor="let data of products; let i = index">
+          <td [attr.data-label]="'Name'">{{data.productName}}</td>
+          <td [attr.data-label]="'Image'">
+            <img [src]="data?.images && data?.images.length > 0 ? data.images[0] : '/assets/images/placeholder/test.png'" [alt]="data.productName">
+          </td>
+          <td [attr.data-label]="'SKU'">{{data.sku}}</td>
+          <td [attr.data-label]="'Category'">{{data.categorySlug}}</td>
+          <td [attr.data-label]="'Retail Price'">৳ {{data.price}}</td>
+          <td [attr.data-label]="'Sale Price'">৳ {{data | price: 'priceWithDiscount'}}</td>
+          <td [attr.data-label]="'Available'">{{data.quantity}}</td>
+          <td [attr.data-label]="'Details'">
+
+            <button mat-mini-fab color="warn" (click)="removeProduct(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+
+          </td>
+        </tr><!-- End Table Body -->
+
+      </table>
+
+    </div>
+  </div> <!-- Product View Table -->
+</div>
+
+

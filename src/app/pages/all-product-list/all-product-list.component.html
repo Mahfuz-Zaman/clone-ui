@@ -1,0 +1,306 @@
+
+<div *ngIf="allProductListBanner" class="container-fluid">
+  <section class="big-offer-banner"  *ngFor="let data of allProductListBanner">
+    <a [routerLink]="[data?.routerLink]">
+      <img [alt]="" [defaultImage]="'/assets/images/placeholder/anim.gif'"
+           [lazyLoad]="data?.image" style="height: {{data?.bHeight}}px;">
+    </a>
+  </section> <!-- END BIG OFFER VIEW -->
+</div>
+
+
+
+<div class="container-fluid">
+  <div class="side-filter">
+    <div class="price-filter">
+      <div class="header">
+        <h1>Price Range</h1>
+        <div class="line"></div>
+      </div>
+      <div class="price-range">
+        <span>From: <b>৳{{minPrice ? minPrice : 1}}</b></span>
+        <span>To: <b>৳{{maxPrice ? maxPrice : priceRange?.max}}</b></span>
+      </div>
+      <div class="input_fields">
+        <div class="first_input_field">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <input matInput [(ngModel)]="minPrice">
+          </mat-form-field>
+        </div>
+        <div class="second_input_field">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <input matInput [(ngModel)]="maxPrice">
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="onPriceRangeInput()">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+
+      <div class="price-range">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
+          <mat-slider matTooltip="{{minView}}" color="primary" max="{{maxPrice ? maxPrice : priceRange?.max}}" min="{{1}}" value="{{1}}" thumb-label="true" (change)="onInputChangeMin($event)" (input)="onInputChangeSlideMin($event)"></mat-slider>
+          <mat-slider matTooltip="{{maxView}}" color="warn" max="{{priceRange?.max}}" min="{{priceRange?.min}}" value="{{priceRange?.max}}" thumb-label="true" (change)="onInputChangeMax($event)" (input)="onInputChangeSlideMax($event)"></mat-slider>
+        </div>
+        <!-- <input type="number" placeholder="Min" [(ngModel)]="minPrice">
+        <input type="number" placeholder="Max" [(ngModel)]="maxPrice">
+        <button mat-raised-button color="primary" (click)="onFilterPriceRange()">
+          <mat-icon>play_arrow</mat-icon>
+        </button> -->
+      </div>
+    </div>
+
+    <div class="clear-filter" *ngIf="query">
+      <button mat-button (click)="onClearFilter()">Clear Filter</button>
+    </div>
+
+<!--    <mat-card>-->
+<!--      <div class="title">-->
+<!--        <h1>{{'Choose Category'}}</h1>-->
+<!--        <div class="line"></div>-->
+<!--      </div>-->
+<!--      <div class="body">-->
+<!--        <mat-radio-group-->
+<!--          [(ngModel)]="catFilter"-->
+<!--          aria-labelledby="filter-radio-group-label"-->
+<!--          class="filter-radio-group"-->
+<!--          (change)="onCatSelectionChange($event)">-->
+<!--          <mat-radio-button class="filter-radio-button" *ngFor="let c of categories" [value]="c">-->
+<!--            <span class="radio-button-span">{{c.categoryName}}</span>-->
+<!--          </mat-radio-button>-->
+<!--        </mat-radio-group>-->
+<!--      </div>-->
+<!--    </mat-card> &lt;!&ndash; First Filter &ndash;&gt;-->
+
+    <mat-accordion>
+      <mat-expansion-panel class="filter-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="title">
+              <h1>{{'Choose Category'}}</h1>
+              <!--              <div class="line"></div>-->
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="body">
+          <mat-radio-group
+            [(ngModel)]="catFilter"
+            aria-labelledby="filter-radio-group-label"
+            class="filter-radio-group"
+            (change)="onCatSelectionChange($event)">
+            <mat-radio-button class="filter-radio-button" *ngFor="let c of categories" [value]="c">
+              <span class="radio-button-span">{{c.categoryName}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel fxHide [fxShow]="subCategories && subCategories.length > 0" class="filter-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="title">
+              <h1>{{'Choose Sub Category'}}</h1>
+              <!--              <div class="line"></div>-->
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="body">
+          <mat-radio-group
+            [(ngModel)]="subCatFilter"
+            aria-labelledby="filter-radio-group-label"
+            class="filter-radio-group"
+            (change)="onSubCatSelectionChange($event)">
+            <mat-radio-button class="filter-radio-button" *ngFor="let c of subCategories" [value]="c">
+              <span class="radio-button-span">{{c.subCategoryName}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="filter-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="title">
+              <h1>{{'Choose Brands'}}</h1>
+              <!--              <div class="line"></div>-->
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="body">
+          <mat-radio-group
+            [(ngModel)]="brandFilter"
+            aria-labelledby="filter-radio-group-label"
+            class="filter-radio-group"
+            (change)="onBrandSelectionChange($event)">
+            <mat-radio-button class="filter-radio-button" *ngFor="let c of brands" [value]="c">
+              <span class="radio-button-span">{{c.brandName}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+<!--    <mat-card fxHide [fxShow]="subCategories && subCategories.length > 0" style="margin-top: 16px;">-->
+<!--      <div class="title">-->
+<!--        <h1>{{'Choose Sub Category'}}</h1>-->
+<!--        <div class="line"></div>-->
+<!--      </div>-->
+<!--      <div class="body">-->
+<!--        <mat-radio-group-->
+<!--          [(ngModel)]="subCatFilter"-->
+<!--          aria-labelledby="filter-radio-group-label"-->
+<!--          class="filter-radio-group"-->
+<!--          (change)="onSubCatSelectionChange($event)">-->
+<!--          <mat-radio-button class="filter-radio-button" *ngFor="let c of subCategories" [value]="c">-->
+<!--            <span class="radio-button-span">{{c.subCategoryName}}</span>-->
+<!--          </mat-radio-button>-->
+<!--        </mat-radio-group>-->
+<!--      </div>-->
+<!--    </mat-card> &lt;!&ndash; First Filter &ndash;&gt;-->
+
+  </div> <!-- END SIDE FILTER AREA -->
+
+
+
+  <div class="main-content">
+
+    <!---grid-var-->
+    <div class="list-controll-var">
+      <button class="mobile-sort-area" mat-raised-button (click)="openTemplateDialog()">
+        <mat-icon>tune</mat-icon>
+      </button>
+      <ul>
+        <li><button [class.active]="viewType === 'grid'" (click)="onChangeViewType('grid')"><mat-icon>view_comfy</mat-icon></button></li>
+        <li><button [class.active]="viewType === 'list'" (click)="onChangeViewType('list')"><mat-icon>view_list</mat-icon></button></li>
+      </ul>
+    </div>
+
+    <div class="product-container" *ngIf="viewType === 'grid'">
+      <app-product-card-one
+        *ngFor="let product of products | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }"
+        [product]="product"></app-product-card-one>
+    </div> <!-- END Product Container -->
+
+    <!---grid-card-container-->
+    <div class="grid-card-container" *ngIf="viewType === 'list'">
+      <app-grid-card *ngFor="let product of products | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }"
+      [product]="product"></app-grid-card>
+    </div><!----end-->
+
+
+    <div class="pagination-container">
+      <pagination-controls
+        class="product-pagination"
+        [autoHide]="true"
+        [maxSize]="15"
+        (pageChange)="onPageChanged($event)">
+      </pagination-controls>
+    </div>     <!-- END PAGINATION -->
+
+  </div> <!-- END MAIN CONTAINER AREA -->
+</div>
+
+
+
+<!-- MOBILE FILTER DIALOG Template -->
+<ng-template #dialogFilter>
+  <div class="view-dialog">
+    <div class="header-mobile">
+      <button class="btn-done" mat-raised-button color="primary">
+        <mat-icon>done</mat-icon>
+        Done
+      </button>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="side-filter">
+      <div class="price-filter">
+        <div class="header">
+          <h1>Price Range</h1>
+          <div class="line"></div>
+        </div>
+        <div class="price-range">
+          <span>From: <b>৳{{minPrice ? minPrice : 1}}</b></span>
+          <span>To: <b>৳{{maxPrice ? maxPrice : priceRange?.max}}</b></span>
+        </div>
+        <div class="price-range">
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
+            <mat-slider color="primary" max="{{maxPrice ? maxPrice : priceRange?.max}}" min="{{1}}" value="{{1}}" thumb-label="true" (change)="onInputChangeMin($event)"></mat-slider>
+            <mat-slider color="warn" max="{{priceRange?.max}}" min="{{priceRange?.min}}" value="{{priceRange?.max}}" thumb-label="true" (change)="onInputChangeMax($event)"></mat-slider>
+          </div>
+          <!-- <input type="number" placeholder="Min" [(ngModel)]="minPrice">
+          <input type="number" placeholder="Max" [(ngModel)]="maxPrice">
+          <button mat-raised-button color="primary" (click)="onFilterPriceRange()">
+            <mat-icon>play_arrow</mat-icon>
+          </button> -->
+        </div>
+      </div>
+      <mat-card>
+        <div class="title">
+          <h1>{{'Choose Category'}}</h1>
+          <div class="line"></div>
+        </div>
+        <div class="body">
+          <mat-radio-group
+            [(ngModel)]="catFilter"
+            aria-labelledby="filter-radio-group-label"
+            class="filter-radio-group"
+            (change)="onCatSelectionChange($event)">
+            <mat-radio-button class="filter-radio-button" *ngFor="let c of categories" [value]="c">
+              <span class="radio-button-span">{{c.categoryName}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-card> <!-- First Filter -->
+      <mat-card fxHide [fxShow]="subCategories && subCategories.length > 0" style="margin-top: 16px;">
+        <div class="title">
+          <h1>{{'Choose Sub Category'}}</h1>
+          <div class="line"></div>
+        </div>
+        <div class="body">
+          <mat-radio-group
+            [(ngModel)]="subCatFilter"
+            aria-labelledby="filter-radio-group-label"
+            class="filter-radio-group"
+            (change)="onSubCatSelectionChange($event)">
+            <mat-radio-button class="filter-radio-button" *ngFor="let c of subCategories" [value]="c">
+              <span class="radio-button-span">{{c.subCategoryName}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-card> <!-- First Filter -->
+      <mat-card>
+        <div class="title">
+          <h1>{{'Choose Brands'}}</h1>
+          <div class="line"></div>
+        </div>
+        <div class="body">
+          <mat-radio-group
+            [(ngModel)]="brandFilter"
+            aria-labelledby="filter-radio-group-label"
+            class="filter-radio-group"
+            (change)="onBrandSelectionChange($event)">
+            <mat-radio-button class="filter-radio-button" *ngFor="let c of brands" [value]="c">
+              <span class="radio-button-span">{{c.brandName}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-card> <!-- First Filter -->
+    </div> <!-- END SIDE FILTER AREA -->
+  </div>
+</ng-template>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+
+<!-- NO DATA TEMPLATE -->
+<ng-template #noData>
+  <div style="margin-top: 50px; text-align: center">
+    <h2>No Product Found</h2>
+  </div>
+</ng-template>
+

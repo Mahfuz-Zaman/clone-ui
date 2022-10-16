@@ -1,0 +1,51 @@
+<!--************ section-2 ***********-->
+<section class="section-2">
+  <div class="container">
+
+    <!--****** search-map-area *******-->
+    <div class="search-map-area">
+      <form action="">
+        <ul>
+          <li><span>Search location</span></li>
+          <li id="input"><input type="text" name="searchBox" placeholder=""></li>
+          <li><button type="button">Search</button></li>
+        </ul>
+      </form>
+    </div>
+
+    <!---***** section2-main-area ******-->
+    <section class="section2-main">
+      <div class="section2-details">
+
+        <div class="section2-details-main">
+          <ul>
+
+            <li *ngFor="let data of stores; let i = index"
+                (click)="getSingleStore(data, i)"
+                [ngClass]="{'active': i === activeIndex}"
+            >
+              <h2>{{data.storeName}}</h2>
+              <span>{{data.address}},</span>
+              <span>{{data.district}}</span>
+              <span>{{data.phoneNumber}}</span>
+              <span>{{data.country}}</span>
+
+              <!--**** distance **-->
+              <div class="distance">
+                <span>4.5 km</span>
+                <a (click)="getSingleStore(data, i)">Directions</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--******* section-2-map *****-->
+      <div class="section2-map">
+        <div class="map-main" [innerHTML]="storeMap | safeHtmlCustom">
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+</section>

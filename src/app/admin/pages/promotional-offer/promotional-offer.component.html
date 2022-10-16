@@ -1,0 +1,48 @@
+<div class="top-action">
+  <button mat-raised-button color="primary" [routerLink]="['add-promotional-offer']">
+    <mat-icon>add</mat-icon>
+    Add Promotional Offer
+  </button>
+</div>
+
+
+<div class="header">
+  <h2>Promotional Offer List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Name'}}</th>
+      <th scope="col">{{'Image'}}</th>
+      <th scope="col">{{'slug'}}</th>
+      <th scope="col">{{'createdAt'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of allPromotionalOffer; let i = index">
+      <td [attr.data-label]="'Name'">{{data.title}}</td>
+      <td [attr.data-label]="'Image'">
+        <img class="table-image" [src]="data.image" [alt]="data.image">
+      </td>
+      <td [attr.data-label]="'Slug'">{{data.slug}}</td>
+      <td [attr.data-label]="'createdAt'">{{data.createdAt | date}}</td>
+      <!--      <td [attr.data-label]="'Attributes'">{{data.attributes}}</td>-->
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" mat-mini-fab color="warn" (click)="openConfirmDialog(data._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button style="margin-right: 5px;"  [routerLink]="['edit-promotional-offer', data._id]" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+</div>
+

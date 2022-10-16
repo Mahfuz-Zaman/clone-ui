@@ -1,0 +1,96 @@
+<div class="card">
+    <!--** card-img ***-->
+    <div class="card-img">
+      <!-- <a [routerLink]="['/product-details', product?.productSlug]"> -->
+      <a [routerLink]="['/', product?.brandSlug, product?.categorySlug, product?.productSlug]">
+        <img [defaultImage]="'/assets/images/placeholder/test.png'" [lazyLoad]="product.images[0]"
+             [alt]="product?.productName"></a>
+      <!--** card-hover-img **-->
+      <div class="card-hover-img" *ngIf="product?.images && product?.images.length > 1">
+        <!-- <a [routerLink]="['/product-details', product?.productSlug]"> -->
+        <a [routerLink]="['/', product?.brandSlug, product?.categorySlug, product?.productSlug]">
+          <img [src]="product?.images[1]"
+               [alt]="product?.productName"></a>
+      </div>
+      <!--** discount-area **-->
+      <span fxHide [fxShow]="product?.discountAmount && product?.discountAmount > 0" class="discount">-{{product ? (product | discount: 'percentage' | number: '': 'bn') : 0}}%</span>
+      <span fxHide [fxShow]="product?.quantity <= 0" class="out-stock">Stock Out</span>
+    </div>
+
+    <!--** card-body-area **-->
+    <div class="card-body">
+      <!--** card-rating **-->
+      <div class="rating-view">
+        <app-product-rating-view [ratingValue]="4.5"></app-product-rating-view>
+      </div>
+  <!--    <div class="card-rating">-->
+  <!--      <ul>-->
+  <!--        <li><i class="fa fa-star"></i></li>-->
+  <!--        <li><i class="fa fa-star"></i></li>-->
+  <!--        <li><i class="fa fa-star"></i></li>-->
+  <!--        <li><i class="fa fa-star"></i></li>-->
+  <!--        <li><i class="fa fa-star"></i></li>-->
+  <!--      </ul>-->
+  <!--    </div>-->
+      <!--** Card-discription**-->
+      <div class="card-link">
+        <!-- <a [routerLink]="['/product-details', product?.productSlug]">{{product?.productName}}</a> -->
+        <a [routerLink]="['/', product?.brandSlug, product?.categorySlug, product?.productSlug]">{{product?.productName}}</a>
+      </div>
+
+         <!--- Product-serial-no -->
+         <div class="product-no">
+          <h3>SKU: <span>{{product?.sku}}</span></h3>
+        </div>
+
+        <!-- Product-categori -->
+        <div class="product-categori">
+          <h3>Categories: <a [routerLink]="['/product-list', product?.categorySlug]">
+            {{product?.category?.categoryName}}
+          </a>
+          </h3>
+        </div>
+
+        <!--Campaign-->
+<!--        <div class="">-->
+<!--          <p>{{product?.campaignStartDate | date}}</p>-->
+<!--          <p>{{product?.campaignEndDate | date}}</p>-->
+<!--        </div>-->
+
+        <!-- Product-tag -->
+
+        <div class="product-tag">
+          <h3>Tag:
+            <a *ngFor="let t of product?.tags; let l = last" [routerLink]="['/product-list/tag', t?.tagSlug]" >{{t?.tagName}} {{l ? '' : ','}}</a><span></span>
+          </h3>
+        </div>
+
+
+      <!--** price-and-Icon-menu ***-->
+      <div class="price-icon">
+        <!--** price **-->
+        <div class="card-price">
+          <h3 class="main-price"><span>৳</span>{{product | price: 'priceWithDiscount' | number: '': 'bn'}}
+            <del *ngIf="product?.discountAmount && product?.discountAmount > 0" class="save"> <small>৳</small>{{product?.price | number: '': 'bn'}}</del>
+          </h3>
+        </div>
+        <!--** Card-icon_menu **-->
+        <div class="card-icon-menu">
+          <ul>
+            <li [fxHide]="product?.quantity <= 0"><a (click)="addToCart($event)"><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a (click)="openComponentDialog({viewProduct: product})"><i class="fa fa-eye"></i></a></li>
+            <li><a *ngIf="ifLoggedIn()"
+                   color="accent"
+                   class="btn-wishlist"
+                   (click)="addToWishlistItemAfterCheck()"><i class="fa fa-heart"></i></a></li>
+  <!--          <li><a href="#"><i class="fa fa-clone"></i></a></li>-->
+            <li>
+              <a mat-mini-fab color="primary" (click)="addToCompareList($event, product)"><mat-icon>compare_arrows</mat-icon></a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+

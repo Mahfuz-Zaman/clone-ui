@@ -1,0 +1,38 @@
+<div class="table-container" *ngIf="products && products.length > 0">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Name'}}</th>
+      <th scope="col">{{'Image'}}</th>
+      <th scope="col">{{'SKU'}}</th>
+      <th scope="col">{{'Category'}}</th>
+      <th scope="col">{{'Retail Price'}}</th>
+      <th scope="col">{{'Sale Price'}}</th>
+      <th scope="col">{{'Available'}}</th>
+      <th scope="col">{{'Details'}}</th>
+      <th *ngIf="needAction" scope="col">{{'Action'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of products; let i = index">
+      <td [attr.data-label]="'Name'">{{data.productName}}</td>
+      <td [attr.data-label]="'Image'">
+        <img [src]="data?.images && data?.images.length > 0 ? data.images[0] : '/assets/images/placeholder/test.png'" [alt]="data.productName">
+      </td>
+      <td [attr.data-label]="'SKU'">{{data.sku}}</td>
+      <td [attr.data-label]="'Category'">{{data.categorySlug}}</td>
+      <td [attr.data-label]="'Retail Price'">৳ {{data.price}}</td>
+      <td [attr.data-label]="'Sale Price'">৳ {{data | price: 'priceWithDiscount'}}</td>
+      <td [attr.data-label]="'Available'">{{data.quantity}}</td>
+      <td [attr.data-label]="'Details'">
+        <a class="link-hover" [routerLink]="['/', data?.brandSlug, data?.categorySlug, data?.productSlug]" target="_blank" mat-icon-button>
+          <mat-icon>visibility</mat-icon>
+        </a>
+      </td>
+      <td *ngIf="needAction" [attr.data-label]="'Action'">
+        <a href="javascript:">Action</a>
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+</div>

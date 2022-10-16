@@ -1,0 +1,67 @@
+<!--<div class="nav">-->
+<!--  <app-breadcrumb-soft></app-breadcrumb-soft>-->
+<!--</div>-->
+
+<div>
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Certificate</h1>
+  </div>
+
+  <form [formGroup]="dataForm"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        #templateForm="ngForm"
+        fxLayout="column" fxLayoutAlign="space-around center">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Certificate Number</mat-label>
+      <input formControlName="certificateNumber" matInput placeholder="Enter Certificate number" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" (click)="validity.open()">
+      <mat-label>Validity Date</mat-label>
+      <input readonly [matDatepicker]="validity" formControlName="validity" matInput
+             placeholder="Select activation date">
+      <mat-datepicker-toggle matSuffix [for]="validity"></mat-datepicker-toggle>
+      <mat-datepicker #validity></mat-datepicker>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Store Name</mat-label>
+      <input formControlName="storeName" matInput placeholder="Enter Store name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dealer Name</mat-label>
+      <input formControlName="dealerName" matInput placeholder="Enter Dealer Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone No</mat-label>
+      <input formControlName="phoneNo" matInput placeholder="Enter phone no" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <textarea matInput placeholder="Enter Address" type="text"
+                formControlName="address" [rows]="4">
+      </textarea>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit">{{ certificate ? 'Edit Certificate' : 'Add Certificate' }}</button>
+  </form>
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+

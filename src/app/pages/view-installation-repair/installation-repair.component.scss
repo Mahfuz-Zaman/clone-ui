@@ -1,0 +1,129 @@
+@import "src/theme/deal-of-the-day";
+
+.container-fluid {
+  padding: 0px 0;
+  min-height: 70vh;
+}
+.container{
+  margin-bottom: 30px;
+}
+@media(min-width:960px) and (max-width:1440px){
+  .container-fluid,.section1-container{
+    width:88%!important;
+    margin: auto;
+  }
+}
+
+.deal-of-the-day-view {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap:15px 8px;
+
+  .deal-of-the-card {
+    border: 1px solid #f4f4f4;
+    width: 100%;
+  }
+}
+
+.deal-on-play-view {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap:15px 8px;
+
+}
+@media(min-width:1410px){
+  .deal-on-play-view,.deal-of-the-day-view{
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media(max-width:1150px){
+  .deal-on-play-view,.deal-of-the-day-view{
+    grid-template-columns: repeat(4, 1fr)!important;
+  }
+}
+@media(max-width:800px){
+  .deal-on-play-view,.deal-of-the-day-view{
+    grid-template-columns: repeat(3, 1fr)!important;
+  }
+}
+@media(max-width:600px){
+  .deal-on-play-view,.deal-of-the-day-view{
+    grid-template-columns: repeat(2, 1fr)!important;
+  }
+}
+
+/**** offer-section-1 ***/
+.offer-section-1{
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 10vh;
+}
+.offer-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 370px;
+  background-position: center;
+  background-attachment:scroll;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.offer-title h2{
+  color: #fff;
+  font-weight: 600;
+  font-family: 'Poppins',sans-serif;
+  text-transform: capitalize!important;
+  font-size: 40px;
+  display: block;
+  line-height: 50px;
+  text-shadow: 0px 4px 4px rgba(0,0,0,.5);
+  text-align: center;
+}
+.offer-title::after{
+  content: "";
+  display: block;
+  background-color: rgba(0,0,0,.4);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+}
+.description{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.description p{
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 15px;
+  display: block;
+  line-height: 28px;
+}
+@media(max-width:600px){
+  .offer-section-1{
+    margin-bottom: 6vh;
+  }
+  .offer-title{
+    min-height: 320px;
+  }
+  .offer-title h2{
+    font-size: 35px;
+    line-height: 45px;
+  }
+  .description p{
+    font-size: 14px;
+    line-height: 26px;
+  }
+}

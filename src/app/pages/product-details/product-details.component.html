@@ -1,0 +1,469 @@
+
+<div class="breadcrumb">
+  <app-breadcrumb [data]="breadcrumbs"></app-breadcrumb>
+</div>
+<!---***** Products-Details *********-->
+
+<section class="product-details">
+  <div class="container">
+<!-- {{product | json}} -->
+    <!--******* details-main-area *****-->
+    <div class="product-details-main">
+      <!--**** product-img ***-->
+      <div class="product-img">
+        <!--Main Img-->
+        <div class="product-img1">
+          <img *ngIf="image" [src]="image"
+               [alt]="product?.productName"
+               (mousemove)="onMouseMove($event)"
+               (mouseleave)="onMouseLeave($event)">
+          <img *ngIf="!image" [src]="product?.images[0]">
+          <div class="product-discount">
+            <div class="discount" fxHide [fxShow]="product?.discountAmount && product?.discountAmount > 0">
+              <span>-{{product ? (product | discount: 'percentage' | number: '': 'bn') : 0}}%</span>
+            </div>
+            <div class="out-stock" fxHide [fxShow]="product?.quantity <= 0">
+              <span>Stock Out</span>
+            </div>
+          </div>
+        </div>
+        <!--- slide-img -->
+        <div class="product-img-slide">
+
+          <swiper [slidesPerView]="1"
+          [autoplay]="{
+            delay: 4000,
+            disableOnInteraction:false
+          }"
+          [breakpoints]="{
+            '0':{
+              slidesPerView: 3,
+              spaceBetween: 15
+            },
+            '500': {
+              slidesPerView: 4,
+              spaceBetween: 20
+            }
+
+          }"
+          [navigation]="true"
+          class="mySwiper small-carousel"
+        >
+          <ng-template swiperSlide  *ngFor="let slider of product?.images; let i = index;">
+            <div class="slide-img" (click)="selectImage(slider)">
+              <img [src]="slider" [alt]="product?.productName">
+            </div>
+            </ng-template>
+        </swiper>
+
+        </div>
+      </div>
+
+      <!----***** product-info ****-->
+
+      <div class="product-info">
+
+        <div style="z-index: 9;" #zoomViewer>
+          <div *ngIf="zoomImage" class="zoom-viewer"
+               [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}"></div>
+        </div> <!-- END IMAGE ZOOM VIEW -->
+
+        <!--- product-title -->
+        <div class="product-title">
+          <h2>{{product?.productName}}</h2>
+        </div>
+
+        <!--- Product-serial-no -->
+        <div class="product-no">
+          <h3>SKU: <span>{{product?.sku}}</span></h3>
+        </div>
+
+        <!-- Product-categori -->
+        <div class="product-categori">
+          <h3>Categories: <a [routerLink]="['/product-list', product?.categorySlug]">
+            {{product?.category?.categoryName}}
+          </a>
+          </h3>
+        </div>
+
+        <!--Campaign-->
+<!--        <div class="">-->
+<!--          <p>{{product?.campaignStartDate | date}}</p>-->
+<!--          <p>{{product?.campaignEndDate | date}}</p>-->
+<!--        </div>-->
+
+        <!-- Product-tag -->
+
+        <div class="product-tag">
+          <h3>Tag:
+            <a *ngFor="let t of product?.tags; let l = last" [routerLink]="['/product-list/tag', t?.tagSlug]" >{{t?.tagName}} {{l ? '' : ','}}</a><span></span>
+          </h3>
+        </div>
+
+        <!-- Product-price -->
+        <div class="product-price">
+          <h3 [fxShow]="product?.discountAmount && product?.discountAmount > 0">
+            <del>৳{{product?.price | number: '': 'bn'}}</del>
+            ৳{{product? (product | price: 'priceWithDiscount' | number: '': 'bn') : 0}}
+          </h3>
+          <h3 [fxHide]="product?.discountAmount && product?.discountAmount > 0">
+            ৳{{product?.price | number: '': 'bn'}}
+          </h3>
+        </div>
+
+        <!-- Product-description -->
+<!--        {{product?.shortDescription | json}}-->
+<!--        {{finalShortImageWidth[1] | json}}-->
+        <div class="product-discription">
+          <div [innerHTML]="product?.shortDescription | safeHtmlCustom" class="description"
+               ></div>
+
+        </div>
+        <div *ngIf="promoProduct" class="popupimg" (click)="openCalculateCoolingCapacityDialog()">
+          <img [src]="promoBanner.image">
+        </div>
+
+        <div class="emi-status" fxHide [fxShow]="product?.emiStatus && product?.emiStatus.length">
+          <mat-form-field appearance="outline">
+            <mat-label>Select EMI</mat-label>
+            <mat-select #matSelectEmi (selectionChange)="onEmiSelect($event)">
+              <mat-option *ngFor="let data of emiValues" [value]="data">
+                {{  data | emiStatus }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="view-emi">
+            <h4>EMIs from ৳{{emiCalculateValue | number: '': 'bn'}}/month</h4>
+          </div>
+        </div>
+
+        <!-- Product-aad-and- item value-area  -->
+        <div class="product-btn">
+          <div class="item-btn">
+            <div id="mines" (click)="decrementQty()">
+              <button>-</button>
+            </div>
+            <div id="value">
+              <input type="text" [value]="selectedQty">
+            </div>
+            <div id="plus" (click)="incrementQty()">
+              <button>+</button>
+            </div>
+          </div>
+          <div class="add-btn" *ngIf="!existsInCart && product?.quantity > 0">
+            <a mat-button (click)="addToCart()">ADD TO CART</a>
+          </div>
+          <div class="add-btn" *ngIf="existsInCart">
+            <a mat-button routerLink="/cart" style="background: #ffd200; color: #000">Go TO CART</a>
+          </div>
+            <!-- Product-add-wishlist-area -->
+
+        <div class="add-wishlist">
+          <a *ngIf="ifLoggedIn()"
+                   mat-button
+                   class="btn-wishlist"
+                   (click)="addToWishlistItemAfterCheck()">
+                   <span> <i class="fa fa-heart"></i></span> Add To Wishlist</a>
+        </div>
+        </div>
+
+
+
+        <!-- Product-social-link -->
+
+        <div class="share-area">
+          <div class="share">
+            <share-buttons
+              [theme]="'default'"
+              [include]="['facebook','twitter','linkedin']"
+              [show]="4"
+              [size]="-3"
+              [url]="'https://esquireelectronicsltd.com/' + router.url"
+              [image]="product?.images[0]"
+              [title]="product?.productName"
+              [autoSetMeta]="false"
+              [description]="product?.category?.categoryName"
+            ></share-buttons>
+          </div>
+<!--          <ul>-->
+<!--            <li class="change-width1"><a href="javascript:"><img src="/assets/images/junk/linkedin.svg" alt=""-->
+<!--                                                                       class="change-width"></a></li>-->
+<!--            <li class="change-width1"><a href="javascript:"><img src="/assets/images/junk/instagram.svg" alt=""-->
+<!--                                                                       class="change-width"></a></li>-->
+<!--            <li class="change-width1"><a href="javascript:"><img src="/assets/images/junk/facebook.svg" alt=""-->
+<!--                                                                       class="change-width"></a></li>-->
+<!--          </ul>-->
+        </div>
+
+        <!---product-policy-area -->
+        <div class="product-policy-area">
+          <div class="policy-menu">
+            <ul>
+              <li><a class="no-select" (click)="viewPolicy = 'delivery'" [ngClass]="{'active' : viewPolicy === 'delivery'}">Delivery Policies</a></li>
+              <li><a class="no-select" (click)="viewPolicy = 'payment'" [ngClass]="{'active' : viewPolicy === 'payment'}">Payment Policies</a></li>
+              <li><a class="no-select" (click)="viewPolicy = 'warranty'" [ngClass]="{'active' : viewPolicy === 'warranty'}">Warranty Policies</a></li>
+            </ul>
+          </div>
+          <div class="dv-details" [ngSwitch]="viewPolicy">
+            <div *ngSwitchCase="'delivery'" [innerHTML]="product?.deliveryPolicy | safeHtmlCustom"></div>
+            <div *ngSwitchCase="'payment'"  [innerHTML]="product?.paymentPolicy | safeHtmlCustom"></div>
+            <div *ngSwitchCase="'warranty'"  [innerHTML]="product?.warrantyPolicy | safeHtmlCustom"></div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="product-review-area">
+  <div class="container">
+
+    <div class="product-review-main-area">
+      <!---**** review-menu ***-->
+      <div class="product-review-menu">
+        <ul>
+          <li><a class="no-select" (click)="viewContainer = 'desc'" [ngClass]="{'active' : viewContainer === 'desc'}">Description </a></li>
+          <li><a class="no-select" (click)="viewContainer = 'specification'" [ngClass]="{'active' : viewContainer === 'specification'}">Specifications</a></li>
+          <li><a class="no-select" (click)="viewContainer = 'warranty'" [ngClass]="{'active' : viewContainer === 'warranty'}">Warranty & Services</a></li>
+          <li><a class="no-select" (click)="viewContainer = 'review'" [ngClass]="{'active' : viewContainer === 'review'}">Reviews ({{allReviews.length}})</a></li>
+          <li><a class="no-select" (click)="viewContainer = 'discussions'" [ngClass]="{'active' : viewContainer === 'discussions'}">Discussions({{discussionsCount}})</a></li>
+        </ul>
+      </div> <!-- END NAV BAR -->
+<!-- {{safeSrc | json}} -->
+      <ng-container [ngSwitch]="viewContainer">
+        <ng-container *ngSwitchCase="'desc'">
+<!--        <div *ngIf="safeSrc" class="youtubeVideo" style="display: flex;justify-content: center;">-->
+<!--            <iframe width="560" height="315" [src]=safeSrc title="YouTube video player" frameborder="0" webkitallowfullscreen mozallowfullscreen-->
+<!--            allowfullscreen></iframe>-->
+<!--        </div>-->
+          <div *ngIf="product.youtubeUrl && safeSrc">
+            <iframe [src]="safeSrc" width="560" height="315" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                    allowfullscreen></iframe>
+          </div>
+          <div class="description" [innerHTML]="product?.description | safeHtmlCustom"></div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'specification'">
+          <div class="specification">
+            <div class="table">
+              <table>
+                <tr *ngFor="let d of product?.filterData">
+                  <th>{{d?.attributeName}}</th>
+                  <td>{{d?.attributeValues}}</td>
+                </tr>
+              </table>
+            </div>
+          </div><!-- END Specifications -->
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'warranty'">
+          <div class="description" [innerHTML]="product?.warrantyServices | safeHtmlCustom"></div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'review'">
+          <div class="review-area">
+
+            <div class="add-review-area">
+              <app-rating-and-review [productId]="product?._id" [pageUrl]="router.url"></app-rating-and-review>
+              <div class="line"></div>
+            </div>
+
+            <!--** review-title **-->
+<!--            <div class="reviews-title">-->
+<!--              <h2>LEWEL Girl's Cotton Color block Hooded T-Shirt</h2>-->
+<!--            </div>-->
+
+            <!--******************* user-and-Esquare-review-area-start **********-->
+
+            <div class="user-and-Esquare-review-area" *ngFor="let data of allReviews">
+              <!--******* user-review-main *******-->
+              <div class="user-review">
+
+                <!--** user-img ***-->
+                <div class="user-img">
+                  <img [src]="data.user?.profileImg ? data.user?.profileImg : '/assets/images/avatar/user-cmnt.png'" [alt]="data.user?.fullName">
+                </div>
+
+                <!--*** user-comment **-->
+                <div class="user-comment clearfix">
+                  <div style="margin-bottom: 10px;" class="clearfix">
+                    <div class="user-name">
+                      <h3 class="Name">{{data.user?.fullName}} <span>– {{data.reviewDate | date :'fullDate'}}</span></h3>
+                    </div>
+                    <div class="user-rating">
+                      <ul>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                      </ul>
+                    </div>
+                  </div><!--*** user-comment-end**-->
+                  <div class="comment">
+                    <p>{{data?.review}}</p>
+                  </div>
+
+                </div>
+              </div>
+
+              <!--ans-area-->
+              <div class="e-square-ans" *ngIf="data.reply">
+                <!--*** user-review ***-->
+                <div class="user-review">
+
+                  <!--** user-img ***-->
+                  <div class="user-img">
+                    <img src="/assets/images/junk/e-logo.png" alt="e-logo.png">
+                  </div>
+
+                  <!--*** user-comment **-->
+                  <div class="user-comment clearfix">
+                    <div style="margin-bottom: 10px;">
+                      <div class="user-name e-square-title">
+                        <h3 class="Name">ESQUIRE ELECTRONICS LTD <span>– {{data?.reviewDate | date: 'fullDate'}}</span></h3>
+                      </div>
+                    </div><!--*** user-comment-end**-->
+                    <div class="comment">
+                      <p>{{data.reply}}</p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div> <!--******************* user-and-Esquare-review-area-end  *********-->
+
+
+          </div><!---END Review-->
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'discussions'">
+          <div class="discussion">
+            <div class="discussion-details">
+              <!--**** discussion-title *******-->
+              <div class="discussion-title">
+                <h2>Got something to discuss?</h2>
+              </div>
+              <!--********** discussion-form-area *********-->
+              <app-discussion-form [user]="user" (onSubmitForm)="onSubmitDiscussion($event)"></app-discussion-form>
+
+              <app-discussion-item *ngFor="let data of allDiscussions" [discussion]="data" [user]="user"></app-discussion-item>
+            </div>
+          </div><!----END Discussion-->
+        </ng-container>
+      </ng-container>
+
+
+    </div>
+  </div>
+</section><!----END PRODUCT BOTTOM-->
+
+
+<section class="section-2 section-recommended section-md" *ngIf="relatedProducts && relatedProducts.length > 0">
+  <div class="container">
+
+    <div class="deal-title">
+      <h2>Related Products</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="wrap-content">
+      <swiper [slidesPerView]="1"
+      [breakpoints]="{
+        '0':{
+          slidesPerView: 2,
+          spaceBetween: 10
+        },
+        '500': {
+          slidesPerView: 2.5,
+          spaceBetween: 10
+        },
+        '600':{
+          slidesPerView: 3,
+          spaceBetween: 10
+        },
+        '750':{
+          slidesPerView: 3.5,
+          spaceBetween: 10
+        },
+        '850':{
+          slidesPerView: 4,
+          spaceBetween: 10
+        },
+        '1100':{
+          slidesPerView: 5,
+          spaceBetween: 10
+        }
+      }"
+      [navigation]="true"
+      class="mySwiper related-product-carousel">
+      <ng-template swiperSlide *ngFor="let data of relatedProducts">
+          <app-product-card-one  [product]="data"></app-product-card-one>
+
+        </ng-template>
+    </swiper>
+    </div>
+
+
+  </div>
+</section><!--END RECOMMENDED SECTION VIEW-->
+
+<section class="section-2 section-recommended section-md" *ngIf="recommendedProducts && recommendedProducts.length > 0">
+  <div class="container">
+
+    <div class="deal-title">
+      <h2>Recommended For You</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="wrap-content">
+      <swiper [slidesPerView]="1"
+              [breakpoints]="{
+        '0':{
+          slidesPerView: 2,
+          spaceBetween: 10
+        },
+        '500': {
+          slidesPerView: 2.5,
+          spaceBetween: 10
+        },
+        '600':{
+          slidesPerView: 3,
+          spaceBetween: 10
+        },
+        '750':{
+          slidesPerView: 3.5,
+          spaceBetween: 10
+        },
+        '850':{
+          slidesPerView: 4,
+          spaceBetween: 10
+        },
+        '1100':{
+          slidesPerView: 5,
+          spaceBetween: 10
+        }
+      }"
+              [navigation]="true"
+              class="mySwiper feature-carousel"
+      >
+        <ng-template swiperSlide *ngFor="let data of recommendedProducts">
+          <app-product-card-one [product]="data"></app-product-card-one>
+        </ng-template>
+      </swiper>
+    </div>
+
+
+  </div>
+</section><!--END RECOMMENDED SECTION VIEW-->
+
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>

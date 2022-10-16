@@ -1,0 +1,69 @@
+<div style="position: relative">
+  <mat-spinner *ngIf="isLoading"
+               style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto"
+  ></mat-spinner>
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Blog</h1>
+    <mat-checkbox [(ngModel)]="autoSlug" (change)="autoGenerateSlug()" color="primary">Auto Slug</mat-checkbox>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        #templateForm="ngForm"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+
+    <div (click)="onHoldInputData()" class="imag-view"
+         [routerLink]="[id ? '../../../' : '../../', 'image-gallery']"
+         [state]="{url: router.url}">
+      <img [src]="pickedImage" alt="">
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Blog Title</mat-label>
+      <input formControlName="title" matInput placeholder="Enter Blog Title" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Blog Slug</mat-label>
+      <input formControlName="slug" matInput placeholder="Enter Blog slug" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Blog Author</mat-label>
+      <input formControlName="author" matInput placeholder="Enter Blog Author Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Priority</mat-label>
+      <input formControlName="priority" matInput placeholder="Enter priority" type="number" digitOnly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Blog Short description</mat-label>
+      <textarea formControlName="shortDescription" matInput placeholder="Enter Blog Short Description" required></textarea>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+<!--    <div class="w-100" style="margin-bottom: 16px;">-->
+<!--      <label for="short-desc">Enter Blog Body</label>-->
+<!--      <angular-editor id="short-desc" formControlName="body"-->
+<!--                      placeholder="Enter Blog body"-->
+<!--                      [config]="textEditorCtrService.shortDescConfig"></angular-editor>-->
+<!--    </div>-->
+
+    <div fxFlex="100" class="px-1">
+      <angular-editor id="description" formControlName="body"
+                      [config]="editorConfigDesc" ></angular-editor>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">{{ blog ? 'Edit blog' : 'Add blog' }}</button>
+  </form>
+</div>
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>

@@ -1,0 +1,138 @@
+
+<div class="breadcrumb">
+  <app-ng-dynamic-breadcrumb [fontSize]="'14.5px'" [bgColor]="'rgb(255 228 201)'"></app-ng-dynamic-breadcrumb>
+</div>
+
+<div class="p-1" id="main-add-container">
+  <mat-card class="container-card">
+    <mat-card-header>
+      <mat-card-title>Add New Admin</mat-card-title>
+      <mat-checkbox [(ngModel)]="autoSlug" (change)="autoGenerateSlug()" color="primary">Auto Username</mat-checkbox>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div fxLayout="row wrap">
+        <div fxFlex="30" class="px-2 book-img-place">
+          <p class="mt-1 ttl"><span class="uppercase fw-500">Image Upload</span>
+            <input [hidden]="true" #imagePicker1 type="file" (change)="fileChangeEventCardImg($event)"
+                   accept="image/*"/>
+
+          <div class="add-image">
+            <button *ngIf="pickedImageCard === null" class="btn-pick-image" mat-raised-button
+                    (click)="imagePicker1.click()">
+              <mat-icon>add_photo_alternate</mat-icon>
+            </button>
+          </div>
+
+          <div class="image-view-area" *ngIf="pickedImageCard !== null">
+            <div class="img-item">
+              <img [src]="pickedImageCard" alt="">
+              <button (click)="removePickedCardImage()" class="action-btn" mat-mini-fab>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+        </div> <!-- END UPLOAD VIEW -->
+
+        <form fxFlex="70" class="px-2" [formGroup]="dataForm" (ngSubmit)="onSubmit()" autocomplete="off"
+              #formDirective="ngForm">
+          <div fxLayout="row wrap">
+            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required>
+                <mat-error>Name is required</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" required>
+                <mat-error>Username is required</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Phone No</mat-label>
+                <input matInput formControlName="phoneNo" required type="tel">
+                <mat-error>Phone No is required</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email">
+                <mat-error>Email is required</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{'Select Role'}}</mat-label>
+                <mat-select formControlName="role" required>
+                  <mat-option *ngFor="let data of rolesList" [value]="data.value">
+                    {{data.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{'Has Access'}}</mat-label>
+                <mat-select formControlName="hasAccess" required>
+                  <mat-option *ngFor="let data of booleanList" [value]="data.value">
+                    {{data.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" required type="password">
+                <mat-error>Password is required</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput formControlName="confirmPassword" required type="password">
+                <mat-error>Confirm Password is required</mat-error>
+              </mat-form-field>
+            </div>
+
+
+          </div>
+
+
+          <div fxFlex="100" class="text-center w-100 submit-action">
+            <button mat-raised-button color="primary" type="submit">
+              <mat-icon>check</mat-icon>
+              {{'SUBMIT Admin' | uppercase}}
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </mat-card-content>
+
+
+  </mat-card>
+</div>
+
+
+<!-- TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+
+

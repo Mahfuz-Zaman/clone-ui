@@ -1,0 +1,17 @@
+//@import "src/theme/card";
+
+
+.container-fluid {
+  width: 100%;
+  // margin: 15px 0;
+  padding: 15px;
+}
+
+
+.content-view {
+  margin-top: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+}

@@ -1,0 +1,35 @@
+<!--<div class="nav">-->
+<!--  <app-breadcrumb-soft></app-breadcrumb-soft>-->
+<!--</div>-->
+
+
+
+<div style="position: relative">
+  <mat-spinner *ngIf="isLoading"
+               style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto"
+  ></mat-spinner>
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Shipping Charge</h1>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-form-field appearance="outline">
+      <mat-label>INSIDE DHAKA</mat-label>
+      <input formControlName="deliveryInDhaka" matInput placeholder="Shipping Charge Inside Dhaka " required>
+<!--      <mat-error>This field is required</mat-error>-->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>OUTSIDE Dhaka</mat-label>
+      <input formControlName="deliveryOutsideDhaka" matInput placeholder="Shipping Charge OUTSIDE Dhaka " required>
+<!--      <mat-error>This field is required</mat-error>-->
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit">SAVE</button>
+  </form>
+</div>
+
+
+

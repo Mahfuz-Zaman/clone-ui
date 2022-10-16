@@ -1,0 +1,27 @@
+<div class="only-for-you-product">
+  <div class="only-for-you-product-img">
+    <img [src]="data && data?.primaryImages ? data?.primaryImages[0] : '/assets/images/placeholder/test.png'" alt="">
+  </div>
+
+  <div class="only-for-you-product-content">
+    <a href="#" target="blank">{{data?.productName}}</a>
+    <ul>
+      <li><span><i class="fa fa-star"></i></span></li>
+      <li><span><i class="fa fa-star"></i></span></li>
+      <li><span><i class="fa fa-star"></i></span></li>
+      <li><span><i class="fa fa-star"></i></span></li>
+      <li><span><i class="fa fa-star"></i></span></li>
+    </ul>
+    <div class="rate">
+      <h2><span>ট</span> {{data?.price - data?.discountAmount}}
+        <del><span>ট</span>{{data?.price}}</del>
+      </h2>
+    </div>
+  </div>
+  <div class="btn">
+    <a href="#" target="blank">
+      <span>-{{((data?.discountAmount / data?.price) * 100) | number : '1.2-2' }}%</span>
+      <small> Save: <span> ট</span> {{data?.discountAmount}}</small>
+    </a>
+  </div>
+</div>

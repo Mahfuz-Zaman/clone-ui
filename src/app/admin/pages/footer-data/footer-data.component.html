@@ -1,0 +1,130 @@
+<div style="position: relative">
+
+  <div class="header-dialog">
+    <h1>Footer Data</h1>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Short Description</mat-label>
+      <input formControlName="shortDes" matInput placeholder="Enter Short Description">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input formControlName="address" matInput placeholder="Enter web site name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone No</mat-label>
+      <input formControlName="phone" matInput placeholder="Enter phone number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Enter email address">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>About Esquire</mat-label>
+      <input formControlName="aboutEsquire" matInput placeholder="Enter Short Description about Esquire">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 1</mat-label>
+      <input formControlName="title1" matInput placeholder="Enter title 1">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 1 Description</mat-label>
+      <textarea matInput formControlName="title1Des" placeholder="Enter title 1 Description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 2</mat-label>
+      <input formControlName="title2" matInput placeholder="Enter title 2">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 2 Description</mat-label>
+      <textarea matInput formControlName="title2Des" placeholder="Enter title 2 Description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 3</mat-label>
+      <input formControlName="title3" matInput placeholder="Enter title 3">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 3 Description</mat-label>
+      <textarea matInput formControlName="title3Des" placeholder="Enter title 3 Description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 4</mat-label>
+      <input formControlName="title4" matInput placeholder="Enter title 4">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 4 Description</mat-label>
+      <textarea matInput formControlName="title4Des" placeholder="Enter title 4 Description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 5</mat-label>
+      <input formControlName="title5" matInput placeholder="Enter title 5">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title 5 Description</mat-label>
+      <textarea matInput formControlName="title5Des" placeholder="Enter title 5 Description"></textarea>
+    </mat-form-field>
+
+    <div class="form-array-container">
+      <div class="add-form-array-action">
+        <button type="button" mat-raised-button color="primary" (click)="onAddNewShopObject('socialLinks')">
+          <mat-icon>add</mat-icon>
+          Add New Link
+        </button>
+
+      </div>
+      <div formArrayName="socialLinks" class="form-array-input">
+        <div class="single-field"
+             *ngFor="let data of socialLinksArray?.controls; let i = index"
+             [formGroupName]="i">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Type Name</mat-label>
+            <input formControlName="type" matInput placeholder="Enter Type Name">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Type  Link {{i + 1}}</mat-label>
+            <input formControlName="value" matInput [placeholder]="'Enter link  ' + i + 1" type="tel">
+          </mat-form-field>
+          <button type="button" mat-mini-fab color="warn" (click)="removeFormArrayField('socialLinks', i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div> <!-- END SOCIAL LINKS ARRAY -->
+
+
+    <button class="submit-btn" mat-raised-button color="accent" type="submit">
+      <mat-icon>done</mat-icon>
+      Save Data
+    </button>
+  </form>
+</div>
+
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+
+
+

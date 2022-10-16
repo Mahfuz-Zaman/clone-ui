@@ -1,0 +1,82 @@
+<section class="section-1">
+
+  <div class="section1-main">
+    <!--******* section-detail *********-->
+    <div class="section1-details">
+      <div class="date">
+        <span>{{orderTimeline?.orderDeliveredDate | date}}</span>
+      </div>
+      <div class="other-details">
+        <div class="icon ">
+          <span class="bg-active" *ngIf="orderTimeline?.orderDelivered"><i class="fa fa-check"></i></span>
+          <span *ngIf="!orderTimeline?.orderDelivered"><i class="fa fa-check"></i></span>
+        </div>
+        <div class="other-text-details">
+          <h3 class="text-active" *ngIf="orderTimeline?.orderDelivered">Delivered</h3>
+          <h3 *ngIf="!orderTimeline?.orderDelivered">Delivery (Expected Date)</h3>
+          <span *ngIf="orderTimeline?.orderDelivered">Your package has been delivered.</span>
+          <span *ngIf="!orderTimeline?.orderDelivered">Your package has not yet been delivered.</span>
+        </div>
+      </div>
+    </div>
+
+    <!--******* section-detail *********-->
+    <div class="section1-details">
+      <div class="date">
+        <span>{{orderTimeline?.orderPickedByDeliveryManDate | date}}</span>
+      </div>
+      <div class="other-details">
+        <div class="icon ">
+          <span class="bg-active" *ngIf="orderTimeline?.orderPickedByDeliveryMan"><i class="fa fa-check"></i></span>
+          <span *ngIf="!orderTimeline?.orderPickedByDeliveryMan"><i class="fa fa-check"></i></span>
+        </div>
+        <div class="other-text-details">
+          <h3 class="text-active" *ngIf="orderTimeline?.orderPickedByDeliveryMan">Shipped</h3>
+          <h3 *ngIf="!orderTimeline?.orderPickedByDeliveryMan">Shipping (Expected Date)</h3>
+          <span *ngIf="orderTimeline?.orderPickedByDeliveryMan">Your package has been picked by a delivery man and shipped.</span>
+          <span *ngIf="!orderTimeline?.orderPickedByDeliveryMan">Your package has not been picked by a delivery man or shipped yet.</span>
+        </div>
+      </div>
+    </div>
+
+    <!--******* section-detail *********-->
+    <div class="section1-details">
+      <div class="date">
+        <span>{{orderTimeline?.orderProcessingDate | date}}</span>
+      </div>
+      <div class="other-details">
+        <div class="icon ">
+          <span class="bg-active" *ngIf="orderTimeline?.orderProcessing"><i class="fa fa-check"></i></span>
+          <span *ngIf="!orderTimeline?.orderProcessing"><i class="fa fa-check"></i></span>
+        </div>
+        <div class="other-text-details">
+          <h3 class="text-active" *ngIf="orderTimeline?.orderProcessing">Processed</h3>
+          <h3 *ngIf="!orderTimeline?.orderProcessing">Processing (Expected Date)</h3>
+          <span *ngIf="orderTimeline?.orderProcessing">Your package has been processed.</span>
+          <span *ngIf="!orderTimeline?.orderProcessing">Your package has not been processed yet.</span>
+        </div>
+      </div>
+    </div>
+
+    <!--******* section-detail *********-->
+    <div class="section1-details">
+      <div class="date">
+        <span>{{orderTimeline?.orderPlacedDate | date}}</span>
+      </div>
+      <div class="other-details after-none">
+        <div class="icon ">
+          <span class="bg-active" *ngIf="orderTimeline?.orderPlaced"><i class="fa fa-check"></i></span>
+          <span *ngIf="!orderTimeline?.orderPlaced"><i class="fa fa-check"></i></span>
+        </div>
+        <div class="other-text-details">
+          <h3 class="text-active" *ngIf="orderTimeline?.orderPlaced">Confirmed</h3>
+          <h3 *ngIf="!orderTimeline?.orderPlaced">Not Confirmed</h3>
+          <span *ngIf="orderTimeline?.orderPlaced">Your order has been placed and confirmed.</span>
+          <span *ngIf="!orderTimeline?.orderPlaced">Your order has been not yet been confirmed.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

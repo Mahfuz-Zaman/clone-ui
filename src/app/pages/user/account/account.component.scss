@@ -1,0 +1,125 @@
+@import "src/theme/variables";
+
+.container-fluid {
+  width: 100%;
+  max-width: $theme-container-width;
+  margin: 0 auto;
+  padding: 60px 0 100px 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1.9fr 6fr;
+  grid-gap: 20px 16px;
+  grid-template-rows: auto;
+}
+.side-bar {
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  min-height: 400px;
+
+  .profile-view {
+
+    .img-thumb {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      margin: 0 auto;
+      position: relative;
+      background: #FFFFFF;
+
+      &:hover {
+        .edit-profile-img {
+          visibility: visible;
+        }
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+      }
+
+      .edit-profile-img {
+        visibility: hidden;
+        background: #0000006b;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 100px;
+        display: grid;
+        place-items: center;
+        transition: visibility 0.2s;
+      }
+    }
+
+    .desc {
+      text-align: center;
+      padding: 15px 10px;
+
+      h2 {
+        font-family: $segoe_ui_bold;
+      }
+
+       p{
+         font-family: $segoe_ui_regular;
+       }
+    }
+  }
+
+
+  .nav-link {
+    padding: 15px 0;
+
+    ul {
+      list-style: none;
+
+      li {
+        padding: 10px 16px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          background: #EDF2F7;
+        }
+
+        mat-icon {
+          font-size: 24px;
+        }
+
+        span {
+          font-size: 16px;
+          font-family: $segoe_ui_regular;
+        }
+      }
+    }
+  }
+}
+
+.content-view {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  // min-height: 400px;
+  padding: 16px;
+}
+
+.active-list {
+  background: #EDF2F7;
+}
+
+@media(max-width:670px){
+  .container-fluid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .side-bar{
+    width: 95%!important;
+    margin: 0px auto;
+    max-width: 100%!important;
+    text-align: center;
+  }
+}

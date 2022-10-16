@@ -1,0 +1,64 @@
+<div class="header">
+  <h2>Discussion List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Product Image'}}</th>
+      <th scope="col">{{'Product Name'}}</th>
+      <th scope="col">{{'User Name'}}</th>
+      <th scope="col">{{'Discussion Date'}}</th>
+      <th scope="col">{{'discussion'}}</th>
+      <th scope="col">{{'Status'}}</th>
+      <th scope="col">{{'Action'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr
+      *ngFor="let data of allDiscussion | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }; let i = index">
+      <td [attr.data-label]="'Product Image'">
+        <img
+          [src]="data.product?.images && data.product.images.length > 0 ? data.product?.images[0] : '/assets/images/placeholder/test.png'"
+          alt="" class="img-thumb">
+      </td>
+      <td [attr.data-label]="'Product Name'">{{data.product?.productName}}</td>
+      <td [attr.data-label]="'User Name'">{{data.name}}</td>
+      <td [attr.data-label]="'Discussion Date'">{{data?.discussionDate | date}}</td>
+      <td [attr.data-label]="'Review'">{{data.comment }}</td>
+      <td [attr.data-label]="'Status'">{{ data.status ? 'Approved' : 'Not Approved' }}</td>
+
+      <!--      <td [attr.data-label]="'createdAt'">{{data.createdAt | date}}</td>-->
+      <!--      <td [attr.data-label]="'Attributes'">{{data.attributes}}</td>-->
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" mat-mini-fab color="warn" (click)="openConfirmDialog(data._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button style="margin-right: 5px;" [routerLink]="['reply-discussion', data._id]" mat-mini-fab>
+          <mat-icon>reply</mat-icon>
+        </button>
+        <a mat-mini-fab color="primary" target="_blank" [routerLink]="['/', data.product?.brandSlug, data.product?.categorySlug, data.product?.productSlug]">
+          <mat-icon>visibility</mat-icon>
+        </a>
+      </td>
+    </tr><!-- End Table Body -->
+  </table>
+</div>
+
+
+<div class="pagination-container">
+  <pagination-controls
+    class="product-pagination"
+    [autoHide]="true"
+    [maxSize]="15"
+    (pageChange)="onPageChanged($event)">
+  </pagination-controls>
+</div>     <!-- END PAGINATION -->
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
