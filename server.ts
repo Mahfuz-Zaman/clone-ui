@@ -62,7 +62,7 @@ export function app(): express.Express {
   });
 
   server.post('/callback/payment/cancel', (req, res) => {
-    res.redirect(301, 'https://softlabit.com/payment/cancel');
+    res.redirect(301, 'https://esquireelectronicsltd.com/payment/cancel');
     // console.log(req.body);
     // res.status(200).json({
     //   data: req.body,
@@ -73,7 +73,7 @@ export function app(): express.Express {
 
   server.post('/callback/payment/success', (req, res) => {
 
-    res.redirect(301, 'https://softlabit.com/payment/success');
+    res.redirect(301, 'https://esquireelectronicsltd.com/payment/success');
     // console.log(req.body);
     // res.status(200).json({
     //   data: req.body,
@@ -84,7 +84,7 @@ export function app(): express.Express {
 
   server.post('/callback/payment/fail', (req, res) => {
 
-    res.redirect(301, 'https://softlabit.com/payment/fail');
+    res.redirect(301, 'https://esquireelectronicsltd.com/payment/fail');
     // console.log(req.body);
     // res.status(200).json({
     //   data: req.body,

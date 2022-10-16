@@ -16,12 +16,12 @@ export class ContactComponent implements OnInit {
   dataForm: FormGroup;
 
   queryTypes: any[] = [
-    {value: 'General Query', emails: ['contact@softlabit.com', 'contact@softlabit.com']},
-    {value: 'Corporate Query', emails: ['contact@softlabit.com', 'contact@softlabit.com', 'contact@softlabit.com']},
-    {value: 'Dealership Query', emails: ['contact@softlabit.com', 'contact@softlabit.com', 'contact@softlabit.com']},
-    {value: 'After Sales Support', emails: ['contact@softlabit.com', 'contact@softlabit.com', 'contact@softlabit.com', 'contact@softlabit.com']},
-    {value: 'Online Purchase', emails: ['contact@softlabit.com', 'contact@softlabit.com']},
-    {value: 'Other Query', emails: ['contact@softlabit.com', 'contact@softlabit.com']},
+    {value: 'General Query', emails: ['tuhin.tanvir_eel@esquirebd.com', 'online.query@esquirebd.com']},
+    {value: 'Corporate Query', emails: ['tuhin.tanvir_eel@esquirebd.com', 'mkarim@esquirebd.com', 'online.query@esquirebd.com']},
+    {value: 'Dealership Query', emails: ['tuhin.tanvir_eel@esquirebd.com', 'mkarim@esquirebd.com', 'online.query@esquirebd.com']},
+    {value: 'After Sales Support', emails: ['tuhin.tanvir_eel@esquirebd.com', 'rahman_ccd@esquirebd.com', 'online.query@esquirebd.com', 'ikram_ccd@esquirebd.com']},
+    {value: 'Online Purchase', emails: ['tuhin.tanvir_eel@esquirebd.com', 'online.query@esquirebd.com']},
+    {value: 'Other Query', emails: ['tuhin.tanvir_eel@esquirebd.com', 'online.query@esquirebd.com']},
   ];
 
 

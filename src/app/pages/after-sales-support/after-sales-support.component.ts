@@ -14,7 +14,7 @@ export class AfterSalesSupportComponent implements OnInit {
   @ViewChild('formTemplate') formTemplate: NgForm;
 
   dataForm: FormGroup;
-  receivingMails = ['contact@softlabit.com', 'contact@softlabit.com', 'contact@softlabit.com', 'contact@softlabit.com', 'contact@softlabit.com'];
+  receivingMails = ['hamedeel@esquirebd.com', 'hamedesquireelectronics@gmail.com', 'rahman_ccd@esquirebd.com', 'online.query@esquirebd.com', 'ikram_ccd@esquirebd.com'];
 
 
   constructor(

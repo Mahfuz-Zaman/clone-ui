@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   // Placeholder Animation
   timeOutOngoing: any;
   char = 0;
-  txt = 'Search products in GadgetEx...';
+  txt = 'Search products in Esquire...';
   promoPage: PromoPage;
 
 

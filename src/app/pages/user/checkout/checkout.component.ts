@@ -339,7 +339,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         this.storageService.storeCouponData(this.couponData);
         // Create Message Data
         const finalPhoneNo = '88' + this.order.phoneNo;
-        const message = `Dear ${this.order.name}, Your order ${res.orderId} has been placed. We will update you once the order is confirmed. Thank you for shopping at www.softlabit.com.`;
+        const message = `Dear ${this.order.name}, Your order ${res.orderId} has been placed. We will update you once the order is confirmed. Thank you for shopping at www.esquireelectronicsltd.com.`;
         this.sendSmsBySslAPi(finalPhoneNo, message, finalPhoneNo);
         this.uiService.success(res.message);
         this.router.navigate(['/account/order-list']);

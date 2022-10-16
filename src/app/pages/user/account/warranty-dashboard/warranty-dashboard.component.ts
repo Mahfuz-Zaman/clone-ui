@@ -355,7 +355,7 @@ export class WarrantyDashboardComponent implements OnInit, OnDestroy {
                 fontSize: 10,
               },
               {
-                text: ['Web: ', {text: 'www.softlabit.com', link: 'https://softlabit.com/', color: 'blue'}],
+                text: ['Web: ', {text: 'www.esquireelectronicsltd.com', link: 'https://esquireelectronicsltd.com/', color: 'blue'}],
                 alignment: 'left',
                 fontSize: 10,
               },
@@ -388,7 +388,7 @@ export class WarrantyDashboardComponent implements OnInit, OnDestroy {
                 fontSize: 10,
               },
               {
-                text: ['Web: ', {text: 'www.softlabit.com', link: 'https://softlabit.com/', color: 'blue'}],
+                text: ['Web: ', {text: 'www.esquireelectronicsltd.com', link: 'https://esquireelectronicsltd.com/', color: 'blue'}],
                 alignment: 'left',
                 fontSize: 10,
               },
@@ -520,7 +520,7 @@ export class WarrantyDashboardComponent implements OnInit, OnDestroy {
               },
               {
                 width: '*',
-                text: ['Web: ', {text: 'www.softlabit.com', link: 'https://softlabit.com/', color: 'blue', decoration: 'underline'}],
+                text: ['Web: ', {text: 'www.esquireelectronicsltd.com', link: 'https://esquireelectronicsltd.com/', color: 'blue', decoration: 'underline'}],
                 style: 'p',
                 bold: false,
                 fontSize: 8.5,
@@ -624,7 +624,7 @@ export class WarrantyDashboardComponent implements OnInit, OnDestroy {
               },
               {
                 width: '*',
-                text: ['Web: ', {text: 'www.softlabit.com', link: 'https://softlabit.com/', color: 'blue', decoration: 'underline'}],
+                text: ['Web: ', {text: 'www.esquireelectronicsltd.com', link: 'https://esquireelectronicsltd.com/', color: 'blue', decoration: 'underline'}],
                 style: 'p',
                 bold: false,
                 fontSize: 8.5,

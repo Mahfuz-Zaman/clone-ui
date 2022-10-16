@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseLink: 'https://v2.api.softlabit.com',
-  ftpBaseLink: 'https://ftp.softlabit.com',
+  apiBaseLink: 'https://v2.api.esquireelectronicsltd.com',
+  ftpBaseLink: 'https://ftp.esquireelectronicsltd.com',
   // apiBaseLink: 'http://localhost:3001',
   // ftpBaseLink: 'http://localhost:3001',
   appBaseUrl: '/',
@@ -17,7 +17,7 @@ export const environment = {
   adminTokenSecret: 'SOFT_ADMIN_1995_&&_SOJOL_dEv',
   userTokenSecret: 'SOFT_ADMIN_1996_&&_SOBUR_dEv',
   apiTokenSecret: 'SOFT_API_1998_&&_SAZIB_dEv',
-  sslIpnUrl: 'https://v2.api.softlabit.com/api/payment-ssl/ipn',
+  sslIpnUrl: 'https://v2.api.esquireelectronicsltd.com/api/payment-ssl/ipn',
   firebaseConfig: {
     apiKey: 'AIzaSyCtwO_4F74Eo6fmRA6W56M6gRhUAGEOiU8',
     authDomain: 'esquire-electronics-23467.firebaseapp.com',

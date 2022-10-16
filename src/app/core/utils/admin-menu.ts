@@ -531,7 +531,7 @@ export const menuItemsAdmin: MenuAdmin[] = [
 
   {
     id: '413c',
-    title: 'Career at GadgetEx',
+    title: 'Career at Esquire',
     icon: 'people',
     hasSubMenu: false,
     parentId: '412p',
@@ -1219,7 +1219,7 @@ export const menuItemsSuperAdmin: MenuAdmin[] = [
 
   {
     id: '413c',
-    title: 'Career at GadgetEx',
+    title: 'Career at Esquire',
     icon: 'people',
     hasSubMenu: false,
     parentId: '412p',
@@ -1782,7 +1782,7 @@ export const menuItemsEditor: MenuAdmin[] = [
 
   {
     id: '413c',
-    title: 'Career at GadgetEx',
+    title: 'Career at Esquire',
     icon: 'people',
     hasSubMenu: false,
     parentId: '412p',
