@@ -1,24 +1,37 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {debounceTime, distinctUntilChanged, pluck, switchMap} from 'rxjs/operators';
-import {EMPTY} from 'rxjs';
-import {Router} from '@angular/router';
-import {ProductService} from '../../../services/product.service';
-import {Product} from '../../../interfaces/product';
-import {LOGO_PRIMARY} from '../../utils/ref-const';
-import {ShopInfo} from '../../../interfaces/shop-info';
-import {Pagination} from '../../../interfaces/pagination';
-import {PromoPageService} from '../../../services/promo-page.service';
-import {PromoPage} from '../../../interfaces/promo-page';
-
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { NgForm } from '@angular/forms';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  pluck,
+  switchMap,
+} from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import { Router } from '@angular/router';
+import { ProductService } from '../../../services/product.service';
+import { Product } from '../../../interfaces/product';
+import { LOGO_PRIMARY } from '../../utils/ref-const';
+import { ShopInfo } from '../../../interfaces/shop-info';
+import { Pagination } from '../../../interfaces/pagination';
+import { PromoPageService } from '../../../services/promo-page.service';
+import { PromoPage } from '../../../interfaces/promo-page';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
-
   logoPrimary = LOGO_PRIMARY;
 
   @Output() sidenavNavToggle = new EventEmitter();
@@ -26,7 +39,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('searchForm') searchForm: NgForm;
   @Input() scrollPosition = 0;
   @Input() shopInfo: ShopInfo;
-
 
   // Test
   searchProducts: Product[] = [];
@@ -42,63 +54,63 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   query = null;
   @ViewChild('searchInput') searchInput: ElementRef;
 
-
   // Placeholder Animation
   timeOutOngoing: any;
   char = 0;
-  txt = 'Search products in Esquire...';
+  txt = 'Search products in GadgetEx...';
   promoPage: PromoPage;
-
 
   constructor(
     private productService: ProductService,
     public router: Router,
     private promoPageService: PromoPageService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getPromoPage();
   }
 
-
   ngAfterViewInit(): void {
     this.searchAnim();
     const formValue = this.searchForm.valueChanges;
 
-    formValue.pipe(
-      // map(t => t.searchTerm)
-      // filter(() => this.searchForm.valid),
-      pluck('searchTerm'),
-      debounceTime(200),
-      distinctUntilChanged(),
-      switchMap(data => {
-        this.query = data.trim();
-        if (this.query === '' || this.query === null) {
-          this.overlay = false;
-          this.searchProducts = [];
-          this.query = null;
-          return EMPTY;
+    formValue
+      .pipe(
+        // map(t => t.searchTerm)
+        // filter(() => this.searchForm.valid),
+        pluck('searchTerm'),
+        debounceTime(200),
+        distinctUntilChanged(),
+        switchMap((data) => {
+          this.query = data.trim();
+          if (this.query === '' || this.query === null) {
+            this.overlay = false;
+            this.searchProducts = [];
+            this.query = null;
+            return EMPTY;
+          }
+          this.isLoading = true;
+          const pagination: Pagination = {
+            currentPage: '1',
+            pageSize: '10',
+          };
+          const filter = { productVisibility: true };
+          return this.productService.getSearchProduct(data, pagination, filter);
+        })
+      )
+      .subscribe(
+        (res) => {
+          this.isLoading = false;
+          this.searchProducts = res.data;
+          if (this.searchProducts.length > 0) {
+            this.isOpen = true;
+            this.overlay = true;
+          }
+        },
+        () => {
+          this.isLoading = false;
         }
-        this.isLoading = true;
-        const pagination: Pagination = {
-          currentPage: '1',
-          pageSize: '10'
-        };
-        const filter = {productVisibility: true};
-        return this.productService.getSearchProduct(data, pagination, filter);
-      })
-    )
-      .subscribe(res => {
-        this.isLoading = false;
-        this.searchProducts = res.data;
-        if (this.searchProducts.length > 0) {
-          this.isOpen = true;
-          this.overlay = true;
-        }
-      }, () => {
-        this.isLoading = false;
-      });
+      );
   }
 
   /**
@@ -107,7 +119,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
    * SELECT
    */
 
-
   onClickHeader(): void {
     this.handleCloseOnly();
   }
@@ -115,7 +126,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   onClickSearchArea(event: MouseEvent): void {
     event.stopPropagation();
   }
-
 
   handleOverlay(): void {
     this.overlay = false;
@@ -135,7 +145,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isFocused = true;
   }
 
-
   private setPanelState(event: FocusEvent): void {
     if (event) {
       event.stopPropagation();
@@ -144,9 +153,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.handleOpen();
   }
 
-
   handleOpen(): void {
-    if (this.isOpen || this.isOpen && !this.isLoading) {
+    if (this.isOpen || (this.isOpen && !this.isLoading)) {
       return;
     }
     if (this.searchProducts.length > 0) {
@@ -186,13 +194,16 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isFocused = false;
   }
 
-
   onSelectItem(data: Product): void {
     this.handleCloseAndClear();
     // this.router.navigate(['/product-details', data?.productSlug]);
-    this.router.navigate(['/', data?.brandSlug, data?.categorySlug, data?.productSlug]);
+    this.router.navigate([
+      '/',
+      data?.brandSlug,
+      data?.categorySlug,
+      data?.productSlug,
+    ]);
   }
-
 
   /**
    * ON TOGGLE SIDE MENU
@@ -224,7 +235,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.char = 0;
         // clearTimeout(timeOut);
       }
-
     }, humanize);
   }
 
@@ -241,14 +251,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private getPromoPage() {
-    this.promoPageService.getPromoPage()
-      .subscribe(res => {
+    this.promoPageService.getPromoPage().subscribe(
+      (res) => {
         this.promoPage = res.data;
-      }, err => {
+      },
+      (err) => {
         console.log(err);
-      });
+      }
+    );
   }
-
 
   ngOnDestroy() {
     if (this.timeOutOngoing) {
@@ -257,7 +268,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /*** header-banner-hide */
-  bannerHide(){
+  bannerHide() {
     this.hideAdBanner = true;
   }
 
