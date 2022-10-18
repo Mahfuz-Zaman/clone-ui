@@ -1,30 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {Product} from '../../interfaces/product';
-import {MenuService} from '../../services/menu.service';
-import {ShopService} from '../../services/shop.service';
-import {ProductCategory} from '../../interfaces/product-category';
-import {CategoryService} from '../../services/category.service';
-import {DealOnPlay} from '../../interfaces/deal-on-play';
-import {FeaturedCategory} from '../../interfaces/featured-category';
-import {DealOnPlayService} from '../../services/deal-on-play.service';
-import {FeaturedCategoryService} from '../../services/featured-category.service';
-import {FeaturedProduct} from '../../interfaces/featured-product';
-import {FeaturedProductService} from '../../services/featured-product.service';
-import {Select} from '../../interfaces/select';
-import {CustomizationService} from '../../services/customization.service';
-import {Carousel} from '../../interfaces/carousel';
-import {DealsOfTheDay} from '../../interfaces/deals-of-the-day';
-import {DealsOfTheDayService} from '../../services/deals-of-the-day.service';
-import {ProductBrand} from '../../interfaces/product-brand';
-import {BrandService} from '../../services/brand.service';
-import {ProductService} from 'src/app/services/product.service';
-import {StorageService} from 'src/app/services/storage.service';
-import {Banner} from '../../interfaces/banner';
-import {BannerService} from '../../services/banner.service';
-import {Meta, Title} from '@angular/platform-browser';
-import {CanonicalService} from '../../services/canonical.service';
-import {Pagination} from '../../interfaces/pagination';
-import {FacebookService, InitParams} from 'ngx-facebook';
+import { Component, OnInit } from '@angular/core';
+import { Product } from '../../interfaces/product';
+import { MenuService } from '../../services/menu.service';
+import { ShopService } from '../../services/shop.service';
+import { ProductCategory } from '../../interfaces/product-category';
+import { CategoryService } from '../../services/category.service';
+import { DealOnPlay } from '../../interfaces/deal-on-play';
+import { FeaturedCategory } from '../../interfaces/featured-category';
+import { DealOnPlayService } from '../../services/deal-on-play.service';
+import { FeaturedCategoryService } from '../../services/featured-category.service';
+import { FeaturedProduct } from '../../interfaces/featured-product';
+import { FeaturedProductService } from '../../services/featured-product.service';
+import { Select } from '../../interfaces/select';
+import { CustomizationService } from '../../services/customization.service';
+import { Carousel } from '../../interfaces/carousel';
+import { DealsOfTheDay } from '../../interfaces/deals-of-the-day';
+import { DealsOfTheDayService } from '../../services/deals-of-the-day.service';
+import { ProductBrand } from '../../interfaces/product-brand';
+import { BrandService } from '../../services/brand.service';
+import { ProductService } from 'src/app/services/product.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { Banner } from '../../interfaces/banner';
+import { BannerService } from '../../services/banner.service';
+import { Meta, Title } from '@angular/platform-browser';
+import { CanonicalService } from '../../services/canonical.service';
+import { Pagination } from '../../interfaces/pagination';
+import { FacebookService, InitParams } from 'ngx-facebook';
 
 @Component({
   selector: 'app-home',
@@ -157,10 +157,9 @@ export class HomeComponent implements OnInit {
     const select = 'image mobileImage url -_id';
     this.customizationService.getAllCarouselNoRepeat(select).subscribe(
       (res) => {
-        console.log("see the carosel",res.data )
+        console.log('see the carosel', res.data);
         this.carousels = res.data;
-        console.log("see the Mobile",this.carousels)
-
+        console.log('see the Mobile', this.carousels);
       },
       (error) => {
         console.log(error);
@@ -269,23 +268,23 @@ export class HomeComponent implements OnInit {
 
   private updateMetaData() {
     // Title
-    this.title.setTitle('Esquire Electronics - Home');
+    this.title.setTitle('GadgetEX - Home');
     // Meta
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
     this.meta.updateTag({
       name: 'description',
       content:
-        'Esquire Electronics is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
+        'GadgetEx is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
     });
     this.meta.updateTag({
       name: 'keywords',
       content:
-        'online shop, esquire, esquireelectronics, esquireelectronicsltd, esquireelectronicsltd.com',
+        'online shop, esquire, GadgetEx, GadgetEx, GadgetEx.com',
     });
     // Facebook
     this.meta.updateTag({
       name: 'og:title',
-      content: 'Esquire Electronics - Home',
+      content: 'GadgetEx - Home',
     });
     this.meta.updateTag({ name: 'og:type', content: 'website' });
     this.meta.updateTag({
@@ -299,12 +298,12 @@ export class HomeComponent implements OnInit {
     this.meta.updateTag({
       name: 'og:description',
       content:
-        'Esquire Electronics is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
+        'GadgetEx. is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
     });
     // Twitter
     this.meta.updateTag({
       name: 'twitter:title',
-      content: 'Esquire Electronics - Home',
+      content: 'GadgetEx - Home',
     });
     this.meta.updateTag({
       name: 'twitter:image',
@@ -313,7 +312,7 @@ export class HomeComponent implements OnInit {
     this.meta.updateTag({
       name: 'twitter:description',
       content:
-        'Esquire Electronics is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
+        'GadgetEx. is the sole authorized distributor of SHARP and GENERAL in Bangladesh. Shop online and enjoy massive discounts and free home delivery.',
     });
 
     // Canonical
