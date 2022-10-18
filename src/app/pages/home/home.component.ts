@@ -279,7 +279,7 @@ export class HomeComponent implements OnInit {
     this.meta.updateTag({
       name: 'keywords',
       content:
-        'online shop, esquire, GadgetEx, GadgetEx, GadgetEx.com',
+        'online shop, GadgetEx, GadgetEx, GadgetEx, GadgetEx.com',
     });
     // Facebook
     this.meta.updateTag({
@@ -289,11 +289,11 @@ export class HomeComponent implements OnInit {
     this.meta.updateTag({ name: 'og:type', content: 'website' });
     this.meta.updateTag({
       name: 'og:url',
-      content: 'https://esquireelectronicsltd.com/',
+      content: 'https://support@gadgetex.com.bd/',
     });
     this.meta.updateTag({
       name: 'og:image',
-      content: 'https://esquireelectronicsltd.com/assets/brand/esquire.png',
+      content: 'https://support@gadgetex.com.bd/assets/brand/esquire.png',
     });
     this.meta.updateTag({
       name: 'og:description',
@@ -307,7 +307,7 @@ export class HomeComponent implements OnInit {
     });
     this.meta.updateTag({
       name: 'twitter:image',
-      content: 'https://esquireelectronicsltd.com/assets/brand/esquire.png',
+      content: 'https://support@gadgetex.com.bd/assets/brand/esquire.png',
     });
     this.meta.updateTag({
       name: 'twitter:description',

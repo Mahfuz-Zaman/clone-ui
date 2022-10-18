@@ -355,7 +355,7 @@ export class WarrantyDashboardComponent implements OnInit, OnDestroy {
                 fontSize: 10,
               },
               {
-                text: ['Web: ', {text: 'www.esquireelectronicsltd.com', link: 'https://esquireelectronicsltd.com/', color: 'blue'}],
+                text: ['Web: ', {text: 'www.support@gadgetex.com.bd', link: 'https://support@gadgetex.com.bd/', color: 'blue'}],
                 alignment: 'left',
                 fontSize: 10,
               },
@@ -383,12 +383,12 @@ export class WarrantyDashboardComponent implements OnInit, OnDestroy {
                 fontSize: 10,
               },
               {
-                text: 'Email: ecommerce@esquirebd.com',
+                text: 'Email: support@gadgetex.com.bd',
                 alignment: 'left',
                 fontSize: 10,
               },
               {
-                text: ['Web: ', {text: 'www.esquireelectronicsltd.com', link: 'https://esquireelectronicsltd.com/', color: 'blue'}],
+                text: ['Web: ', {text: 'www.support@gadgetex.com.bd', link: 'https://support@gadgetex.com.bd/', color: 'blue'}],
                 alignment: 'left',
                 fontSize: 10,
               },
@@ -520,7 +520,7 @@ export class WarrantyDashboardComponent implements OnInit, OnDestroy {
               },
               {
                 width: '*',
-                text: ['Web: ', {text: 'www.esquireelectronicsltd.com', link: 'https://esquireelectronicsltd.com/', color: 'blue', decoration: 'underline'}],
+                text: ['Web: ', {text: 'www.support@gadgetex.com.bd', link: 'https://support@gadgetex.com.bd/', color: 'blue', decoration: 'underline'}],
                 style: 'p',
                 bold: false,
                 fontSize: 8.5,
@@ -624,7 +624,7 @@ export class WarrantyDashboardComponent implements OnInit, OnDestroy {
               },
               {
                 width: '*',
-                text: ['Web: ', {text: 'www.esquireelectronicsltd.com', link: 'https://esquireelectronicsltd.com/', color: 'blue', decoration: 'underline'}],
+                text: ['Web: ', {text: 'www.support@gadgetex.com.bd', link: 'https://support@gadgetex.com.bd/', color: 'blue', decoration: 'underline'}],
                 style: 'p',
                 bold: false,
                 fontSize: 8.5,
