@@ -268,7 +268,7 @@ export class HomeComponent implements OnInit {
 
   private updateMetaData() {
     // Title
-    this.title.setTitle('GadgetEX - Home');
+    this.title.setTitle('GadgetEX | Exclusive Gadgets For Your Daily Life');
     // Meta
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
     this.meta.updateTag({
@@ -278,13 +278,12 @@ export class HomeComponent implements OnInit {
     });
     this.meta.updateTag({
       name: 'keywords',
-      content:
-        'online shop, GadgetEx, GadgetEx, GadgetEx, GadgetEx.com',
+      content: 'online shop, GadgetEx, GadgetEx, GadgetEx, GadgetEx.com',
     });
     // Facebook
     this.meta.updateTag({
       name: 'og:title',
-      content: 'GadgetEx - Home',
+      content: 'GadgetEX | Exclusive Gadgets For Your Daily Life',
     });
     this.meta.updateTag({ name: 'og:type', content: 'website' });
     this.meta.updateTag({
@@ -303,7 +302,7 @@ export class HomeComponent implements OnInit {
     // Twitter
     this.meta.updateTag({
       name: 'twitter:title',
-      content: 'GadgetEx - Home',
+      content: 'GadgetEX | Exclusive Gadgets For Your Daily Life',
     });
     this.meta.updateTag({
       name: 'twitter:image',
