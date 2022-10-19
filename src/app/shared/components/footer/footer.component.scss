@@ -15,7 +15,7 @@
   max-width: $theme-container-width;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
   grid-template-rows: auto;
   grid-gap: 20px 20px;
   box-sizing: border-box;
@@ -25,7 +25,6 @@
   display: block;
   width: 50%;
   height: auto;
-  // margin-bottom: 15px;
 }
 
 .footer-description {
@@ -38,6 +37,7 @@
   color: #000;
   font-weight: 400;
   font-family: $font-en-primary;
+  padding-bottom: 1rem;
   font-size: 13px;
   font-style: normal;
   line-height: 22px;
@@ -48,9 +48,11 @@
 .footer-description p::after {
   content: " ";
   width: 100%;
-  height: 2px solid black;
+  height: 1px;
   position: absolute;
-  bottom: 10px;
+  bottom: 0.2rem;
+  left: 0;
+  background-color: gray;
 }
 
 .footer-title {
@@ -70,7 +72,7 @@
 
 .f-link ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0.5rem;
   margin: 0;
 }
 
@@ -97,10 +99,10 @@
   height: auto;
   box-sizing: border-box;
   padding: 20px 0px;
-  background-color: #000000de;
+  background-color: #dadada;
 }
 
-.footer-bottom-description {
+.footer-bottommiddle-area {
   display: block;
   width: 100%;
   height: auto;
@@ -108,40 +110,7 @@
   margin-bottom: 10px;
 }
 
-.footer-bottom-description p {
-  display: block;
-  font-weight: 400;
-  font-family: $font-en-primary;
-  color: #fff;
-  font-size: 13px;
-  line-height: 20px;
-}
-
-.footer-bottomMidle-area {
-  display: block;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}
-
-.footer-bottomMidle-title {
-  text-align: center;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.footer-bottomMidle-title h2 {
-  color: #fff;
-  font-family: $font-en-primary;
-  font-style: normal;
-  font-size: 15px;
-  font-weight: 600;
-  display: block;
-  line-height: 28px;
-}
-
-.footer-midle-main {
+.footer-middle-main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
@@ -158,111 +127,52 @@
 .other-detail h3 {
   font-weight: 500;
   font-family: $font-en-primary;
-  color: #f2ba22;
+  color: #000;
   font-style: normal;
-  font-size: 14px;
+  line-height: 16px;
+  font-size: 13px;
   display: block;
-  margin-bottom: 2px;
+  padding-bottom: 12px;
 }
-
-.other-detail p {
-  display: block;
-  font-weight: 400;
-  font-family: $font-en-primary;
-  color: #fff;
-  font-size: 14px;
-  line-height: 23px;
-}
-
-.footer-buy-detail {
-  text-align: center;
-  display: block;
+.youtube-content {
   width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  margin-bottom: 10px;
+  max-width: fit-content;
+  border: 2px solid black;
+  border-radius: 10px;
 }
-
-.footer-buy-title {
-  display: block;
+.footer-register-payment {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-row: auto;
+}
+.footer-register {
+  display: flex;
+  align-items: baseline;
   width: 100%;
-  margin-bottom: 10px;
+}
+.footer-register h1 {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+}
+.footer-register img {
+  object-fit: contain;
+  height: 43px;
+  width: 72px;
 }
 
-.footer-buy-title h2 {
-  font-weight: 400;
-  font-family: $font-en-primary;
-  color: #f2ba22;
-  font-style: normal;
-  font-size: 15px;
-  display: block;
-  margin-bottom: 2px;
+.footer-payment {
+  width: 100%;
 }
-
-.footer-buy-description p {
-  display: block;
-  font-weight: 400;
-  font-family: $font-en-primary;
-  color: #fff;
-  font-size: 14px;
-  line-height: 23px;
-  margin-bottom: 10px;
-  a {
-    color: white;
-  }
-}
-
-.footer-buy-description h3 {
-  display: block;
-  font-weight: 600;
-  font-family: $font-en-primary;
-  color: #fff;
-  font-size: 14px;
-  line-height: 22px;
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
-}
-
-.footer-payment-system {
+.footer-copy {
   display: block;
   width: 100%;
   text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
   box-sizing: border-box;
   margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.footer-payment-system ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.footer-payment-system ul li {
-  margin-right: 6px;
-  margin-bottom: 5px;
-}
-
-.footer-payment-system ul li span {
-  color: #fff;
-  font-family: $font-en-primary;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  display: block;
-  margin-right: 10px;
-}
-
-.footer-payment-system ul li a img {
-  display: block;
-  max-width: 40px;
-  width: 100%;
-  height: auto;
 }
 
 /***********footer-area **********/
@@ -290,34 +200,20 @@
 
 /*footer-bottom-area*/
 @media (max-width: 1000px) {
-  .footer-midle-main {
+  .footer-middle-main {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
 @media (max-width: 756px) {
-  .footer-bottomMidle-area {
-    display: none;
-  }
   .footer-bottom-description {
     display: none;
   }
-  .footer-buy-title {
-    display: none;
+  .footer-register-payment {
+    grid-template-columns: 100%;
   }
-  .footer-buy-description h3 {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .footer-buy-description p {
-    font-size: 14px;
-    line-height: 20px;
-  }
-  .footer-buy-description h3 {
-    font-size: 14px;
-    line-height: 20px;
+  .footer-middle-main {
+    place-items: center;
   }
 }
 
