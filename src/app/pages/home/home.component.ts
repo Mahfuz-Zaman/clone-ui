@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { MenuService } from '../../services/menu.service';
 import { ShopService } from '../../services/shop.service';
@@ -25,6 +25,9 @@ import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from '../../services/canonical.service';
 import { Pagination } from '../../interfaces/pagination';
 import { FacebookService, InitParams } from 'ngx-facebook';
+import { CategoryMenu } from 'src/app/interfaces/category-menu';
+import { Observable } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +35,7 @@ import { FacebookService, InitParams } from 'ngx-facebook';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  
   products: Product[] = [];
   recommendedProducts: Product[] = [];
 
@@ -74,6 +78,7 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(
+    private breakpointObserver: BreakpointObserver,
     private menuService: MenuService,
     private shopService: ShopService,
     private categoryService: CategoryService,
