@@ -1,6 +1,5 @@
 @import "src/theme/variables";
 
-
 /**** footer-area ********/
 .footer-area {
   display: block;
@@ -8,7 +7,7 @@
   height: auto;
   box-sizing: border-box;
   padding: 50px 0px 20px 0px;
-  background-color: #333333;
+  background-color: #dadada;
 }
 
 .footer-main {
@@ -16,7 +15,7 @@
   max-width: $theme-container-width;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr 2fr;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
   grid-template-rows: auto;
   grid-gap: 20px 20px;
   box-sizing: border-box;
@@ -24,87 +23,34 @@
 
 .footer-logo {
   display: block;
-  width: 100%;
+  width: 50%;
   height: auto;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
 }
 
 .footer-description {
   display: block;
-  width: 100%;
+  width: 90%;
   height: auto;
 }
 
 .footer-description p {
-  color: #fff;
+  color: #000;
   font-weight: 400;
   font-family: $font-en-primary;
   font-size: 13px;
   font-style: normal;
   line-height: 22px;
   margin-bottom: 10px;
+  position: relative;
 }
 
-.address {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.address h4 {
-  color: #fff;
-  font-weight: 400;
-  font-family: $font-en-primary;
-  font-size: 13px;
-  font-style: normal;
-  line-height: 25px;
-  margin-bottom: 5px;
-}
-
-.address span {
-  display: block;
-  color: #fff;
-  font-weight: 400;
-  font-family: $font-en-primary;
-  font-size: 13px;
-  font-style: normal;
-  margin-bottom: 2px;
-}
-
-.contact-link {
-  display: block;
+.footer-description p::after {
+  content: " ";
   width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
-
-.contact-link h3 {
-  color: #fff;
-  font-weight: 400;
-  font-family: $font-en-primary;
-  font-size: 13px;
-  font-style: normal;
-  margin-bottom: 4px;
-}
-
-.contact-link a {
-  color: #fff;
-  font-weight: 400;
-  font-family: $font-en-primary;
-  font-size: 13px;
-  font-style: normal;
-  display: inline-block;
-  transition: all 0.3s linear;
-}
-
-.contact-link a:hover {
-  color: #f2ba22;
-}
-
-.footer-lik {
-  display: block;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
+  height: 2px solid black;
+  position: absolute;
+  bottom: 10px;
 }
 
 .footer-title {
@@ -113,13 +59,13 @@
 }
 
 .footer-title h2 {
-  color: #f2ba22;
-  font-weight: 500;
+  color: #000;
+  font-weight: 700;
   font-family: $font-en-primary;
   font-style: normal;
-  font-size: 14px;
+  font-size: 16px;
   display: block;
-  line-height: 25px;
+  line-height: 19px;
 }
 
 .f-link ul {
@@ -134,161 +80,15 @@
 }
 
 .f-link ul li a {
-  color: #fff;
+  color: #000;
   font-weight: 400;
   font-family: $font-en-primary;
   font-size: 13px;
   font-style: normal;
   display: inline-block;
   transition: all 0.3s linear;
+  line-height: 20px;
 }
-
-
-/******** footer-social-area *******/
-.footer-social-area {
-  display: block;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
-
-.social-link {
-  margin-top: 8px;
-  margin-bottom: 10px;
-}
-
-.social-link ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.social-link ul li {
-  display: block;
-  margin-right: 10px;
-  width: 25px;
-}
-
-.social-link ul li a img {
-  max-width: 22px;
-  width: 100%;
-  height: 100%;
-}
-
-.app-downlaod {
-  display: block;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}
-
-.app-download h2 {
-  font-weight: 500;
-  font-style: normal;
-  font-family: $font-en-primary;
-  color: #fff;
-  font-size: 15px;
-  display: block;
-  line-height: 22px;
-  margin-bottom: 10px;
-}
-
-.app-download ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.app-download ul li {
-  display: inline-block;
-  margin-right: 7px;
-}
-
-.app-download ul li a img {
-  max-width: 90px;
-  width: 100%;
-  height: auto;
-}
-
-/*** singup-area ****/
-.singup-area {
-  display: block;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  margin-top: 10px;
-}
-
-.singup-area h2 {
-  font-weight: 500;
-  font-style: normal;
-  font-family: $font-en-primary;
-  color: #d6bbbb;
-  font-size: 15px;
-  display: block;
-  line-height: 22px;
-  margin-bottom: 5px;
-}
-
-.singup-area form {
-  display: block;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
-
-.singup-area label {
-  color: #fff;
-  font-weight: 400;
-  font-family: $font-en-primary;
-  font-size: 13px;
-  font-style: normal;
-  display: block;
-  line-height: 17px;
-  margin-bottom: 3px;
-}
-
-.input-area {
-  display: block;
-  position: relative;
-  z-index: 10;
-}
-
-.input-area input {
-  display: block;
-  width: 100%;
-  border: 1px solid #fff;
-  outline: none;
-  padding: 8px 10px;
-  box-sizing: border-box;
-  color: #524f39;
-  font-family: $font-en-primary;
-  font-style: normal;
-  border-radius: 7px;
-}
-
-.input-area button {
-  display: block;
-  max-width: 50px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #fff;
-  border: 1px solid transparent;
-  outline: none;
-  border-radius: 0 7px 7px 0;
-  background-image: url(../../../../assets/images/junk/paper-plane.svg);
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
-}
-
 
 /***** footer-bottom-area ******/
 .footer-bottom-area {
@@ -407,7 +207,7 @@
   font-size: 14px;
   line-height: 23px;
   margin-bottom: 10px;
-  a{
+  a {
     color: white;
   }
 }
@@ -465,23 +265,22 @@
   height: auto;
 }
 
-
 /***********footer-area **********/
-@media(max-width: 1150px) {
+@media (max-width: 1150px) {
   .footer-main {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .footer-main {
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media(max-width: 650px) {
+@media (max-width: 650px) {
   .footer-main {
-    grid-template-columns:repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
   .footer-logo img {
     max-width: 400px;
@@ -489,15 +288,14 @@
   }
 }
 
-
 /*footer-bottom-area*/
-@media(max-width: 1000px) {
+@media (max-width: 1000px) {
   .footer-midle-main {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-@media(max-width: 756px) {
+@media (max-width: 756px) {
   .footer-bottomMidle-area {
     display: none;
   }
@@ -510,10 +308,9 @@
   .footer-buy-description h3 {
     display: none;
   }
-
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .footer-buy-description p {
     font-size: 14px;
     line-height: 20px;
@@ -526,8 +323,8 @@
 
 /**** footer-area-end ********/
 
-@media(min-width:960px) and (max-width:1440px){
-  .container{
-    width: 88%!important;
+@media (min-width: 960px) and (max-width: 1440px) {
+  .container {
+    width: 88% !important;
   }
 }

@@ -11,34 +11,24 @@
           <img src="/assets/images/junk/Logo-with-text-white.png" alt="logo">
         </div>
         <div class="footer-description">
-          <p>{{footerData?.shortDes}}</p>
-        </div>
-        <div class="address">
-          <h4>Address :</h4>
-          <span>{{footerData?.address}}</span>
-        </div>
-        <div class="contact-link">
-          <h3>Phone:<a href="tel:8809610001010">{{footerData?.phone}}</a></h3>
-          <h3>Email: <a href="mailto:{{footerData?.email}}"> {{footerData?.email}}
-            </a></h3>
+          <p>GadgetEx continues to provide customers with a reliable and trustworthy online shop along with their two
+            shops, helping to ensure a better and premium business experience.</p>
         </div>
       </div>
 
       <!---**** footer-link ******-->
       <div class="footer-link">
         <div class="footer-title">
-          <h2>SHOPPING WITH US </h2>
+          <h2>GadgetEx</h2>
         </div>
         <div class="f-link">
           <ul>
-            <li><a routerLink="/pages/why-shop-online-at-esquire-electronics">Why Shop with us</a></li>
-            <li><a routerLink="/pages/online-purchase-procedure">Online Purchase Procedure</a></li>
-            <li><a routerLink="/pages/online-payment-methods">Online Payment Methods</a></li>
-            <li><a routerLink="/pages/online-payment-security">Online Payment Security</a></li>
-            <li><a routerLink="/pages/online-partner-websites">Online Partner</a></li>
-            <li><a routerLink="/pages/emi-payment-facility">EMI Payment Facility</a></li>
-            <li><a routerLink="/pages/shohoj-kisti-facility-installment-facility">Shohoj Kisti Facility</a></li>
-            <li><a routerLink="/pages/how-to-download-e-warranty-document">How to download e-Warranty Document</a></li>
+            <li><a routerLink="/">About Us</a></li>
+            <li><a routerLink="/">Our Mission</a></li>
+            <li><a routerLink="/">Why GadgetEx</a></li>
+            <li><a routerLink="/">Product Quality</a></li>
+            <li><a routerLink="/">Shop Address</a></li>
+            <li><a routerLink="/">Contact Us</a></li>
           </ul>
         </div>
       </div>
@@ -46,17 +36,13 @@
       <!---**** footer-link ******-->
       <div class="footer-link">
         <div class="footer-title">
-          <h2>CUSTOMER SERVICE</h2>
+          <h2>Care</h2>
         </div>
         <div class="f-link">
           <ul>
-            <li><a routerLink="/after-sales-support">After Sales Support</a></li>
-            <li><a routerLink="/contact-service-center">Contact Service Center</a></li>
-            <li><a routerLink="/pages/warranty-policy">Warranty Policy</a></li>
-            <li><a routerLink="/pages/return-&-refund-policy">Return & Refund Policy</a></li>
-            <li><a routerLink="/pages/privacy-policy">Privacy Policy</a></li>
-            <li><a routerLink="/pages/terms-and-conditions">Terms & Conditions</a></li>
-            <li><a routerLink="/faq">FAQ</a></li>
+            <li><a routerLink="/">Take Guide</a></li>
+            <li><a routerLink="/">Order Tracking</a></li>
+            <li><a routerLink="/">My Complain</a></li>
           </ul>
         </div>
       </div>
@@ -64,64 +50,17 @@
       <!---**** footer-link ******-->
       <div class="footer-link">
         <div class="footer-title">
-          <h2>USEFUL LINKS</h2>
+          <h2>Informations</h2>
         </div>
         <div class="f-link">
           <ul>
-            <li><a routerLink="/store-locator">Store Locator</a></li>
-            <!--            <li><a routerLink="/pages/">Dealer Locator</a></li>-->
-            <li><a routerLink="/pages/">Site Map</a></li>
-            <li><a routerLink="/offers">Promotional Offers</a></li>
-            <li><a routerLink="/career-esquire">Career at GadgetEx.</a></li>
-            <li><a routerLink="/pages/warranty-details">Warranty Details</a></li>
-            <li><a routerLink="/product-authenticator">Product Authenticator</a></li>
+            <li><a routerLink="/">Privacy Policy</a></li>
+            <li><a routerLink="/">Terms and Conditions</a></li>
+            <li><a routerLink="/">Return and Replacement</a></li>
+            <li><a routerLink="/">Warranty Policy</a></li>
           </ul>
         </div>
       </div>
-
-      <!----****** footer-social-details-area *******-->
-
-      <div class="footer-social-area">
-        <div class="footer-title">
-          <h2>FOLLOW US</h2>
-        </div>
-        <div class="social-link">
-          <ul>
-            <li><a href="https://www.linkedin.com/company/esquireelectronics" target="_blank"><img
-                  src="/assets/images/junk/linkedin.svg" alt=""></a></li>
-            <li><a href="https://www.instagram.com/Esquire_Electronics/" target="_blank"><img
-                  src="/assets/images/junk/instagram.svg" alt=""></a></li>
-            <li><a href="https://www.facebook.com/EsquireElectronics/" target="_blank"><img
-                  src="/assets/images/junk/facebook.svg" alt=""></a></li>
-          </ul>
-        </div>
-        <div class="app-download">
-          <h2>DOWNLOAD APPS</h2>
-          <ul>
-            <li><a routerLink="/pages/about-us" target="_blank"><img
-                  src="/assets/images/junk/button_appstore_android.svg" alt="button_appstore_android.svg"></a></li>
-            <li><a routerLink="/pages/about-us" target="_blank"><img src="/assets/images/junk/app-store-icon.svg"
-                  alt="app-store-icon.svg"></a>
-            </li>
-          </ul>
-        </div>
-
-        <!---******* input -area *****-->
-        <div class="singup-area">
-          <h2>Sign Up For Newsletters</h2>
-          <form #dataForm="ngForm" (ngSubmit)="onSubmit(dataForm)">
-            <label for="input">Get E-mail updates about our latest shop and special offers</label>
-            <div class="input-area">
-              <input ngModel type="email" name="email" id="input">
-              <button type="submit"></button>
-            </div>
-          </form>
-        </div>
-
-
-      </div>
-
-
     </div>
   </div>
 </section>
