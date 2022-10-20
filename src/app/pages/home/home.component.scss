@@ -55,6 +55,9 @@ $margin-top: 80px;
           margin: 0.5rem 0;
           padding: 0 0.5rem;
           position: relative;
+          a{
+            text-decoration: none;
+          }
           span {
             display: flex;
             justify-content: space-between;
