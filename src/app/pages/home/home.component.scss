@@ -39,10 +39,12 @@ $margin-top: 80px;
   }
 
   .big-carousel-view {
+    padding-top: 1rem;
     display: flex;
     flex-direction: row;
     gap: 1rem;
     .category-menu {
+      height: 290px;
       background-color: lightblue;
       ul {
         width: 280px;
@@ -88,6 +90,12 @@ $margin-top: 80px;
             }
           }
         }
+      }
+    }
+    .showcase-swiper {
+      img {
+        height: 290px;
+        border-radius: 20px;
       }
     }
   }
