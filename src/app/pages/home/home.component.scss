@@ -8,7 +8,9 @@
 @import "~swiper/css/effect-fade";
 
 $margin-top: 80px;
-
+.home-root {
+  background-color: #eef0f1;
+}
 .banner-image {
   width: 100%;
   //max-height: 200px;
@@ -44,7 +46,7 @@ $margin-top: 80px;
     gap: 1rem;
     .category-menu {
       height: 290px;
-      background-color: lightblue;
+      background-color: #fff;
       ul {
         width: 280px;
         list-style-type: none;
@@ -74,7 +76,7 @@ $margin-top: 80px;
             width: 150px;
             padding: 0 1rem;
             position: absolute;
-            background-color: skyblue;
+            background-color: #fff;
             top: 0;
             left: 100%;
             z-index: 10;
@@ -144,10 +146,11 @@ $margin-top: 80px;
 
   .img-thumb {
     display: grid;
-    border: 1px solid gray;
+    border: 1px solid lightgray;
     border-radius: 5px;
     place-items: center;
     box-shadow: 2px 2px 6px #ddd, -2px -2px 6px #ddd;
+    background-color: #fff;
     overflow: hidden;
 
     img {
