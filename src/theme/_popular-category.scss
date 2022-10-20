@@ -1,7 +1,6 @@
 @import "variables";
 
-
-.clearfix::after{
+.clearfix::after {
   content: "";
   display: block;
   clear: both;
@@ -13,20 +12,20 @@
   //grid-gap: 20px 20px;
   margin-bottom: 0;
   box-sizing: border-box;
+  padding: 1rem 0rem;
   min-height: 430px;
 
   .d-block {
     float: right;
-    width: calc(100% - 310px);
+    width: calc(100%);
   }
-
 }
 
 .section-wrapper .card {
   padding: 20px 0;
   box-sizing: border-box;
 }
-.electronic-device{
+.electronic-device {
   float: left;
   width: 280px;
   display: block;
@@ -168,56 +167,53 @@
   height: 100%;
 }
 
-
 /**section5-area **/
-@media(max-width:1050px){
-  .section-wrapper{
+@media (max-width: 1050px) {
+  .section-wrapper {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
   }
 }
-@media(max-width:850px){
-  .section-wrapper{
+@media (max-width: 850px) {
+  .section-wrapper {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
   }
 }
-@media(max-width:650px){
-  .section-wrapper{
+@media (max-width: 650px) {
+  .section-wrapper {
     grid-template-columns: repeat(1, 1fr);
     min-height: 100%;
   }
-  .section-wrapper .card .card-price{
-    visibility: visible!important;
+  .section-wrapper .card .card-price {
+    visibility: visible !important;
   }
-  .section-wrapper .card{
+  .section-wrapper .card {
     text-align: center;
   }
-  .electronic-device{
+  .electronic-device {
     width: 80%;
-    float: none!important;
+    float: none !important;
     margin: 30px auto;
-    height:350px!important;
+    height: 350px !important;
     display: none;
   }
-  .section-wrapper .card .card-icon-menu{
+  .section-wrapper .card .card-icon-menu {
     position: static;
     visibility: visible;
     opacity: 1;
   }
 
-.section-wrapper {
-
-  .d-block {
-    float: none!important;
-    width: 95%;
-    margin: auto;
+  .section-wrapper {
+    .d-block {
+      float: none !important;
+      width: 95%;
+      margin: auto;
+    }
   }
-
 }
-}
-@media(max-width:400px){
-  .electronic-device{
+@media (max-width: 400px) {
+  .electronic-device {
     width: 90%;
     padding: 30px;
   }

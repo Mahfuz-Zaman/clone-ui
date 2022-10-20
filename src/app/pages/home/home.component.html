@@ -5,10 +5,9 @@
       <div class="category-menu">
         <ul>
           <li>
-            <span
-              ><img src="assets/images/side-menu/new-arrival.png" />New
-              Arrivals</span
-            ><mat-icon>chevron_right</mat-icon>
+            <span><img src="assets/images/side-menu/new-arrival.png" />New
+              Arrivals</span>
+            <mat-icon>chevron_right</mat-icon>
             <div class="sub-menu">
               <ul>
                 <li>Samsung</li>
@@ -21,9 +20,8 @@
             </div>
           </li>
           <li>
-            <span
-              ><img src="assets/images/side-menu/hot-sale.png" />Hot Sales</span
-            ><mat-icon>chevron_right</mat-icon>
+            <span><img src="assets/images/side-menu/hot-sale.png" />Hot Sales</span>
+            <mat-icon>chevron_right</mat-icon>
             <div class="sub-menu">
               <ul>
                 <li>Samsung</li>
@@ -36,10 +34,9 @@
             </div>
           </li>
           <li>
-            <span
-              ><img src="assets/images/side-menu/smart-phone.png" />Smartphone
-              Collections</span
-            ><mat-icon>chevron_right</mat-icon>
+            <span><img src="assets/images/side-menu/smart-phone.png" />Smartphone
+              Collections</span>
+            <mat-icon>chevron_right</mat-icon>
             <div class="sub-menu">
               <ul>
                 <li>Samsung</li>
@@ -55,10 +52,9 @@
             </div>
           </li>
           <li>
-            <span
-              ><img src="assets/images/side-menu/tablet.png" />Tablet
-              Collections</span
-            ><mat-icon>chevron_right</mat-icon>
+            <span><img src="assets/images/side-menu/tablet.png" />Tablet
+              Collections</span>
+            <mat-icon>chevron_right</mat-icon>
             <div class="sub-menu">
               <ul>
                 <li>Samsung Tab</li>
@@ -68,10 +64,9 @@
             </div>
           </li>
           <li>
-            <span
-              ><img src="assets/images/side-menu/smart-watch.png" />Smartwatch
-              Collections</span
-            ><mat-icon>chevron_right</mat-icon>
+            <span><img src="assets/images/side-menu/smart-watch.png" />Smartwatch
+              Collections</span>
+            <mat-icon>chevron_right</mat-icon>
             <div class="sub-menu">
               <ul>
                 <li>Amazfit</li>
@@ -91,10 +86,9 @@
             </div>
           </li>
           <li>
-            <span
-              ><img src="assets/images/side-menu/head-phone.png" />Sound & Music
-              Gadgets</span
-            ><mat-icon>chevron_right</mat-icon>
+            <span><img src="assets/images/side-menu/head-phone.png" />Sound & Music
+              Gadgets</span>
+            <mat-icon>chevron_right</mat-icon>
             <div class="sub-menu">
               <ul>
                 <li>Bluetooth Speaker</li>
@@ -104,10 +98,9 @@
             </div>
           </li>
           <li>
-            <span
-              ><img src="assets/images/side-menu/powerbank.png" />Powerbank
-              Collections</span
-            ><mat-icon>chevron_right</mat-icon>
+            <span><img src="assets/images/side-menu/powerbank.png" />Powerbank
+              Collections</span>
+            <mat-icon>chevron_right</mat-icon>
             <div class="sub-menu">
               <ul>
                 <li>Anker</li>
@@ -130,10 +123,9 @@
             </div>
           </li>
           <li>
-            <span
-              ><img src="assets/images/side-menu/charger.png" />Charger &
-              Adapter Collections</span
-            ><mat-icon>chevron_right</mat-icon>
+            <span><img src="assets/images/side-menu/charger.png" />Charger &
+              Adapter Collections</span>
+            <mat-icon>chevron_right</mat-icon>
             <div class="sub-menu">
               <ul>
                 <li>Apple</li>
@@ -148,43 +140,25 @@
             </div>
           </li>
           <li>
-            <span
-              ><img src="assets/images/side-menu/category.png" /><a href="#"
-                >See All Categories &gt;&gt;</a
-              ></span
-            >
+            <span><img src="assets/images/side-menu/category.png" /><a href="#">See All Categories &gt;&gt;</a></span>
           </li>
         </ul>
       </div>
-      <swiper
-        [loop]="true"
-        [autoplay]="{
+      <swiper [loop]="true" [autoplay]="{
           delay: 5000,
           disableOnInteraction: false
-        }"
-        [effect]="'fade'"
-        [pagination]="{
+        }" [effect]="'fade'" [pagination]="{
           clickable: true
-        }"
-        class="mySwiper"
-      >
+        }" class="mySwiper">
         <ng-template swiperSlide *ngFor="let c of carousels">
           <div class="carousel-img-big">
             <a [routerLink]="c.url">
-              <img
-                [defaultImage]="'/assets/images/placeholder/anim.gif'"
-                [lazyLoad]="c?.image"
-                alt=""
-              />
+              <img [defaultImage]="'/assets/images/placeholder/anim.gif'" [lazyLoad]="c?.image" alt="" />
             </a>
           </div>
           <div class="carousel-img-big-mobile">
             <a [routerLink]="c.url">
-              <img
-                [defaultImage]="'/assets/images/placeholder/anim.gif'"
-                [lazyLoad]="c?.mobileImage"
-                alt=""
-              />
+              <img [defaultImage]="'/assets/images/placeholder/anim.gif'" [lazyLoad]="c?.mobileImage" alt="" />
             </a>
           </div>
         </ng-template>
@@ -196,11 +170,7 @@
 
 <section class="big-offer-banner" *ngIf="offerBanner">
   <a [routerLink]="[offerBanner?.routerLink]">
-    <img
-      [defaultImage]="'/assets/images/placeholder/anim.gif'"
-      [lazyLoad]="offerBanner?.image"
-      [alt]=""
-    />
+    <img [defaultImage]="'/assets/images/placeholder/anim.gif'" [lazyLoad]="offerBanner?.image" [alt]="" />
   </a>
 </section>
 <!-- END BIG OFFER VIEW -->
@@ -219,9 +189,7 @@
     </div>
     <!-- *** Shop by department product ***-->
     <div class="container-with-carousel">
-      <swiper
-        [slidesPerView]="1"
-        [breakpoints]="{
+      <swiper [slidesPerView]="1" [breakpoints]="{
           '640': {
             slidesPerView: 3,
             spaceBetween: 10
@@ -234,14 +202,8 @@
             slidesPerView: 6,
             spaceBetween: 10
           }
-        }"
-        [navigation]="true"
-        class="mySwiper"
-      >
-        <ng-template
-          swiperSlide
-          *ngFor="let data of categories | sort: 'priority'; let i = index"
-        >
+        }" [navigation]="true" class="mySwiper">
+        <ng-template swiperSlide *ngFor="let data of categories | sort: 'priority'; let i = index">
           <app-category-card [data]="data"></app-category-card>
         </ng-template>
       </swiper>
@@ -259,9 +221,7 @@
       <span>Shop By Brands</span> <a href="#">view all</a>
     </h3>
     <div class="container-with-carousel">
-      <swiper
-        [slidesPerView]="1"
-        [breakpoints]="{
+      <swiper [slidesPerView]="1" [breakpoints]="{
           '0': {
             slidesPerView: 2,
             spaceBetween: 15
@@ -278,21 +238,14 @@
             slidesPerView: 5,
             spaceBetween: 20
           }
-        }"
-        [navigation]="true"
-        class="mySwiper feature-carousel"
-      >
+        }" [navigation]="true" class="mySwiper feature-carousel">
         <ng-template swiperSlide *ngFor="let data of brands">
           <div class="img-thumb">
-            <a [routerLink]="['/brand-product-list', data?.brandSlug]"
-              ><img
-                [src]="
+            <a [routerLink]="['/brand-product-list', data?.brandSlug]"><img [src]="
                   data.image
                     ? data.image
                     : '/assets/images/placeholder/test.png'
-                "
-                [alt]="data.brandName"
-            /></a>
+                " [alt]="data.brandName" /></a>
           </div>
         </ng-template>
       </swiper>
@@ -300,14 +253,10 @@
   </div>
 </section>
 <!-- END BRAND VIEW SECTION -->
-
-<!-- ---------------------------------------- -->
 <section class="section-3">
   <div class="container">
     <div class="container-with-carousel">
-      <swiper
-        [slidesPerView]="1"
-        [breakpoints]="{
+      <swiper [slidesPerView]="1" [breakpoints]="{
           '0': {
             slidesPerView: 1,
             spaceBetween: 15
@@ -332,18 +281,9 @@
             allowSlideNext: false,
             allowSlidePrev: false
           }
-        }"
-        [navigation]="false"
-        class="mySwiper"
-      >
-        <ng-template
-          swiperSlide
-          *ngFor="let data of dealOnPlay | sort: 'priority'"
-        >
-          <img
-            src="./../../../assets/images/junk/offer2.jpg"
-            alt="Offer Image"
-          />
+        }" [navigation]="false" class="mySwiper">
+        <ng-template swiperSlide *ngFor="let data of dealOnPlay | sort: 'priority'">
+          <img src="./../../../assets/images/junk/offer2.jpg" alt="Offer Image" />
         </ng-template>
       </swiper>
     </div>
@@ -355,191 +295,18 @@
   </div>
 </section>
 <!-- END OFFER CARD VIEW SECTION -->
-
-<!-- ---------------------------------------- -->
-
-<section
-  class="section-2 section-deal-of-day section-md"
-  *ngIf="allDealsOfTheDay && allDealsOfTheDay.length > 0"
->
-  <div class="container">
-    <div class="deal-title">
-      <h2>Deal Of the Day</h2>
-      <div class="line"></div>
-    </div>
-    <div class="container-with-carousel right-border">
-      <swiper
-        [slidesPerView]="1"
-        [breakpoints]="{
-          '700': {
-            slidesPerView: 1,
-            spaceBetween: 20
-          },
-          '1024': {
-            slidesPerView: 2,
-            spaceBetween: 20
-          }
-        }"
-        [navigation]="true"
-        class="mySwiper"
-      >
-        <ng-template
-          swiperSlide
-          *ngFor="
-            let data of allDealsOfTheDay | hideDealOfDay | sort: 'priority'
-          "
-        >
-          <app-deal-of-day-card [data]="data"></app-deal-of-day-card>
-        </ng-template>
-      </swiper>
-    </div>
-  </div>
-</section>
-<!--Deal Of the Day end-->
-
-<!---product-services-area-->
-<section class="section-8">
-  <div class="container">
-    <app-product-services></app-product-services>
-  </div>
-</section>
-
-<section class="section-3 section-offer-card section-md">
-  <div class="container">
-    <div class="container-with-carousel">
-      <swiper
-        [slidesPerView]="1"
-        [breakpoints]="{
-          '0': {
-            slidesPerView: 1,
-            spaceBetween: 15
-          },
-          '500': {
-            slidesPerView: 1.5,
-            spaceBetween: 20
-          },
-          '700': {
-            slidesPerView: 2,
-            spaceBetween: 20
-          },
-          '930': {
-            slidesPerView: 2.5,
-            spaceBetween: 20
-          },
-          '1200': {
-            slidesPerView: 3,
-            spaceBetween: 20
-          }
-        }"
-        [navigation]="true"
-        class="mySwiper"
-      >
-        <ng-template
-          swiperSlide
-          *ngFor="let data of dealOnPlay | sort: 'priority'"
-        >
-          <app-offer-card [data]="data"></app-offer-card>
-        </ng-template>
-      </swiper>
-    </div>
-    <!--    <div class="dealOnPlay-main">-->
-
-    <!--      <app-offer-card *ngFor="let data of offers" [data]="data"></app-offer-card>-->
-
-    <!--    </div>-->
-  </div>
-</section>
-<!-- END OFFER CARD VIEW SECTION -->
-
-<section class="section-4 section-feature section-md">
-  <div class="container">
-    <div class="section4-menu">
-      <ul>
-        <li *ngFor="let data of featureProductTypes">
-          <a
-            (click)="getAllFeaturedProduct(data.value)"
-            [ngClass]="{ active: data.value === activeFeaturedProduct }"
-            style="font-weight: 600 !important"
-          >
-            {{ data.viewValue }}
-          </a>
-        </li>
-
-        <!--        <li><a (click)="selectFeature('active')" [ngClass]="{'active' : activeProduct === 'feature'}">Featured </a></li>-->
-        <!--        <li><a (click)="selectFeature('best-seller')" [ngClass]="{'active' : activeProduct === 'best-seller'}">Best-->
-        <!--          Seller</a></li>-->
-        <!--        <li><a (click)="selectFeature('special')" [ngClass]="{'active' : activeProduct === 'special'}">Special-->
-        <!--          Product</a></li>-->
-      </ul>
-    </div>
-    <!---*** END section4--menu ***-->
-
-    <div class="section4-main">
-      <div class="section4-cards">
-        <swiper
-          [slidesPerView]="1"
-          [breakpoints]="{
-            '0': {
-              slidesPerView: 2,
-              spaceBetween: 10
-            },
-            '500': {
-              slidesPerView: 2.5,
-              spaceBetween: 10
-            },
-            '600': {
-              slidesPerView: 3,
-              spaceBetween: 10
-            },
-            '750': {
-              slidesPerView: 3.5,
-              spaceBetween: 10
-            },
-            '850': {
-              slidesPerView: 4,
-              spaceBetween: 10
-            },
-            '1100': {
-              slidesPerView: 5,
-              spaceBetween: 10
-            }
-          }"
-          [navigation]="true"
-          class="mySwiper"
-        >
-          <ng-template
-            swiperSlide
-            *ngFor="let data of allFeaturedProduct | sort: 'priority'"
-          >
-            <app-product-card-one
-              [product]="data.product"
-            ></app-product-card-one>
-          </ng-template>
-        </swiper>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END FEATURE PRODUCT VIEW SECTION -->
 
 <section class="big-offer-banner" *ngIf="bigBanner">
   <a [routerLink]="[bigBanner?.routerLink]">
-    <img
-      [defaultImage]="'/assets/images/placeholder/anim.gif'"
-      [lazyLoad]="bigBanner?.image"
-      [alt]=""
-    />
+    <img [defaultImage]="'/assets/images/placeholder/anim.gif'" [lazyLoad]="bigBanner?.image" [alt]="" />
   </a>
 </section>
 <!-- END BIG OFFER VIEW -->
 
 <section class="section-5 section-popular-cat section-md">
   <div class="container">
-    <div
-      class="section-wrapper clearfix"
-      *ngFor="let data of featuredCategory | sort: 'priority'; let i = index"
-      [style]="'--bg-solid:' + data.cardBtnColor"
-    >
+    <div class="section-wrapper clearfix" *ngFor="let data of featuredCategory | sort: 'priority'; let i = index"
+      [style]="'--bg-solid:' + data.cardBtnColor">
       <!---title-->
       <div class="banner-image" *ngIf="data.banner">
         <img [src]="data.banner" alt="Featured Category Banner" />
@@ -549,30 +316,12 @@
         <h2>{{ data.name }}</h2>
       </div>
 
-      <div
-        class="electronic-device"
-        [style.background-image]="'url(' + data.image + ')'"
-        [style]="'--bg-rgba:' + data.cardBackground"
-      >
-        <!-- <div class="electronic-device-title">
-          <h2>{{data.name}}</h2>
-        </div>
-        <div class="electronic-device-description">
-          <p>{{data.shortDesc}}</p>
-        </div> -->
-
-        <div class="electronic-device-btn">
-          <a [routerLink]="['/product-list', data.routerLink]">View All</a>
-        </div>
-      </div>
       <!-- END CAT CARD -->
 
       <div class="container-with-carousel d-block">
-        <swiper
-          [slidesPerView]="1"
-          [breakpoints]="{
+        <swiper [slidesPerView]="1" [breakpoints]="{
             '0': {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 10
             },
             '500': {
@@ -580,29 +329,26 @@
               spaceBetween: 10
             },
             '650': {
-              slidesPerView: 2,
-              spaceBetween: 10
-            },
-            '900': {
-              slidesPerView: 2.5,
-              spaceBetween: 10
-            },
-            '1030': {
               slidesPerView: 3,
               spaceBetween: 10
             },
-            '1265': {
+            '900': {
               slidesPerView: 3.5,
               spaceBetween: 10
             },
-            '1318': {
+            '1030': {
               slidesPerView: 4,
               spaceBetween: 10
+            },
+            '1265': {
+              slidesPerView: 4.5,
+              spaceBetween: 10
+            },
+            '1318': {
+              slidesPerView: 5,
+              spaceBetween: 10
             }
-          }"
-          [navigation]="true"
-          class="mySwiper"
-        >
+          }" [navigation]="true" class="mySwiper">
           <ng-template swiperSlide *ngFor="let data of data.products">
             <app-product-card-one [product]="data"></app-product-card-one>
           </ng-template>
@@ -612,54 +358,3 @@
   </div>
 </section>
 <!-- END POPULAR CATEGORY SECTION -->
-
-<section
-  class="section-2 section-recommended section-md"
-  *ngIf="recommendedProducts && recommendedProducts.length > 0"
->
-  <div class="container">
-    <div class="deal-title">
-      <h2>Recommended For You</h2>
-      <div class="line"></div>
-    </div>
-
-    <div class="wrap-content">
-      <swiper
-        [slidesPerView]="1"
-        [breakpoints]="{
-          '0': {
-            slidesPerView: 2,
-            spaceBetween: 10
-          },
-          '500': {
-            slidesPerView: 2.5,
-            spaceBetween: 10
-          },
-          '600': {
-            slidesPerView: 3,
-            spaceBetween: 10
-          },
-          '750': {
-            slidesPerView: 3.5,
-            spaceBetween: 10
-          },
-          '850': {
-            slidesPerView: 4,
-            spaceBetween: 10
-          },
-          '1100': {
-            slidesPerView: 5,
-            spaceBetween: 10
-          }
-        }"
-        [navigation]="true"
-        class="mySwiper feature-carousel"
-      >
-        <ng-template swiperSlide *ngFor="let data of recommendedProducts">
-          <app-product-card-one [product]="data"></app-product-card-one>
-        </ng-template>
-      </swiper>
-    </div>
-  </div>
-</section>
-<!--END RECOMMENDED SECTION VIEW-->
