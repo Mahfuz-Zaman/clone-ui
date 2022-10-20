@@ -55,7 +55,7 @@ $margin-top: 80px;
           margin: 0.5rem 0;
           padding: 0 0.5rem;
           position: relative;
-          a{
+          a {
             text-decoration: none;
           }
           span {
@@ -237,6 +237,12 @@ SHOWCASE
       .category-menu {
         ul {
           width: 100%;
+          li {
+            .sub-menu {
+              left: 60%;
+              top: 20px;
+            }
+          }
         }
       }
     }
