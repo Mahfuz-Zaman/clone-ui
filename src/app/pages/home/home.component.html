@@ -263,6 +263,48 @@
 </section>
 <!-- END BRAND VIEW SECTION -->
 
+<!-- ---------------------------------------- -->
+<section class="section-3 ">
+  <div class="container">
+    <div class="container-with-carousel">
+      <swiper [slidesPerView]="1" [breakpoints]="{
+          '0': {
+            slidesPerView: 1,
+            spaceBetween: 15
+          },
+          '500': {
+            slidesPerView: 1.5,
+            spaceBetween: 20
+          },
+          '700': {
+            slidesPerView: 2,
+            spaceBetween: 20
+          },
+          '930': {
+            slidesPerView: 2.5,
+            spaceBetween: 20
+          },
+          '1200': {
+            slidesPerView: 3,
+            spaceBetween: 20
+          }
+        }" [navigation]="false" class="mySwiper">
+        <ng-template swiperSlide *ngFor="let data of dealOnPlay | sort: 'priority'">
+          <img src="./../../../assets/images/junk/offer2.jpg" alt="Offer Image">
+        </ng-template>
+      </swiper>
+    </div>
+    <!--    <div class="dealOnPlay-main">-->
+
+    <!--      <app-offer-card *ngFor="let data of offers" [data]="data"></app-offer-card>-->
+
+    <!--    </div>-->
+  </div>
+</section>
+<!-- END OFFER CARD VIEW SECTION -->
+
+<!-- ---------------------------------------- -->
+
 <section class="section-2 section-deal-of-day section-md" *ngIf="allDealsOfTheDay && allDealsOfTheDay.length > 0">
   <div class="container">
     <div class="deal-title">
