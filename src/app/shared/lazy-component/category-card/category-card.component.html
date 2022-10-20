@@ -1,8 +1,9 @@
 <div class="section1-content" [routerLink]="['/product-list', data?.categorySlug]">
   <div class="section1-product-img">
     <img [src]="data?.image ? data.image : '/assets/images/placeholder/test.png'" [alt]="data?.categoryName">
+    <div class="section1-product-link">
+      <a [routerLink]="['/product-list', data.categorySlug]">{{data?.categoryName}}</a>
+    </div>
   </div>
-  <div class="section1-product-link">
-    <a [routerLink]="['/product-list', data.categorySlug]">{{data?.categoryName}}</a>
-  </div>
+
 </div>
