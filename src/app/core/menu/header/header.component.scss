@@ -1,5 +1,24 @@
 @import "src/theme/variables";
 
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  a {
+    text-decoration: none;
+    font-size: 18px;
+  }
+  .facebook{
+    color: blue;
+  }
+  .whatsapp{
+    color: limegreen;
+  }
+  .youtube{
+    color: red;
+  }
+}
 .header-contact {
   color: black;
   display: flex;
@@ -19,10 +38,10 @@
       height: 20px;
     }
   }
-  .phone {
-  }
-  .mail {
-  }
+  // .phone {
+  // }
+  // .mail {
+  // }
 }
 
 .user-action {
@@ -77,7 +96,7 @@ HEADER CONTROL WITH AUTO COMPLETE
   height: $toolbar-height;
   position: fixed;
   z-index: 999 !important;
-  background-color: #EEF0F1;
+  background-color: #eef0f1;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -97,10 +116,10 @@ HEADER CONTROL WITH AUTO COMPLETE
 }
 
 .logo {
-  min-width: 317px;
+  min-width: 200px;
   margin-top: 0;
   width: auto;
-  height: 38px;
+  height: 65px;
 
   &:focus {
     outline: none;
