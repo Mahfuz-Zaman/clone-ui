@@ -1,6 +1,49 @@
 @import "src/theme/variables";
 
+.header-contact {
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  .phone,
+  .mail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .phone {
+  }
+  .mail {
+  }
+}
 
+.user-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  .mono-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    img {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
 /**
 MENU ITEM SELECT DATA
  */
@@ -25,9 +68,7 @@ MENU ITEM SELECT DATA
   mat-icon {
     margin-right: 0 !important;
   }
-
 }
-
 
 /**
 HEADER CONTROL WITH AUTO COMPLETE
@@ -37,7 +78,8 @@ HEADER CONTROL WITH AUTO COMPLETE
   height: $toolbar-height;
   position: fixed;
   z-index: 999 !important;
-  background-color: $color-primary;
+  // background-color: $color-primary;
+  background-color: lightgray;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -53,13 +95,8 @@ HEADER CONTROL WITH AUTO COMPLETE
     justify-content: space-between;
     gap: 75px;
     z-index: 1000;
-
   }
-
-
 }
-
-
 
 .logo {
   min-width: 317px;
@@ -71,7 +108,6 @@ HEADER CONTROL WITH AUTO COMPLETE
     outline: none;
   }
 }
-
 
 .search {
   width: 100%;
@@ -85,17 +121,16 @@ HEADER CONTROL WITH AUTO COMPLETE
     width: 100%;
     // border-right: none;
 
-
     input {
       width: 100%;
       height: 45px;
       outline: none;
-      border: 1px solid #FFFFFF;
+      border: 1px solid #ffffff;
       border-radius: 5px;
       padding: 0 60px 0 20px;
       font-size: 14px;
       font-family: $font-en-primary;
-      background: #FFFFFF;
+      background: #ffffff;
     }
 
     .icon {
@@ -105,7 +140,7 @@ HEADER CONTROL WITH AUTO COMPLETE
       right: 0;
       font-size: 24px;
       color: #444444;
-      background: #FFFFFF;
+      background: #ffffff;
       width: 55px;
       cursor: pointer;
       display: grid;
@@ -115,7 +150,7 @@ HEADER CONTROL WITH AUTO COMPLETE
       border-bottom-right-radius: 5px;
 
       &:hover {
-        background: #FFD200;
+        background: #ffd200;
       }
     }
   }
@@ -175,9 +210,8 @@ HEADER CONTROL WITH AUTO COMPLETE
     }
   }
 
-
   .wrap {
-    color: #FFFFFF;
+    color: #ffffff;
 
     p {
       color: #ffffffcf;
@@ -191,7 +225,7 @@ HEADER CONTROL WITH AUTO COMPLETE
       line-height: 20px;
       font-weight: 600;
 
-      &.color{
+      &.color {
         line-height: 24px;
         color: $color-secondary;
       }
@@ -218,21 +252,21 @@ HEADER CONTROL WITH AUTO COMPLETE
   }
 }
 
-#tel{
+#tel {
   font-family: $font-en-primary;
   font-size: 13px;
   font-weight: 600;
   line-height: 24px;
-  color: #fff!important;
+  color: #fff !important;
   transition: all 0.3s linear;
 }
-#tel:hover{
-  color: #FFD200!important;
+#tel:hover {
+  color: #ffd200 !important;
 }
-@media(min-width:960px) and (max-width:1440px){
-  .container{
-    width: 90%!important;
-    gap: 30px!important;
+@media (min-width: 960px) and (max-width: 1440px) {
+  .container {
+    width: 90% !important;
+    gap: 30px !important;
   }
   .icon-text {
     .wrap {
@@ -241,14 +275,13 @@ HEADER CONTROL WITH AUTO COMPLETE
       }
     }
   }
-  .icon i{
-    font-size: 24px!important;
+  .icon i {
+    font-size: 24px !important;
   }
-  .social a i{
-    font-size: 15px!important;
+  .social a i {
+    font-size: 15px !important;
   }
   .search {
-
     .search-form {
       input {
         height: 40px;
@@ -261,21 +294,16 @@ HEADER CONTROL WITH AUTO COMPLETE
   }
 }
 
-
-
 @media only screen and (min-width: 600px) and (max-width: 1279px) {
-
   .header {
     .container {
       gap: 30px;
       padding: 0 12px;
     }
   }
-
 }
 
 @media only screen and (min-width: 960px) and (max-width: 1279px) {
-
   .logo {
     min-width: 260px;
     height: 32px;
@@ -367,7 +395,6 @@ LIST VIEW ON SEARCH
   margin-top: 0;
 }
 
-
 /**
 RESPONSIVE
  */
@@ -410,7 +437,6 @@ RESPONSIVE
         // TODO IF NEED
       }
     }
-
   }
 
   .toolbar-small {
@@ -422,17 +448,13 @@ RESPONSIVE
       display: none;
     }
   }
-
-
 }
-
 
 @media only screen and (min-width: 600px) and (max-width: 959px) {
   .header {
     .container {
       justify-content: space-between;
       gap: 16px;
-
     }
   }
 
@@ -447,27 +469,25 @@ RESPONSIVE
   }
 }
 @media only screen and (max-width: 1050px) {
-
   .action .contact {
     display: none;
   }
 }
 
 @media only screen and (max-width: 599px) {
-
   .action .locator {
     display: none;
   }
 }
 
-.banner-container{
+.banner-container {
   display: block;
   max-width: 1440px;
   width: 100%;
   margin: auto;
   //height: 80px;
 }
-.header-offer-banner-img{
+.header-offer-banner-img {
   display: block;
   width: 100%;
   height: auto;
@@ -481,7 +501,7 @@ RESPONSIVE
   width: 100%;
   margin: 0 auto;
 }
-.header-offer-banner-img span{
+.header-offer-banner-img span {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -498,17 +518,14 @@ RESPONSIVE
   cursor: pointer;
 }
 
-@media(min-width:960px) and (max-width:1440px){
-  .banner-container{
-    width: 90%!important;
+@media (min-width: 960px) and (max-width: 1440px) {
+  .banner-container {
+    width: 90% !important;
   }
-
 }
 
 @media only screen and (max-width: 599px) {
   .banner-container {
     display: none !important;
   }
-
 }
-

@@ -2,6 +2,59 @@
 @import "src/theme/hover-menu";
 @import "src/theme/cart-dropdown";
 
+.search-n-icons {
+  width: 100%;
+  padding: 0 1rem;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .search-box {
+    width: 70%;
+    padding: 5px 0;
+    // background-color: lightgreen;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    input {
+      height: 45px;
+      width: 100%;
+      border: 0;
+      border-radius: 7px;
+      outline: 0;
+      padding-left: 1rem;
+    }
+    .magnify {
+      position: absolute;
+      right: 0;
+      top: 5;
+      border-left: 1px solid gray;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 2rem;
+      cursor: pointer;
+    }
+  }
+  .icons-group {
+    height: 45px;
+    width: 30%;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.6rem;
+    .sign-in{
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  }
+}
 .mega-menu {
   width: 100%;
   margin-top: $toolbar-height;

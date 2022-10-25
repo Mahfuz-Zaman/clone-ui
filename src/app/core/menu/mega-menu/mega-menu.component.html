@@ -7,6 +7,7 @@
       cdkOverlayOrigin
       #trigger="cdkOverlayOrigin"
       (click)="catSlideActive()"
+      style="width: 363px"
     >
       <div class="icon-bg">
         <mat-icon class="list">list</mat-icon>
@@ -27,11 +28,11 @@
         Menu
       </button>
     </div>
+
     <!-- END Toggle Button -->
-    <ul class="menu-ul hide-nav-menu">
+    <!-- <ul class="menu-ul hide-nav-menu">
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/all-product-list">Products</a></li>
-      <!--      <li><a routerLink="/coming-soon" class="hide-list-sm">Installation & Repair</a></li>-->
 
       <li
         [matMenuTriggerFor]="menuInstallationRepair"
@@ -41,9 +42,6 @@
           <a>Installation & Repair</a>
           <mat-icon>arrow_drop_down</mat-icon>
         </div>
-        <!--        <div fxHide.gt-xs>-->
-        <!--          <img src="/assets/images/png/Hot.png" alt="">-->
-        <!--        </div>-->
       </li>
 
       <li [matMenuTriggerFor]="menuOffer" class="dropdown-mat no-select">
@@ -51,16 +49,7 @@
           <a>Offers<img src="/assets/images/png/Hot.png" alt="" /></a>
           <mat-icon>arrow_drop_down</mat-icon>
         </div>
-        <!--        <div fxHide.gt-xs>-->
-        <!--          <img src="/assets/images/png/Hot.png" alt="">-->
-        <!--        </div>-->
       </li>
-
-      <!--      <li class="hide-list-sm">-->
-      <!--        <a routerLink="/offers">Offers-->
-      <!--          <img src="/assets/images/png/Hot.png" alt="">-->
-      <!--        </a>-->
-      <!--      </li>-->
 
       <li><a routerLink="/blog">Blog</a></li>
       <li [matMenuTriggerFor]="menuAboutUs" class="dropdown-mat no-select">
@@ -68,15 +57,23 @@
           <a>About Us</a>
           <mat-icon>arrow_drop_down</mat-icon>
         </div>
-        <!--        <div fxHide.gt-xs>-->
-        <!--          <img src="/assets/images/png/Hot.png" alt="">-->
-        <!--        </div>-->
       </li>
 
       <li class="hide-list-md hide-list-sm">
         <a routerLink="/contact">Contact Us</a>
       </li>
-    </ul>
+    </ul> -->
+    <div class="search-n-icons">
+      <div class="search-box">
+        <input type="text" placeholder="Search" />
+        <mat-icon class="magnify">search</mat-icon>
+      </div>
+      <div class="icons-group">
+        <mat-icon>favorite_border</mat-icon>
+        <mat-icon>shopping_cart</mat-icon>
+        <button class="sign-in">Sign In</button>
+      </div>
+    </div>
 
     <ul class="menu-ul trigger-menu">
       <!-- COLLAPSE MENU -->
@@ -89,8 +86,7 @@
 
     <!--    <button (click)="menuCartTrigger.openMenu()">Test</button>-->
 
-    <ul class="menu-ul">
-      <!-- ACCOUNT -->
+    <!-- <ul class="menu-ul">
       <li [fxHide]="isUserAuth">
         <a routerLink="/login" class="color">Sign In</a>
       </li>
@@ -143,7 +139,7 @@
           </div>
         </div>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </div>
 
@@ -281,11 +277,7 @@
   [cdkConnectedOverlayOrigin]="trigger"
   [cdkConnectedOverlayOpen]="isOpen"
 >
-  <nav
-    *ngIf="!(isHandset$ | async)"
-    class="hover-menu"
-
-  >
+  <nav *ngIf="!(isHandset$ | async)" class="hover-menu">
     <ul class="main-menu">
       <li
         *ngFor="let menu of categoryMenus | sort: 'priority'"
@@ -426,7 +418,7 @@
             [class]="menu.iconName"
           ></i>
           <mat-icon inline *ngIf="!menu.iconType">lens_blur</mat-icon>
-          <span>{{menu.name}}</span>
+          <span>{{ menu.name }}</span>
         </a>
         <mat-icon *ngIf="menu.hasChild.length > 0">arrow_right</mat-icon>
 
@@ -466,8 +458,12 @@
       <div class="res-cat-top-left">
         <h4>Shop by Category</h4>
       </div>
-      <div class="res-cat-cross" style="cursor: pointer" (click)="isOpen = false">
-        <span ><i class="fa fa-times"></i></span>
+      <div
+        class="res-cat-cross"
+        style="cursor: pointer"
+        (click)="isOpen = false"
+      >
+        <span><i class="fa fa-times"></i></span>
       </div>
     </div>
     <app-menu-level-cat

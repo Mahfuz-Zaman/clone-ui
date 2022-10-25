@@ -5,21 +5,38 @@
     <div class="header-offer-banner-img">
       <!-- <a [routerLink]="promoPage?.routerLink"><img style="margin-bottom: -6px;" [src]="promoPage?.image" alt=""></a> -->
       <!-- <div [routerLink]="promoPage?.routerLink"><img style="margin-bottom: -6px;" [src]="promoPage?.image" alt=""></div> -->
-      <img style="margin-bottom: -6px;" [routerLink]="promoPage?.routerLink" [src]="promoPage?.image" alt="">
+      <img
+        style="margin-bottom: -6px"
+        [routerLink]="promoPage?.routerLink"
+        [src]="promoPage?.image"
+        alt=""
+      />
       <span (click)="bannerHide()">X</span>
     </div>
   </div>
 </div>
 
-<header class="header" (click)="onClickHeader()" [class.toolbar-small]="scrollPosition > 714" appOutSideClick (outsideClick)="handleOutsideClick()">
-  <div class="container" [ngClass]="{'toolbar-scroll': scrollPosition > 714}">
+<header
+  class="header"
+  (click)="onClickHeader()"
+  [class.toolbar-small]="scrollPosition > 714"
+  appOutSideClick
+  (outsideClick)="handleOutsideClick()"
+>
+  <div class="container" [ngClass]="{ 'toolbar-scroll': scrollPosition > 714 }">
     <div class="logo">
       <a routerLink="/" style="text-decoration: none">
-        <img (click)="onNavigate()" class="logo" [src]="logoPrimary" alt="Orajon">
+        <img
+          (click)="onNavigate()"
+          class="logo"
+          [src]="logoPrimary"
+          alt="Orajon"
+        />
       </a>
-    </div> <!-- END LOGO -->
+    </div>
+    <!-- END LOGO -->
 
-    <div class="search" (click)="onClickSearchArea($event)">
+    <!-- <div class="search" (click)="onClickSearchArea($event)">
       <form class="search-form" #searchForm=ngForm>
         <input #searchInput
                id="searchInput"
@@ -50,7 +67,6 @@
         </div>
       </form>
 
-<!-- Suggestion View -->
       <ul id="auto-suggestion" class="auto-complete-box"
           [ngClass]="searchProducts.length > 0 && isOpen ? 'active' : ''">
         <li class="list-view" *ngFor="let data of searchProducts" (click)="onSelectItem(data)">
@@ -66,57 +82,96 @@
           </div>
         </li>
       </ul>
-    </div> <!-- END SEARCH -->
+    </div> -->
+    <!-- END SEARCH -->
 
-    <div class="action">
+    <div class="header-contact">
+      <div class="phone">
+        <!-- <img src="src/assets/images/header/face.png" alt="" /> -->
+        <img
+          src="https://gadgetex.com.bd/images/ICON/Call%20Center%201.png"
+          alt=""
+        />
+        <p>+880 1726 003 324</p>
+      </div>
+      <div class="mail">
+        <!-- <img src="src/assets/images/header/envelop.png" alt="" /> -->
+        <img src="https://gadgetex.com.bd/images/ICON/eMail%201.png" alt="" />
+        <p>support@gadgetex.com.bd</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="user-action">
+        <div class="mono-action">
+          <img src="https://gadgetex.com.bd/images/ICON/tracorder.png" alt="" />
+          <p>Track Order</p>
+        </div>
+        <div class="mono-action">
+          <img
+            src="https://gadgetex.com.bd/images/ICON/My%20Offers-01%201.png"
+            alt=""
+          />
+          <p>My Offer</p>
+        </div>
+        <div class="mono-action">
+          <img src="https://gadgetex.com.bd/images/ICON/Capture-4.png" alt="" />
+          <p>Take Guide</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="action">
+      
       <div class="icon-text delivery">
         <div class="icon">
-          <i class="fas fa-truck" style="color:#ffff; font-weight: 600;"></i>
+          <i class="fas fa-truck" style="color: #ffff; font-weight: 600"></i>
         </div>
         <div class="wrap">
-          <p style="color:#fff;">Free</p>
+          <p style="color: #fff">Free</p>
           <h3>Delivery</h3>
         </div>
       </div>
 
       <div class="icon-text contact" fxHide.lt-md="true">
         <div class="icon">
-          <i class="fas fa-headset" style="color:#ffff; font-weight: 600;"></i>
+          <i class="fas fa-headset" style="color: #ffff; font-weight: 600"></i>
         </div>
         <div class="wrap">
-          <p style="color:#fff;">Contact</p>
-          <h3> <a href="tel:+8809610001010" id="tel">+8809610001010</a></h3>
+          <p style="color: #fff">Contact</p>
+          <h3><a href="tel:+8809610001010" id="tel">+8809610001010</a></h3>
         </div>
       </div>
 
       <div class="icon-text locator" fxHide.xs="true">
         <div class="icon" routerLink="/store-locator" style="cursor: pointer">
-          <i class="fas fa-map-marked-alt" style="color:#ffff; font-weight: 600;"></i>
+          <i
+            class="fas fa-map-marked-alt"
+            style="color: #ffff; font-weight: 600"
+          ></i>
         </div>
         <div class="wrap">
-          <h3 class="color" routerLink="/store-locator" style="cursor: pointer">Store Locator</h3>
+          <h3 class="color" routerLink="/store-locator" style="cursor: pointer">
+            Store Locator
+          </h3>
           <div class="social">
             <a href="https://www.facebook.com/" target="_blank">
-              <i class="fab fa-facebook" style="color:#ffff;"></i>
+              <i class="fab fa-facebook" style="color: #ffff"></i>
             </a>
             <a href="https://www.instagram.com/" target="_blank">
-              <i class="fab fa-instagram" style="color:#ffff;"></i>
+              <i class="fab fa-instagram" style="color: #ffff"></i>
             </a>
-<!--            <a href="#">-->
-<!--              <i class="fab fa-twitter" style="color:#ffff;"></i>-->
-<!--            </a>-->
             <a href="https://www.youtube.com/" target="_blank">
-              <i class="fab fa-youtube" style="color:#ffff;"></i>
+              <i class="fab fa-youtube" style="color: #ffff"></i>
             </a>
             <a href="https://www.linkedin.com/" target="_blank">
-              <i class="fab fa-linkedin-in" style="color:#ffff;"></i>
+              <i class="fab fa-linkedin-in" style="color: #ffff"></i>
             </a>
           </div>
         </div>
       </div>
-
-    </div> <!-- END ACTION -->
+      
+    </div> -->
+    <!-- END ACTION -->
   </div>
-
-
 </header>
