@@ -20,7 +20,7 @@
     align-items: center;
     position: relative;
     input {
-      height: 45px;
+      height: 40px;
       width: 100%;
       border: 0;
       border-radius: 7px;
@@ -32,7 +32,8 @@
       right: 0;
       top: 5;
       border-left: 1px solid gray;
-      height: 45px;
+      color: orange;
+      height: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -43,7 +44,6 @@
   .icons-group {
     height: 45px;
     width: 30%;
-    background-color: lightblue;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -60,6 +60,7 @@
   margin-top: $toolbar-height;
   background: black;
   position: fixed;
+  color: white;
   z-index: 99;
   // border-top: 1px solid #c00;
   box-shadow: 0px 2px 6px rgb(0 0 0 / 20%);
