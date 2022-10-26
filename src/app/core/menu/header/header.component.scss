@@ -425,8 +425,25 @@ RESPONSIVE
   .header {
     .container {
       flex-direction: column;
+      align-items: flex-end;
       gap: 0;
       padding: 0 5px;
+      font-size: 11px;
+      .logo,
+      .user-action {
+        align-self: flex-start;
+      }
+      .user-action {
+        padding-left: 16px;
+      }
+      .header-contact {
+        margin-top: -7px;
+      }
+      .social-links {
+        a {
+          font-size: 15px;
+        }
+      }
     }
   }
 
